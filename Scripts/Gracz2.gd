@@ -14,6 +14,10 @@ func _process(delta: float) -> void:
 	elif selected_pasek > 0 and Input.is_action_just_pressed("pasek_poprzedni"):
 		selected_pasek -= 1
 		update_wybrany_pasek()
+	elif Input.is_action_pressed("more_pasek"):
+		paski[selected_pasek].increase()
+	elif Input.is_action_pressed("less_pasek"):
+		paski[selected_pasek].decrease()
 
 func update_wybrany_pasek():
 	for i in paski.size():

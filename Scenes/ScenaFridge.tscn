@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi1umadkw8khi"]
+
+[ext_resource type="Texture2D" uid="uid://c3narfrlpa5pq" path="res://Textures/ScenaFridge.png" id="1_7vsjx"]
+
+[sub_resource type="GDScript" id="GDScript_h61mo"]
+script/source = "extends \"res://Scripts/Scena.gd\"
+
+func wybrany_akcja(akcja: String):
+	match akcja:
+		\"Twoja stara\":
+			game.change_stat(\"fats\", 50)
+			game.change_stat(\"whites\", 20)
+		\"Zupe\":
+			game.change_stat(\"str\", 10)
+			game.change_stat(\"fats\", 5)
+		\"Gibos\":
+			game.change_stat(\"str\", 18)
+			game.change_stat(\"int\", 18)
+			game.change_stat(\"cukiers\", 10)
+			game.change_stat(\"fats\", 10)
+		\"Karma dla legwana\":
+			game.change_stat(\"int\", 30)
+			game.change_stat(\"whites\", 20)
+"
+
+[node name="ScenaFridge" type="Node2D"]
+script = SubResource("GDScript_h61mo")
+first_choice = "what_eat"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.29, 0.29, 0.29, 1)
+texture = ExtResource("1_7vsjx")
+centered = false

@@ -43,6 +43,7 @@ script = ExtResource("1_4jxwk")
 layout_mode = 2
 
 [node name="TrueScena" type="Control" parent="HBoxContainer/MarginContainer/Scena"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -122,14 +123,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/Scena/Akcje"]
+[node name="AkcjeName" type="Label" parent="HBoxContainer/MarginContainer/Scena/Akcje"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Co zjeść"
 
 [node name="TrueAkcje" type="VBoxContainer" parent="HBoxContainer/MarginContainer/Scena/Akcje"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Control" type="Control" parent="HBoxContainer"]
 layout_mode = 2
@@ -145,7 +150,8 @@ offset_bottom = 131.0
 text = "Węglowodany"
 horizontal_alignment = 1
 
-[node name="Pasek" parent="HBoxContainer/Control" instance=ExtResource("3_oynmy")]
+[node name="Cukiers" parent="HBoxContainer/Control" instance=ExtResource("3_oynmy")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 131.0
 offset_top = 145.0
@@ -161,7 +167,8 @@ offset_bottom = 131.0
 text = "Tłuszcze"
 horizontal_alignment = 1
 
-[node name="Pasek2" parent="HBoxContainer/Control" instance=ExtResource("3_oynmy")]
+[node name="Fats" parent="HBoxContainer/Control" instance=ExtResource("3_oynmy")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 270.0
 offset_top = 145.0
@@ -177,7 +184,8 @@ offset_bottom = 131.0
 text = "Białka"
 horizontal_alignment = 1
 
-[node name="Pasek3" parent="HBoxContainer/Control" instance=ExtResource("3_oynmy")]
+[node name="Whites" parent="HBoxContainer/Control" instance=ExtResource("3_oynmy")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 407.0
 offset_top = 145.0
