@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://xnb144yip5bj"]
+
+[ext_resource type="Texture2D" uid="uid://b3f0opgjr5b74" path="res://Textures/TheOffice.png" id="1_4l7v1"]
+
+[sub_resource type="GDScript" id="GDScript_umvcr"]
+script/source = "extends \"res://Scripts/Scena.gd\"
+
+func _ready() -> void:
+	game.set_wybory(\"office\")
+"
+
+[node name="Biuroffice" type="Node2D"]
+script = SubResource("GDScript_umvcr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4l7v1")
+centered = false

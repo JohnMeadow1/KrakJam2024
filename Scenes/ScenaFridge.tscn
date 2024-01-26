@@ -5,27 +5,42 @@
 [sub_resource type="GDScript" id="GDScript_h61mo"]
 script/source = "extends \"res://Scripts/Scena.gd\"
 
+func _ready() -> void:
+	game.set_wybory(\"what_eat\")
+
 func wybrany_akcja(akcja: String):
 	match akcja:
 		\"Twoja stara\":
 			game.change_stat(\"fats\", 50)
 			game.change_stat(\"whites\", 20)
+			game.set_wybory(\"jak_zyc\")
 		\"Zupe\":
 			game.change_stat(\"str\", 10)
 			game.change_stat(\"fats\", 5)
+			game.set_wybory(\"jak_zyc\")
 		\"Gibos\":
 			game.change_stat(\"str\", 18)
 			game.change_stat(\"int\", 18)
 			game.change_stat(\"cukiers\", 10)
 			game.change_stat(\"fats\", 10)
+			game.set_wybory(\"jak_zyc\")
 		\"Karma dla legwana\":
 			game.change_stat(\"int\", 30)
 			game.change_stat(\"whites\", 20)
+			game.set_wybory(\"jak_zyc\")
+		
+		\"Na siłownię\":
+			game.load_scena(\"Gymownia\")
+		\"Na wystąpienie publiczne\":
+			game.load_scena(\"Public\")
+		\"Na randkę\":
+			game.load_scena(\"Randka\")
+		\"Na pracę\":
+			game.load_scena(\"TheBiuro\")
 "
 
 [node name="ScenaFridge" type="Node2D"]
 script = SubResource("GDScript_h61mo")
-first_choice = "what_eat"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.29, 0.29, 0.29, 1)

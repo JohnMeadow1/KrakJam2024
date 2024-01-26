@@ -24,15 +24,20 @@ func _ready() -> void:
 	load_scena("ScenaFridge")
 
 func load_scena(scenaname: String):
+	if scena:
+		scena.queue_free()
+		scena = null
+	
 	scena = load("res://Scenes/%s.tscn" % scenaname).instantiate()
 	scena.game = self
 	true_scena.add_child(scena)
-	
-	set_wybory(scena.first_choice)
 
 func set_wybory(wybory: String):
 	for akcja in true_akcje.get_children():
 		akcja.queue_free()
+	
+	if wybory.is_empty():
+		return
 	
 	var wybo: Dictionary = wyborydata[wybory]
 	akcje_name.text = wybo["header"]
