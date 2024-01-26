@@ -6,12 +6,16 @@ script/source = "extends Control
 @onready var maxx: TextureProgressBar = $Max
 @onready var valu: TextureProgressBar = $Value
 
-var value:
+var value: float:
 	set(v):
 		maxx.value = v
 		valu.value = minf(valu.value, maxx.value)
 	get:
 		return maxx.value
+
+var pick: float:
+	get:
+		return valu.value
 
 func set_selected(wybrany: bool):
 	$Select.visible = wybrany

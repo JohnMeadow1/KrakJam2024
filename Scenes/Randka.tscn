@@ -7,6 +7,9 @@ script/source = "extends \"res://Scripts/Scena.gd\"
 
 func _ready() -> void:
 	game.set_wybory(\"randka\")
+
+func execute_pierd(pierd):
+	game.change_stat(\"shame\", pierd.volume)
 "
 
 [node name="Randka" type="Node2D"]

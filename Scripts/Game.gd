@@ -66,3 +66,23 @@ func change_stat(stat: String, value: float):
 			fats.value += value
 		"whites":
 			whites.value += value
+
+func execute_pierd():
+	var pierd := Pierd.new()
+	pierd.volume = cukiers.pick - whites.pick
+	pierd.stink = fats.pick + whites.pick
+	pierd.length = whites.pick - cukiers.pick
+	
+	cukiers.value -= cukiers.pick * 0.1
+	fats.value -= fats.pick * 0.1
+	whites.value -= whites.pick * 0.1
+	
+	var gruzarka: float = cukiers.value + fats.value + whites.value
+	pierd.with_gruz = gruzarka > 70 and gruzarka < 110
+	scena.execute_pierd(pierd)
+
+class Pierd:
+	var volume: float
+	var stink: float
+	var length: float
+	var with_gruz: bool
