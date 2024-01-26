@@ -9,7 +9,10 @@ func _ready() -> void:
 	game.set_wybory(\"randka\")
 
 func execute_pierd(pierd):
-	game.change_stat(\"shame\", pierd.volume)
+	var wstyd = pierd.volume * pierd.length * 0.01
+	wstyd += pierd.stink
+	wstyd += int(pierd.with_gruz) * 300
+	game.change_stat(\"shame\", wstyd)
 "
 
 [node name="Randka" type="Node2D"]

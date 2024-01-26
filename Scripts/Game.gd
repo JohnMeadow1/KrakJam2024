@@ -56,10 +56,13 @@ func change_stat(stat: String, value: float):
 	match stat:
 		"str":
 			strength.value += value
+			show_dodaj(%DodajStrength, value)
 		"int":
 			intelligence.value += value
+			show_dodaj(%DodajInteligencja, value)
 		"shame":
 			shame.value += value
+			show_dodaj(%DodajWstyd, value)
 		"cukiers":
 			cukiers.value += value
 		"fats":
@@ -79,10 +82,59 @@ func execute_pierd():
 	
 	var gruzarka: float = cukiers.value + fats.value + whites.value
 	pierd.with_gruz = gruzarka > 70 and gruzarka < 110
+	
+	name_pierd(pierd)
 	scena.execute_pierd(pierd)
+
+func name_pierd(pierd: Pierd):
+	var nazwa: PackedStringArray
+	
+	if pierd.volume > 70:
+		nazwa.append("Kilotonowy")
+	elif pierd.volume > 40:
+		nazwa.append("Głośny")
+	
+	if pierd.stink < 20:
+		if pierd.volume < 20:
+			nazwa.append("Cichacz")
+		else:
+			nazwa.append("Pierduś")
+	elif pierd.stink > 70:
+		if pierd.volume < 20:
+			nazwa.append("Cichacz Morderca")
+		else:
+			nazwa.append("Pierd Morderca")
+	else:
+		nazwa.append("Pierd")
+	
+	if pierd.length < 20 and pierd.stink < 20:
+		nazwa.append("Ulotnego Aromatu")
+	elif pierd.length < 50:
+		nazwa.append("Chwili Konsternacji")
+	elif pierd.length > 80:
+		nazwa.append("Wiecznego Smrodu")
+	
+	if pierd.with_gruz:
+		nazwa.append("z gruzem")
+	
+	%PierdName.text = " ".join(nazwa)
+
+func show_dodaj(dodaj: Label, value: int):
+	if value > 0:
+		dodaj.text = str("+", value)
+	elif value < 0:
+		dodaj.text = str("-", value)
+	else:
+		return
+	
+	var tween := create_tween()
+	tween.tween_callback(dodaj.set_text.bind("")).set_delay(1)
 
 class Pierd:
 	var volume: float
 	var stink: float
 	var length: float
 	var with_gruz: bool
+	
+	func _to_string() -> String:
+		return "volume %f stink %f length %f gruz? %s" % [volume, stink, length, with_gruz]
