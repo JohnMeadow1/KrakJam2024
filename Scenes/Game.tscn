@@ -1,0 +1,185 @@
+[gd_scene load_steps=8 format=3 uid="uid://p05o88xsmaah"]
+
+[ext_resource type="Script" path="res://Scripts/Gracz1.gd" id="1_4jxwk"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_h8bl0"]
+[ext_resource type="Script" path="res://Scripts/Gracz2.gd" id="2_sqn37"]
+[ext_resource type="PackedScene" uid="uid://cp8bqsusglr5k" path="res://Scenes/Pasek.tscn" id="3_oynmy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knxka"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_f1rpg"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0.85301, 0.127325, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kper6"]
+gradient = SubResource("Gradient_f1rpg")
+width = 256
+height = 32
+
+[node name="Game" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_knxka")
+script = ExtResource("1_h8bl0")
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_4jxwk")
+
+[node name="Scena" type="Control" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TrueScena" type="Control" parent="HBoxContainer/MarginContainer/Scena"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Status" type="Control" parent="HBoxContainer/MarginContainer/Scena"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 495.0
+offset_right = 77.0
+offset_bottom = 518.0
+text = "Siła"
+
+[node name="Strength" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 208.0
+offset_top = 489.0
+offset_right = 464.0
+offset_bottom = 521.0
+step = 0.01
+value = 50.0
+texture_progress = SubResource("GradientTexture2D_kper6")
+
+[node name="Label2" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 548.0
+offset_right = 127.0
+offset_bottom = 571.0
+text = "Inteligencja"
+
+[node name="Intelligence" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 208.0
+offset_top = 542.0
+offset_right = 464.0
+offset_bottom = 574.0
+step = 0.01
+value = 50.0
+texture_progress = SubResource("GradientTexture2D_kper6")
+
+[node name="Label3" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 599.0
+offset_right = 127.0
+offset_bottom = 622.0
+text = "Wstyd"
+
+[node name="Shame" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 208.0
+offset_top = 593.0
+offset_right = 464.0
+offset_bottom = 625.0
+step = 0.01
+value = 50.0
+texture_progress = SubResource("GradientTexture2D_kper6")
+
+[node name="Akcje" type="VBoxContainer" parent="HBoxContainer/MarginContainer/Scena"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/Scena/Akcje"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Co zjeść"
+
+[node name="TrueAkcje" type="VBoxContainer" parent="HBoxContainer/MarginContainer/Scena/Akcje"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_sqn37")
+
+[node name="Label" type="Label" parent="HBoxContainer/Control"]
+layout_mode = 2
+offset_left = 93.0
+offset_top = 108.0
+offset_right = 202.0
+offset_bottom = 131.0
+text = "Węglowodany"
+horizontal_alignment = 1
+
+[node name="Pasek" parent="HBoxContainer/Control" instance=ExtResource("3_oynmy")]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 145.0
+offset_right = 163.0
+offset_bottom = 401.0
+
+[node name="Label2" type="Label" parent="HBoxContainer/Control"]
+layout_mode = 2
+offset_left = 232.0
+offset_top = 108.0
+offset_right = 341.0
+offset_bottom = 131.0
+text = "Tłuszcze"
+horizontal_alignment = 1
+
+[node name="Pasek2" parent="HBoxContainer/Control" instance=ExtResource("3_oynmy")]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 145.0
+offset_right = 302.0
+offset_bottom = 401.0
+
+[node name="Label3" type="Label" parent="HBoxContainer/Control"]
+layout_mode = 2
+offset_left = 371.0
+offset_top = 108.0
+offset_right = 480.0
+offset_bottom = 131.0
+text = "Białka"
+horizontal_alignment = 1
+
+[node name="Pasek3" parent="HBoxContainer/Control" instance=ExtResource("3_oynmy")]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 145.0
+offset_right = 439.0
+offset_bottom = 401.0

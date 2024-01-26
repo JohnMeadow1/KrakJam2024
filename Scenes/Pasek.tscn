@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp8bqsusglr5k"]
+
+[sub_resource type="Gradient" id="Gradient_bibng"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rdi20"]
+gradient = SubResource("Gradient_bibng")
+width = 32
+height = 256
+
+[sub_resource type="GDScript" id="GDScript_0hvfj"]
+script/source = "extends TextureProgressBar
+
+func set_selected(wybrany: bool):
+	$Select.visible = wybrany
+"
+
+[node name="Pasek" type="TextureProgressBar" groups=["paski"]]
+offset_right = 32.0
+offset_bottom = 256.0
+size_flags_horizontal = 4
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_rdi20")
+script = SubResource("GDScript_0hvfj")
+
+[node name="Select" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
