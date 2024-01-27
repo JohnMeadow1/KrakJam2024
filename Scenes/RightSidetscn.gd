@@ -27,6 +27,9 @@ func _ready():
 	spiner_blue.updated.connect(update_blue)
 	spiner_green.updated.connect(update_green)
 	spiner_red.updated.connect(update_red)
+	
+func add_food(tex:Texture2D):
+	pass
 
 func _physics_process(delta):
 	digest()
