@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1thio0e3qwea"]
+[gd_scene load_steps=10 format=3 uid="uid://d1thio0e3qwea"]
 
 [ext_resource type="Texture2D" uid="uid://vo15adax6o0a" path="res://Textures/randkaBG.png" id="1_8dxca"]
 [ext_resource type="PackedScene" uid="uid://ctcfgw6w4dt2m" path="res://Nodes/Jadalne.tscn" id="2_vghul"]
 [ext_resource type="Texture2D" uid="uid://dahynqkrnbbm4" path="res://Textures/stolik.png" id="3_71ajr"]
 [ext_resource type="Texture2D" uid="uid://bk5m35did0wtq" path="res://Textures/chair.png" id="4_03ufa"]
 [ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="4_y7kfw"]
+[ext_resource type="Texture2D" uid="uid://dt36vt4ux7kd4" path="res://Textures/kwiotek.png" id="5_hawg2"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
@@ -33,6 +34,30 @@ texture = ExtResource("1_8dxca")
 centered = false
 metadata/_edit_lock_ = true
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_7yuor")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_hf3l3")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(554, 0)
+shape = SubResource("SegmentShape2D_hf3l3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 628)
+shape = SubResource("SegmentShape2D_7yuor")
+
+[node name="🌼" parent="." instance=ExtResource("2_vghul")]
+position = Vector2(160, 306)
+rotation = 3.14159
+scale = Vector2(1, -1)
+sprite = ExtResource("5_hawg2")
+hunger_requirement = 50.0
+color = Color(0.221694, 0.866588, 0.182532, 1)
+
 [node name="Stół" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(277, 436)
 sprite = ExtResource("3_71ajr")
@@ -52,21 +77,13 @@ sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("SegmentShape2D_7yuor")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("SegmentShape2D_hf3l3")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(554, 0)
-shape = SubResource("SegmentShape2D_hf3l3")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 628)
-shape = SubResource("SegmentShape2D_7yuor")
+[node name="🌼2" parent="." instance=ExtResource("2_vghul")]
+position = Vector2(483, 527)
+rotation = -3.14159
+scale = Vector2(1, -1)
+sprite = ExtResource("5_hawg2")
+hunger_requirement = 50.0
+color = Color(0.221694, 0.866588, 0.182532, 1)
 
 [node name="Gracz" parent="." instance=ExtResource("4_y7kfw")]
 position = Vector2(49, 477)
