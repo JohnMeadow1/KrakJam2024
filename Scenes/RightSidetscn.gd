@@ -18,6 +18,7 @@ var red_ratio:= 0.0
 
 var acid :=Color.BLACK
 var timer:=0.0
+
 func _physics_process(delta):
 	timer +=delta*0.5
 	pressure = sin(timer)*0.5+0.5
@@ -72,3 +73,6 @@ func update_green():
 	
 func update_red():
 	%red.max = spiner_red.value
+
+func get_pierdlicznik() -> float:
+	return owner.get_node(^"%Pierdlicznik").value
