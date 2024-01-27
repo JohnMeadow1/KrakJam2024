@@ -29,7 +29,7 @@ func can_eat() -> bool:
 	return get_tree().current_scene.glood.value >= hunger_requirement
 
 func zjedz():
-	get_tree().current_scene.glood.value -= color.r * 50 # TODO
+	get_tree().current_scene.insides.add_food($Sprite2D.texture)
 	queue_free()
 
 func test_mig():
