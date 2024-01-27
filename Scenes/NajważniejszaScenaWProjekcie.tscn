@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://c31ifsy8gacpr"]
+
+[ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="1_qw1w3"]
+
+[sub_resource type="GDScript" id="GDScript_pk3hh"]
+script/source = "extends Control
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Scenes/Game.tscn\")
+"
+
+[node name="NajważniejszaScenaWProjekcie" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_pk3hh")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.561098, 0.248427, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Tytuł Gry"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 345.0
+offset_right = 460.0
+offset_bottom = 368.0
+text = "Sterowanie"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 398.0
+offset_right = 283.0
+offset_bottom = 421.0
+text = "Gracz 1"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 473.0
+offset_right = 309.0
+offset_bottom = 496.0
+text = "[Enter] / [X] = Powstrzymuj pierda"
+
+[node name="Label8" type="Label" parent="."]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 456.0
+offset_right = 744.0
+offset_bottom = 479.0
+text = "[A] / [D] / [Lewa gała] = Wybór wskaźnika"
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 521.0
+offset_right = 365.0
+offset_bottom = 544.0
+text = "[Spacja] / [A] = Akcja"
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 570.0
+offset_right = 321.0
+offset_bottom = 593.0
+text = "[Strzałki] / [Lewa gała] = Poruszanie"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 412.0
+offset_right = 626.0
+offset_bottom = 435.0
+text = "Gracz 2"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 542.0
+offset_top = 240.0
+offset_right = 761.0
+offset_bottom = 303.0
+theme_override_font_sizes/font_size = 40
+text = "Zacznij Grę"
+
+[node name="DjOgg" parent="." instance=ExtResource("1_qw1w3")]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
