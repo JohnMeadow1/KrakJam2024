@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c31ifsy8gacpr"]
+[gd_scene load_steps=4 format=3 uid="uid://c31ifsy8gacpr"]
 
+[ext_resource type="Texture2D" uid="uid://dmo23ilt8jqea" path="res://Textures/Title.png" id="1_p55nq"]
 [ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="1_qw1w3"]
 
 [sub_resource type="GDScript" id="GDScript_pk3hh"]
@@ -12,15 +13,32 @@ func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file(\"res://Scenes/Game.tscn\")
 "
 
-[node name="NajważniejszaScenaWProjekcie" type="Control"]
-layout_mode = 3
+[node name="NajważniejszaScenaWProjekcie" type="TextureRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_p55nq")
+expand_mode = 1
 script = SubResource("GDScript_pk3hh")
 metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 841.0
+offset_right = 920.0
+offset_bottom = 1058.0
+color = Color(0, 0, 0, 0.572549)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1096.0
+offset_top = 913.0
+offset_right = 1466.0
+offset_bottom = 1011.0
+color = Color(0, 0, 0, 0.572549)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -35,74 +53,74 @@ horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 372.0
-offset_top = 345.0
-offset_right = 460.0
-offset_bottom = 368.0
+offset_left = 982.0
+offset_top = 786.0
+offset_right = 1070.0
+offset_bottom = 809.0
 text = "Sterowanie"
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 0
-offset_left = 195.0
-offset_top = 398.0
-offset_right = 283.0
-offset_bottom = 421.0
+offset_left = 721.0
+offset_top = 847.0
+offset_right = 809.0
+offset_bottom = 870.0
 text = "Gracz 1"
 
 [node name="Label5" type="Label" parent="."]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 473.0
-offset_right = 309.0
-offset_bottom = 496.0
+offset_left = 576.0
+offset_top = 922.0
+offset_right = 835.0
+offset_bottom = 945.0
 text = "[Enter] / [X] = Powstrzymuj pierda"
 
 [node name="Label9" type="Label" parent="."]
 layout_mode = 0
-offset_left = 53.0
-offset_top = 506.0
-offset_right = 312.0
-offset_bottom = 529.0
+offset_left = 579.0
+offset_top = 955.0
+offset_right = 838.0
+offset_bottom = 978.0
 text = "[Backspace] / [B] = Zjedz"
 
 [node name="Label8" type="Label" parent="."]
 layout_mode = 0
-offset_left = 485.0
-offset_top = 456.0
-offset_right = 744.0
-offset_bottom = 479.0
+offset_left = 1120.0
+offset_top = 970.0
+offset_right = 1432.0
+offset_bottom = 993.0
 text = "[A] / [D] / [Lewa gała] = Wybór wskaźnika"
 
 [node name="Label6" type="Label" parent="."]
 layout_mode = 0
-offset_left = 92.0
-offset_top = 536.0
-offset_right = 351.0
-offset_bottom = 559.0
+offset_left = 618.0
+offset_top = 985.0
+offset_right = 877.0
+offset_bottom = 1008.0
 text = "[Spacja] / [A] = Akcja"
 
 [node name="Label7" type="Label" parent="."]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 570.0
-offset_right = 321.0
-offset_bottom = 593.0
+offset_left = 588.0
+offset_top = 1019.0
+offset_right = 861.0
+offset_bottom = 1042.0
 text = "[Strzałki] / [Lewa gała] = Poruszanie"
 
 [node name="Label4" type="Label" parent="."]
 layout_mode = 0
-offset_left = 538.0
-offset_top = 412.0
-offset_right = 626.0
-offset_bottom = 435.0
+offset_left = 1173.0
+offset_top = 926.0
+offset_right = 1261.0
+offset_bottom = 949.0
 text = "Gracz 2"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 542.0
-offset_top = 240.0
-offset_right = 761.0
-offset_bottom = 303.0
+offset_left = 917.0
+offset_top = 497.0
+offset_right = 1136.0
+offset_bottom = 560.0
 theme_override_font_sizes/font_size = 40
 text = "Zacznij Grę"
 
