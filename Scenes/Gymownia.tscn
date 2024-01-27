@@ -20,6 +20,10 @@ func _ready() -> void:
 func expij(ile: int):
 	xp += ile
 	progress_bar.value = xp
+	
+	if is_equal_approx(progress_bar.ratio, 1.0):
+		game.zrobione_sceny.append(\"Gymownia\")
+		game.load_scena(\"ScenaFridge\")
 
 func pierd():
 	var dist := INF

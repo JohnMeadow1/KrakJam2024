@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn6jagbxst4ya"]
+
+[ext_resource type="Texture2D" uid="uid://1htjwq7wn5wv" path="res://Textures/Wygrana.png" id="1_qoxho"]
+[ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="2_sfrqv"]
+
+[node name="Wygrana" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qoxho")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 750.0
+offset_right = 1745.0
+offset_bottom = 1159.0
+theme_override_font_sizes/font_size = 300
+text = "Wygrywasz"
+
+[node name="DjOgg" parent="." instance=ExtResource("2_sfrqv")]
+pitch_scale = 2.0
