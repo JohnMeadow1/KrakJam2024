@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://btn6t88undwjb"]
+
+[ext_resource type="Texture2D" uid="uid://rrc463ydr1of" path="res://Textures/stolik.png" id="1_1ihcj"]
+[ext_resource type="Shader" path="res://Scenes/food.gdshader" id="1_evllp"]
+[ext_resource type="Script" path="res://Scenes/food.gd" id="1_mced5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nb3e6"]
+shader = ExtResource("1_evllp")
+shader_parameter/digested = null
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rfn6o"]
+friction = 0.21
+bounce = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6p4s3"]
+radius = 20.0
+
+[node name="Food" type="RigidBody2D"]
+material = SubResource("ShaderMaterial_nb3e6")
+position = Vector2(63, 0)
+physics_material_override = SubResource("PhysicsMaterial_rfn6o")
+script = ExtResource("1_mced5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6p4s3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_1ihcj")

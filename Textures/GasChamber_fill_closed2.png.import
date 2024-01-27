@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rrc463ydr1of"
-path="res://.godot/imported/stolik.png-6e1c10f594de7cbb7df5d0e675cfd0b6.ctex"
+uid="uid://bjjj8idunv13e"
+path="res://.godot/imported/GasChamber_fill_closed2.png-273e42b9b59a6c46a348e7ac9a831d79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/stolik.png"
-dest_files=["res://.godot/imported/stolik.png-6e1c10f594de7cbb7df5d0e675cfd0b6.ctex"]
+source_file="res://Textures/GasChamber_fill_closed2.png"
+dest_files=["res://.godot/imported/GasChamber_fill_closed2.png-273e42b9b59a6c46a348e7ac9a831d79.ctex"]
 
 [params]
 

@@ -1,7 +1,10 @@
 extends Node2D
 
 var pressure := 1.0
-var is_farting:= false
+var pressure_output := 0.0
+var is_farting := false
+var is_hungy := true
+
 
 var blue_ratio:= 0.0
 var green_ratio:= 0.0
@@ -16,13 +19,20 @@ var red_ratio:= 0.0
 @onready var fart_hole:GPUParticles2D = %FartHole
 @onready var line_2d = $Sprite2D/Line2D
 
-var acid :=Color.BLACK
-var timer:=0.0
+var acid := Color.BLACK
+var digest_array = [$Sprite2D/Stomanch2/Food]
+
+func _ready():
+	spiner_blue.updated.connect(update_blue)
+	spiner_green.updated.connect(update_green)
+	spiner_red.updated.connect(update_red)
 
 func _physics_process(delta):
-	timer +=delta*0.5
-	pressure = sin(timer)*0.5+0.5
+	digest()
 	
+	var resitance = get_pierdlicznik()/100.0
+	
+	pressure_output = pressure * resitance
 	
 	acid = Color(0,%blue.value/100,0) + Color(%red.value/100,0,0) +Color(0,0,%green.value/100)
 	stomanch.tint_progress = acid
@@ -42,15 +52,17 @@ func _physics_process(delta):
 	if %Lever_base.is_on:
 		is_farting = true
 
-
 	%Gas.tint_over = Color(0.741,0.79,0.371, pressure)
 	#%Gas.tint_progress = Color(0.741,0.79,0.371, pressure)
 	%Gas.scale.y = 0.3 + pressure * 0.5
 	%Gas.scale.x = 0.5 + pressure * 0.1
 	
 	if is_farting:
+		
 		%Gas.tint_under = Color(1,1,1,0)
+		%Gas.tint_progress = Color(1,1,1,1)
 		%FartHole.emitting = true
+		
 		%FartHole.amount_ratio = pressure
 		%FartHole.process_material.initial_velocity = Vector2(pressure*300, pressure*300+100)
 		var force := (fart_hole.position.rotated(rigid_body_end.rotation) + Vector2(randf_range(-10,10),randf_range(-10,10))).normalized()
@@ -58,13 +70,12 @@ func _physics_process(delta):
 		rigid_body_end.apply_impulse(force * pressure*2.0, force_position)
 	else:
 		%Gas.tint_under = Color(1,1,1,1)
+		%Gas.tint_progress = Color(1,1,1,0)
 		%FartHole.emitting=false
 
-func _ready():
-	spiner_blue.updated.connect(update_blue)
-	spiner_green.updated.connect(update_green)
-	spiner_red.updated.connect(update_red)
 
+func digest():
+	pass
 func update_blue():
 	%blue.max = spiner_blue.value
 	

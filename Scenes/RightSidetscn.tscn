@@ -1,24 +1,32 @@
-[gd_scene load_steps=30 format=3 uid="uid://c1argpbtu1qr"]
+[gd_scene load_steps=34 format=3 uid="uid://b5cq4s68gfarp"]
 
 [ext_resource type="Script" path="res://Scenes/RightSidetscn.gd" id="1_bbgw8"]
 [ext_resource type="Texture2D" uid="uid://cdnhcvhku5cd0" path="res://Textures/Right_side_background.png" id="1_mdlbc"]
 [ext_resource type="Script" path="res://Scripts/Gracz2.gd" id="2_a1xjw"]
 [ext_resource type="Texture2D" uid="uid://drvg7gicj0j64" path="res://Textures/fart_clouds.png" id="2_ghh53"]
 [ext_resource type="PackedScene" uid="uid://dor22xoeew4dv" path="res://Scenes/Pasek.tscn" id="3_8nmv7"]
-[ext_resource type="Texture2D" uid="uid://dhy8wlhrj4y46" path="res://Textures/stomacz_outline.png" id="4_2h05x"]
 [ext_resource type="Texture2D" uid="uid://x0qp7fgi87t5" path="res://Textures/2x2.png" id="4_fi3va"]
+[ext_resource type="Texture2D" uid="uid://b8ug1l2qa5jgl" path="res://Textures/stomacz_out2.png" id="4_v7tpi"]
 [ext_resource type="Texture2D" uid="uid://chpa5u1rpilsx" path="res://Textures/Spiner_green.png" id="5_5natd"]
-[ext_resource type="Texture2D" uid="uid://cpb5qb5nesect" path="res://Textures/GasChamber.png" id="6_44pep"]
-[ext_resource type="PackedScene" path="res://Scenes/Spiner.tscn" id="6_cc6qd"]
+[ext_resource type="PackedScene" uid="uid://btn6t88undwjb" path="res://Scenes/food.tscn" id="5_dlnk5"]
+[ext_resource type="Texture2D" uid="uid://csxwjsed54puv" path="res://Textures/stomacz.png" id="5_fgjri"]
+[ext_resource type="PackedScene" uid="uid://b7nx6ynk1ets0" path="res://Scenes/Spiner.tscn" id="6_cc6qd"]
 [ext_resource type="Texture2D" uid="uid://bcged5qgmqurf" path="res://Textures/Spiner_red.png" id="6_jgemg"]
 [ext_resource type="Texture2D" uid="uid://pn3328x0jtnv" path="res://Textures/stomacz_progress.png" id="6_uqupv"]
 [ext_resource type="Texture2D" uid="uid://dmyv54vsutga2" path="res://Textures/GasChamber_fill.png" id="7_e25bb"]
-[ext_resource type="Texture2D" uid="uid://b6kisq5k01lp2" path="res://Textures/GasChamber_fill_open.png" id="8_wtjmd"]
+[ext_resource type="Texture2D" uid="uid://bjjj8idunv13e" path="res://Textures/GasChamber_fill_closed2.png" id="7_vq1dc"]
 [ext_resource type="Texture2D" uid="uid://dyij7o7sue4ao" path="res://Textures/tompka.png" id="9_ee7ml"]
+[ext_resource type="Texture2D" uid="uid://dkfwfu8dtaqcq" path="res://Textures/GasChamber_fill_closed.png" id="9_f4eia"]
 [ext_resource type="Texture2D" uid="uid://cwc6v5fpc3hbe" path="res://Textures/dot.png" id="11_n825l"]
 [ext_resource type="Texture2D" uid="uid://bsp0sqhlfjnts" path="res://Textures/3x3.png" id="12_lf5c2"]
 [ext_resource type="Texture2D" uid="uid://rfmtgs0uwp1r" path="res://Textures/Lever_base.png" id="16_3c2u4"]
 [ext_resource type="Texture2D" uid="uid://didg4uyird4g3" path="res://Textures/Lever-lever.png" id="17_8x1ri"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwwu2"]
+size = Vector2(200, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xucnr"]
+size = Vector2(18, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ninw"]
 
@@ -98,7 +106,7 @@ func _ready():
 
 func _physics_process(delta):
 	if is_forced: 
-		value += 0.5 * delta
+		value += 10.0 * delta
 		value = min(value, PI)
 	else:
 		var angle_difference = atan2(previous_mouse_position.cross(get_local_mouse_position()), previous_mouse_position.dot(get_local_mouse_position()) )
@@ -124,8 +132,7 @@ func _on_button_up():
 		set_physics_process(false)
 
 func toggle():
-	value = PI
-	button.rotation = value -PI*0.5
+
 	is_on = true
 	is_forced = true
 	set_physics_process(true)
@@ -205,6 +212,44 @@ rotation = 1.57079
 scale = Vector2(20, 2)
 texture = ExtResource("4_fi3va")
 
+[node name="Stomanch3" type="TextureProgressBar" parent="Sprite2D"]
+unique_name_in_owner = true
+offset_left = 316.0
+offset_top = 309.0
+offset_right = 423.0
+offset_bottom = 414.0
+value = 40.0
+fill_mode = 3
+texture_under = ExtResource("4_v7tpi")
+
+[node name="Stomanch2" type="TextureProgressBar" parent="Sprite2D"]
+unique_name_in_owner = true
+clip_children = 1
+offset_left = 316.0
+offset_top = 309.0
+offset_right = 423.0
+offset_bottom = 414.0
+value = 40.0
+fill_mode = 3
+texture_under = ExtResource("5_fgjri")
+
+[node name="Food" parent="Sprite2D/Stomanch2" instance=ExtResource("5_dlnk5")]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Sprite2D"]
+position = Vector2(316, 309)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D2"]
+position = Vector2(54, 108)
+shape = SubResource("RectangleShape2D_bwwu2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/StaticBody2D2"]
+position = Vector2(-11, 68)
+shape = SubResource("RectangleShape2D_xucnr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite2D/StaticBody2D2"]
+position = Vector2(124, 68)
+shape = SubResource("RectangleShape2D_xucnr")
+
 [node name="Stomanch" type="TextureProgressBar" parent="Sprite2D"]
 unique_name_in_owner = true
 offset_left = 316.0
@@ -213,7 +258,6 @@ offset_right = 423.0
 offset_bottom = 414.0
 value = 40.0
 fill_mode = 3
-texture_under = ExtResource("4_2h05x")
 texture_progress = ExtResource("6_uqupv")
 
 [node name="Gas" type="TextureProgressBar" parent="Sprite2D"]
@@ -228,10 +272,11 @@ scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(64, 54)
 value = 100.0
 fill_mode = 3
-texture_under = ExtResource("6_44pep")
+texture_under = ExtResource("7_vq1dc")
 texture_over = ExtResource("7_e25bb")
-texture_progress = ExtResource("8_wtjmd")
+texture_progress = ExtResource("9_f4eia")
 tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(1, 1, 1, 0)
 
 [node name="SpinerBlue" parent="Sprite2D" instance=ExtResource("6_cc6qd")]
 position = Vector2(847, 78)

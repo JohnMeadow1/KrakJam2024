@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rrc463ydr1of"
-path="res://.godot/imported/stolik.png-6e1c10f594de7cbb7df5d0e675cfd0b6.ctex"
+uid="uid://b8ug1l2qa5jgl"
+path="res://.godot/imported/stomacz_out2.png-55e95846384f92298142124318c623fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/stolik.png"
-dest_files=["res://.godot/imported/stolik.png-6e1c10f594de7cbb7df5d0e675cfd0b6.ctex"]
+source_file="res://Textures/stomacz_out2.png"
+dest_files=["res://.godot/imported/stomacz_out2.png-55e95846384f92298142124318c623fd.ctex"]
 
 [params]
 

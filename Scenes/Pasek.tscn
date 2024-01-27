@@ -6,9 +6,9 @@ script/source = "extends Control
 @onready var maxx: TextureProgressBar = $Max
 @onready var valu: TextureProgressBar = $Value
 
-var value:=17.0
+var value:=5.0
 
-var max: float=50.0:
+var max: float=10.0:
 	set(v):
 		maxx.value = v
 		max = v
