@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://dor22xoeew4dv"]
+
+[sub_resource type="GDScript" id="GDScript_0hvfj"]
+script/source = "extends Control
+
+@onready var maxx: TextureProgressBar = $Max
+@onready var valu: TextureProgressBar = $Value
+
+var value: float:
+	set(v):
+		maxx.value = v
+		valu.value = minf(valu.value, maxx.value)
+	get:
+		return maxx.value
+
+var pick: float:
+	get:
+		return valu.value
+
+func set_selected(wybrany: bool):
+	$Select.visible = wybrany
+
+func increase():
+	valu.value = minf(maxx.value, valu.value + 1)
+
+func decrease():
+	valu.value -= 1
+"
+
+[sub_resource type="Gradient" id="Gradient_nvu0f"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.32, 0.32, 0.32, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mjbsj"]
+gradient = SubResource("Gradient_nvu0f")
+width = 32
+height = 256
+
+[sub_resource type="Gradient" id="Gradient_bibng"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.65, 0.65, 0.65, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rdi20"]
+gradient = SubResource("Gradient_bibng")
+width = 32
+height = 256
+
+[sub_resource type="Gradient" id="Gradient_1yeuq"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 0.752941)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fr62b"]
+gradient = SubResource("Gradient_1yeuq")
+width = 32
+height = 256
+
+[node name="Pasek" type="MarginContainer" groups=["paski"]]
+offset_right = 32.0
+offset_bottom = 256.0
+size_flags_horizontal = 4
+script = SubResource("GDScript_0hvfj")
+
+[node name="Max" type="TextureProgressBar" parent="."]
+layout_mode = 2
+value = 47.0
+fill_mode = 3
+texture_under = SubResource("GradientTexture2D_mjbsj")
+texture_progress = SubResource("GradientTexture2D_rdi20")
+
+[node name="Value" type="TextureProgressBar" parent="."]
+layout_mode = 2
+value = 17.0
+fill_mode = 3
+texture_progress = SubResource("GradientTexture2D_fr62b")
+
+[node name="Select" type="ReferenceRect" parent="."]
+layout_mode = 2
+border_color = Color(1, 1, 1, 1)
+border_width = 4.0
+editor_only = false
