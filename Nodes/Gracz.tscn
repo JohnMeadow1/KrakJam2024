@@ -14,3 +14,19 @@ shape = SubResource("RectangleShape2D_ag6ja")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3nj4v")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -30.0
+offset_top = 68.0
+offset_right = 31.0
+offset_bottom = 91.0
+text = "[Spacja]"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -49.0
+offset_top = -36.0
+offset_right = 43.0
+offset_bottom = -13.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "[Backspace]"

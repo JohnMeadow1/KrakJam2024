@@ -3,20 +3,34 @@
 [ext_resource type="Texture2D" uid="uid://dl28yeakhwwdw" path="res://Textures/Ćwiczeniówek.png" id="1_3isf6"]
 
 [sub_resource type="GDScript" id="GDScript_hx5cn"]
-script/source = "extends Area2D
+script/source = "extends \"res://Scripts/Jadalne.gd\"
 
 @export var ile_xp: int
 
+var active: float
+var timer: float
+
 func _on_body_entered(body: Node2D) -> void:
+	super(body)
+	
 	if body.name == \"Gracz\":
 		body.praktik = self
 
 func _on_body_exited(body: Node2D) -> void:
+	super(body)
+	
 	if body.name == \"Gracz\":
 		body.praktik = null
 
 func practice():
-	owner.expij(ile_xp)
+	active = 0.5
+
+func _process(delta: float) -> void:
+	if active > 0:
+		timer += delta
+		if timer >= 0.5:
+			owner.expij(ile_xp)
+			timer = 0
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5536"]
@@ -24,6 +38,8 @@ size = Vector2(64, 82)
 
 [node name="Prakticzarka" type="Area2D"]
 script = SubResource("GDScript_hx5cn")
+hunger_requirement = 90.0
+color = Color(0.764706, 0.25098, 0.176471, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_q5536")

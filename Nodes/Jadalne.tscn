@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctcfgw6w4dt2m"]
+
+[ext_resource type="Script" path="res://Scripts/Jadalne.gd" id="1_4dmp1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5536"]
+size = Vector2(64, 82)
+
+[node name="Jadalne" type="Area2D"]
+script = ExtResource("1_4dmp1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q5536")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
