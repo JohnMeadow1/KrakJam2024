@@ -1,17 +1,138 @@
-[gd_scene load_steps=3 format=3 uid="uid://dffw84alb15sh"]
+[gd_scene load_steps=11 format=3 uid="uid://dffw84alb15sh"]
 
-[ext_resource type="Texture2D" uid="uid://brlvq402jvasv" path="res://Textures/Niegracz.png" id="1_px5me"]
+[ext_resource type="Texture2D" uid="uid://dy6x64dlthytg" path="res://Textures/Body/M-body.png" id="1_0d5ob"]
+[ext_resource type="Texture2D" uid="uid://blraghqgve2pc" path="res://Textures/Body/L-hand.png" id="2_ek1at"]
+[ext_resource type="Texture2D" uid="uid://cvqinr1l4xpco" path="res://Textures/Body/R-leg.png" id="3_iejh5"]
+[ext_resource type="Texture2D" uid="uid://c5q077uxnfgxa" path="res://Textures/Body/L-leg.png" id="4_bg7cb"]
+[ext_resource type="Texture2D" uid="uid://bt2k04qkrbvgs" path="res://Textures/Body/R-hand.png" id="5_abmlm"]
 
 [sub_resource type="GDScript" id="GDScript_5jikc"]
 script/source = "extends Node2D
+
+@export var freeze: bool
+
+func _ready() -> void:
+	if freeze:
+		set_physics_process(false)
+	else:
+		$AnimationPlayer.play(\"Chodzenie\")
 
 func _physics_process(delta: float) -> void:
 	position = position + Vector2.from_angle(randf() * TAU) * 200 * delta
 	position = Vector2(clampf(position.x, 0, 554), clampf(position.y, 0, 628))
 "
 
+[sub_resource type="Animation" id="Animation_ydp7k"]
+resource_name = "Chodzenie"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Prawanoga:rotation")
+tracks/0/interp = 3
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.523598, 0.0, 0.523598]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Lewanoga:rotation")
+tracks/1/interp = 3
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523598, 0.0, -0.523598]
+}
+
+[sub_resource type="Animation" id="Animation_clf6e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Prawanoga:rotation")
+tracks/0/interp = 3
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Lewanoga:rotation")
+tracks/1/interp = 3
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rmf2v"]
+resource_name = "Stanie"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Prawanoga:rotation")
+tracks/0/interp = 3
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Lewanoga:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rq38"]
+_data = {
+"Chodzenie": SubResource("Animation_ydp7k"),
+"RESET": SubResource("Animation_clf6e"),
+"Stanie": SubResource("Animation_rmf2v")
+}
+
 [node name="InnyLudzik" type="Node2D" groups=["inneludzikki"]]
 script = SubResource("GDScript_5jikc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_px5me")
+modulate = Color(0.697295, 1, 0.737025, 1)
+texture = ExtResource("1_0d5ob")
+
+[node name="Lewareka" type="Sprite2D" parent="Sprite2D"]
+show_behind_parent = true
+texture = ExtResource("2_ek1at")
+
+[node name="Prawanoga" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("3_iejh5")
+
+[node name="Lewanoga" type="Sprite2D" parent="Sprite2D"]
+show_behind_parent = true
+texture = ExtResource("4_bg7cb")
+
+[node name="Prawareka" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("5_abmlm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4rq38")
+}

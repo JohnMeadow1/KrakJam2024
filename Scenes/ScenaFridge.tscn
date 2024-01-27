@@ -8,6 +8,9 @@ script/source = "extends \"res://Scripts/Scena.gd\"
 
 func _ready() -> void:
 	game.set_wybory(\"what_eat\")
+	
+	if game.zrobione_sceny.size() >= 3:
+		get_tree().change_scene_to_file.call_deferred(\"res://Scenes/Wygrana.tscn\")
 
 func wybrany_akcja(akcja: String):
 	match akcja:

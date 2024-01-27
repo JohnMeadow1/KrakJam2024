@@ -17,6 +17,7 @@ extends Control
 @onready var insides: Node2D = %RightSide
 
 var wyborydata: Dictionary
+var zrobione_sceny: Array[String]
 
 var scena: Node
 var blokuje: float
@@ -29,6 +30,9 @@ func _ready() -> void:
 	load_scena("ScenaFridge")
 
 func load_scena(scenaname: String):
+	if scenaname in zrobione_sceny:
+		return
+	
 	if scena:
 		scena.queue_free()
 		scena = null

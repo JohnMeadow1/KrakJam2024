@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d1thio0e3qwea"]
+[gd_scene load_steps=20 format=3 uid="uid://d1thio0e3qwea"]
 
 [ext_resource type="Texture2D" uid="uid://vo15adax6o0a" path="res://Textures/randkaBG.png" id="1_8dxca"]
 [ext_resource type="PackedScene" uid="uid://ctcfgw6w4dt2m" path="res://Nodes/Jadalne.tscn" id="2_vghul"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bt42g8krfdxe7" path="res://Textures/danie1.png" id="6_lsmqb"]
 [ext_resource type="PackedScene" uid="uid://dmw2aixk22wai" path="res://Nodes/Meat.tscn" id="7_8pplv"]
 [ext_resource type="Texture2D" uid="uid://dxe37a4owa30h" path="res://Textures/Body/F-body.png" id="9_enf4y"]
+[ext_resource type="Script" path="res://Scripts/Jadalne.gd" id="9_jrbn0"]
 [ext_resource type="Texture2D" uid="uid://blraghqgve2pc" path="res://Textures/Body/L-hand.png" id="13_fxs2a"]
 [ext_resource type="Texture2D" uid="uid://cvqinr1l4xpco" path="res://Textures/Body/R-leg.png" id="14_rth8v"]
 [ext_resource type="Texture2D" uid="uid://c5q077uxnfgxa" path="res://Textures/Body/L-leg.png" id="15_4oqks"]
@@ -116,14 +117,18 @@ color = Color(0.221694, 0.866588, 0.182532, 1)
 [node name="Gracz" parent="." instance=ExtResource("4_y7kfw")]
 position = Vector2(174, 402)
 
-[node name="Graczka" type="CharacterBody2D" parent="."]
+[node name="Graczka" type="Area2D" parent="."]
 position = Vector2(347, 402)
+script = ExtResource("9_jrbn0")
+hunger_requirement = 95.0
+color = Color(1, 1, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graczka"]
 shape = SubResource("RectangleShape2D_ag6ja")
 
 [node name="Sprite2D" type="Sprite2D" parent="Graczka"]
-scale = Vector2(-1, 1)
+rotation = -3.14159
+scale = Vector2(1, -1)
 texture = ExtResource("9_enf4y")
 
 [node name="Lewareka" type="Sprite2D" parent="Graczka/Sprite2D"]
