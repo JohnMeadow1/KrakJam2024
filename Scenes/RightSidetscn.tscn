@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b5cq4s68gfarp"]
+[gd_scene load_steps=32 format=3 uid="uid://b5cq4s68gfarp"]
 
 [ext_resource type="Script" path="res://Scenes/RightSidetscn.gd" id="1_bbgw8"]
 [ext_resource type="Texture2D" uid="uid://cdnhcvhku5cd0" path="res://Textures/Right_side_background.png" id="1_mdlbc"]
@@ -8,12 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://dhy8wlhrj4y46" path="res://Textures/stomacz_outline.png" id="4_2h05x"]
 [ext_resource type="Texture2D" uid="uid://x0qp7fgi87t5" path="res://Textures/2x2.png" id="4_fi3va"]
 [ext_resource type="Texture2D" uid="uid://chpa5u1rpilsx" path="res://Textures/Spiner_green.png" id="5_5natd"]
+[ext_resource type="Texture2D" uid="uid://cpb5qb5nesect" path="res://Textures/GasChamber.png" id="6_44pep"]
 [ext_resource type="PackedScene" uid="uid://b7nx6ynk1ets0" path="res://Scenes/Spiner.tscn" id="6_cc6qd"]
 [ext_resource type="Texture2D" uid="uid://bcged5qgmqurf" path="res://Textures/Spiner_red.png" id="6_jgemg"]
 [ext_resource type="Texture2D" uid="uid://pn3328x0jtnv" path="res://Textures/stomacz_progress.png" id="6_uqupv"]
+[ext_resource type="Texture2D" uid="uid://dmyv54vsutga2" path="res://Textures/GasChamber_fill.png" id="7_e25bb"]
+[ext_resource type="Texture2D" uid="uid://b6kisq5k01lp2" path="res://Textures/GasChamber_fill_open.png" id="8_wtjmd"]
 [ext_resource type="Texture2D" uid="uid://dyij7o7sue4ao" path="res://Textures/tompka.png" id="9_ee7ml"]
 [ext_resource type="Texture2D" uid="uid://cwc6v5fpc3hbe" path="res://Textures/dot.png" id="11_n825l"]
 [ext_resource type="Texture2D" uid="uid://bsp0sqhlfjnts" path="res://Textures/3x3.png" id="12_lf5c2"]
+[ext_resource type="Texture2D" uid="uid://rfmtgs0uwp1r" path="res://Textures/Lever_base.png" id="16_3c2u4"]
+[ext_resource type="Texture2D" uid="uid://didg4uyird4g3" path="res://Textures/Lever-lever.png" id="17_8x1ri"]
 
 [sub_resource type="Gradient" id="Gradient_l6ims"]
 offsets = PackedFloat32Array(0)
@@ -24,6 +29,10 @@ gradient = SubResource("Gradient_l6ims")
 width = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ninw"]
+
+[sub_resource type="Curve" id="Curve_6pqv5"]
+_data = [Vector2(0, 0.506424), 0.0, 1.11174, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d5qx5"]
 particles_animation = true
@@ -51,8 +60,7 @@ angle_min = 1.07288e-05
 angle_max = 360.0
 direction = Vector3(0, 1, 0)
 spread = 16.472
-initial_velocity_min = 177.76
-initial_velocity_max = 276.76
+initial_velocity_max = 99.0
 gravity = Vector3(0, 0, 0)
 damping_max = 1.0
 scale_min = 0.3
@@ -80,6 +88,48 @@ func _process(delta):
 	sprite_2d.rotation = vektor_to.angle()
 "
 
+[sub_resource type="GDScript" id="GDScript_53iep"]
+script/source = "extends Sprite2D
+
+
+var previous_mouse_position := Vector2.ZERO
+var value:= 0.0
+var is_on := false
+@onready var button = $Button
+signal toggled
+
+func _ready():
+	#button.pivot_offset = texture.get_size() * 0.5
+	#button.position = -button.pivot_offset
+	set_physics_process(false)
+
+func _physics_process(delta):
+	var angle_difference = atan2(previous_mouse_position.cross(get_local_mouse_position()), previous_mouse_position.dot(get_local_mouse_position()) )
+	previous_mouse_position = get_local_mouse_position()
+	value += angle_difference
+	value = clamp(value, 0.0, PI)
+	button.rotation = value -PI*0.5
+	if value > PI*0.9:
+		is_on = true
+	elif value < PI*0.1:
+		is_on = false
+
+
+func _on_button_down():
+	set_physics_process(true)
+	previous_mouse_position = get_local_mouse_position()
+
+
+func _on_button_up():
+	set_physics_process(false)
+
+func toggle():
+	value = PI
+	button.rotation = value -PI*0.5
+	is_on = true
+	
+"
+
 [node name="RightSide" type="Node2D"]
 script = ExtResource("1_bbgw8")
 
@@ -95,8 +145,10 @@ texture = SubResource("GradientTexture1D_dnnht")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.501961, 0.501961, 0.501961, 1)
 texture = ExtResource("1_mdlbc")
 centered = false
+metadata/_edit_lock_ = true
 
 [node name="Lines" type="Node2D" parent="Sprite2D"]
 
@@ -115,6 +167,26 @@ position = Vector2(708, 121)
 scale = Vector2(30, 2)
 texture = ExtResource("4_fi3va")
 
+[node name="2x8" type="Sprite2D" parent="Sprite2D/Lines"]
+position = Vector2(521, 376)
+scale = Vector2(135, 2)
+texture = ExtResource("4_fi3va")
+
+[node name="2x12" type="Sprite2D" parent="Sprite2D/Lines"]
+position = Vector2(586, 474)
+scale = Vector2(205, 2)
+texture = ExtResource("4_fi3va")
+
+[node name="2x9" type="Sprite2D" parent="Sprite2D/Lines"]
+position = Vector2(506, 336)
+scale = Vector2(95.5, 2)
+texture = ExtResource("4_fi3va")
+
+[node name="2x10" type="Sprite2D" parent="Sprite2D/Lines"]
+position = Vector2(480.25, 296)
+scale = Vector2(72.25, 2)
+texture = ExtResource("4_fi3va")
+
 [node name="2x5" type="Sprite2D" parent="Sprite2D/Lines"]
 position = Vector2(736, 169)
 rotation = 1.57079
@@ -127,6 +199,12 @@ rotation = 1.57079
 scale = Vector2(35, 2)
 texture = ExtResource("4_fi3va")
 
+[node name="2x11" type="Sprite2D" parent="Sprite2D/Lines"]
+position = Vector2(410, 329)
+rotation = 1.57079
+scale = Vector2(35, 2)
+texture = ExtResource("4_fi3va")
+
 [node name="2x7" type="Sprite2D" parent="Sprite2D/Lines"]
 position = Vector2(847, 59)
 rotation = 1.57079
@@ -135,14 +213,31 @@ texture = ExtResource("4_fi3va")
 
 [node name="Stomanch" type="TextureProgressBar" parent="Sprite2D"]
 unique_name_in_owner = true
-offset_left = 319.0
-offset_top = 307.0
-offset_right = 426.0
-offset_bottom = 412.0
-value = 30.0
+offset_left = 316.0
+offset_top = 309.0
+offset_right = 423.0
+offset_bottom = 414.0
+value = 40.0
 fill_mode = 3
 texture_under = ExtResource("4_2h05x")
 texture_progress = ExtResource("6_uqupv")
+
+[node name="Gas" type="TextureProgressBar" parent="Sprite2D"]
+unique_name_in_owner = true
+z_index = 2
+offset_left = 317.0
+offset_top = 396.0
+offset_right = 424.0
+offset_bottom = 501.0
+rotation = -0.724312
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(64, 54)
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("6_44pep")
+texture_over = ExtResource("7_e25bb")
+texture_progress = ExtResource("8_wtjmd")
+tint_over = Color(1, 1, 1, 0)
 
 [node name="SpinerBlue" parent="Sprite2D" instance=ExtResource("6_cc6qd")]
 position = Vector2(847, 78)
@@ -168,10 +263,12 @@ shape = SubResource("RectangleShape2D_7ninw")
 [node name="Line2D" type="Line2D" parent="Sprite2D"]
 z_index = 1
 position = Vector2(370, 502)
-points = PackedVector2Array(0, 0, 0, 20, 0, 40, 0, 60)
-width = 48.76
+points = PackedVector2Array(4, -45, 0, -30, 0, 0, 0, 20, 0, 40, 0, 60)
+width = 62.625
+width_curve = SubResource("Curve_6pqv5")
 texture = ExtResource("9_ee7ml")
 texture_mode = 2
+joint_mode = 2
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Sprite2D"]
 unique_name_in_owner = true
@@ -205,11 +302,6 @@ unique_name_in_owner = true
 position = Vector2(370, 510)
 rotation = 1.57079
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/RigidBody2D"]
-visible = false
-scale = Vector2(10, 10)
-texture = ExtResource("4_fi3va")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
 shape = SubResource("RectangleShape2D_7ninw")
 
@@ -218,11 +310,6 @@ unique_name_in_owner = true
 position = Vector2(370, 528)
 rotation = 1.57079
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/RigidBody2D2"]
-visible = false
-scale = Vector2(10, 10)
-texture = ExtResource("4_fi3va")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D2"]
 shape = SubResource("RectangleShape2D_7ninw")
 
@@ -230,11 +317,7 @@ shape = SubResource("RectangleShape2D_7ninw")
 unique_name_in_owner = true
 position = Vector2(370, 546)
 rotation = 1.57079
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/RigidBodyEND"]
-visible = false
-scale = Vector2(10, 10)
-texture = ExtResource("4_fi3va")
+angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBodyEND"]
 shape = SubResource("RectangleShape2D_7ninw")
@@ -242,7 +325,7 @@ shape = SubResource("RectangleShape2D_7ninw")
 [node name="FartHole" type="GPUParticles2D" parent="Sprite2D/RigidBodyEND"]
 unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_d5qx5")
-position = Vector2(12, 1.39077e-05)
+position = Vector2(8, 4.98453e-05)
 rotation = -1.57079
 amount = 256
 process_material = SubResource("ParticleProcessMaterial_qhbqd")
@@ -251,7 +334,7 @@ texture = ExtResource("2_ghh53")
 [node name="Dot" type="Sprite2D" parent="Sprite2D/RigidBodyEND"]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(8, 0)
+position = Vector2(0, 1.08401e-05)
 rotation = -1.57079
 texture = ExtResource("11_n825l")
 
@@ -262,11 +345,30 @@ node_b = NodePath("../RigidBodyEND")
 rest_length = 50.0
 
 [node name="Marker2D" type="Marker2D" parent="Sprite2D"]
-position = Vector2(499, 531.5)
+position = Vector2(473, 492.5)
 script = SubResource("GDScript_bhbwh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Marker2D"]
+modulate = Color(0.5, 0.5, 0.5, 1)
+z_index = 1
 texture = ExtResource("12_lf5c2")
+
+[node name="Lever_base" type="Sprite2D" parent="Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(792, 426)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_3c2u4")
+script = SubResource("GDScript_53iep")
+
+[node name="Button" type="TextureButton" parent="Sprite2D/Lever_base"]
+offset_left = -120.0
+offset_top = -70.0
+offset_right = 468.0
+offset_bottom = 76.0
+rotation = -1.5708
+pivot_offset = Vector2(62.705, 66.145)
+texture_normal = ExtResource("17_8x1ri")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -329,3 +431,6 @@ offset_left = 649.0
 offset_top = 120.0
 offset_right = 681.0
 offset_bottom = 376.0
+
+[connection signal="button_down" from="Sprite2D/Lever_base/Button" to="Sprite2D/Lever_base" method="_on_button_down"]
+[connection signal="button_up" from="Sprite2D/Lever_base/Button" to="Sprite2D/Lever_base" method="_on_button_up"]
