@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://xnb144yip5bj"]
+[gd_scene load_steps=7 format=3 uid="uid://xnb144yip5bj"]
 
 [ext_resource type="Texture2D" uid="uid://b3f0opgjr5b74" path="res://Textures/TheOffice.png" id="1_4l7v1"]
 [ext_resource type="Texture2D" uid="uid://cbhl780q582uu" path="res://Textures/OfficeTable.png" id="2_tftd6"]
 [ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="3_ybcmu"]
+[ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="4_uglc2"]
+[ext_resource type="PackedScene" uid="uid://dffw84alb15sh" path="res://Nodes/InnyLudzik.tscn" id="5_0msl3"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
@@ -19,7 +21,25 @@ texture = ExtResource("1_4l7v1")
 centered = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("2_tftd6")
 centered = false
 
 [node name="DjOgg" parent="." instance=ExtResource("3_ybcmu")]
+
+[node name="Gracz" parent="." instance=ExtResource("4_uglc2")]
+position = Vector2(114, 289)
+
+[node name="InnyLudzik" parent="." instance=ExtResource("5_0msl3")]
+position = Vector2(49, 313)
+freeze = true
+
+[node name="InnyLudzik2" parent="." instance=ExtResource("5_0msl3")]
+position = Vector2(484, 284)
+scale = Vector2(-1, 1)
+freeze = true
+
+[node name="InnyLudzik3" parent="." instance=ExtResource("5_0msl3")]
+position = Vector2(524, 319)
+scale = Vector2(-1, 1)
+freeze = true
