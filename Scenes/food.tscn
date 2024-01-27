@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://btn6t88undwjb"]
+[gd_scene load_steps=10 format=3 uid="uid://btn6t88undwjb"]
 
 [ext_resource type="Texture2D" uid="uid://rrc463ydr1of" path="res://Textures/stolik.png" id="1_1ihcj"]
 [ext_resource type="Shader" path="res://Scenes/food.gdshader" id="1_evllp"]
@@ -7,17 +7,28 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nb3e6"]
 shader = ExtResource("1_evllp")
 shader_parameter/digested = null
+shader_parameter/dissolve_value = null
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rfn6o"]
-friction = 0.21
+friction = 0.1
 bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6p4s3"]
-radius = 20.0
+radius = 25.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k76gf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5lus8"]
+noise = SubResource("FastNoiseLite_k76gf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6ojq"]
+shader = ExtResource("1_evllp")
+shader_parameter/digested = Color(1, 1, 1, 1)
+shader_parameter/dissolve_value = 1.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_5lus8")
 
 [node name="Food" type="RigidBody2D"]
 material = SubResource("ShaderMaterial_nb3e6")
-position = Vector2(63, 0)
 physics_material_override = SubResource("PhysicsMaterial_rfn6o")
 script = ExtResource("1_mced5")
 
@@ -25,5 +36,6 @@ script = ExtResource("1_mced5")
 shape = SubResource("CircleShape2D_6p4s3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_k6ojq")
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_1ihcj")

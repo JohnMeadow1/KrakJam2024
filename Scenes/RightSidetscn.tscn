@@ -242,6 +242,13 @@ fill_mode = 3
 texture_under = ExtResource("5_fgjri")
 
 [node name="Food" parent="Sprite2D/Stomanch2" instance=ExtResource("5_dlnk5")]
+position = Vector2(55.6667, 0.333332)
+linear_damp = 1.0
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D/Stomanch2"]
+unique_name_in_owner = true
+position = Vector2(55, -36.3333)
+gizmo_extents = 68.5
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Sprite2D"]
 position = Vector2(251, 309)
@@ -260,6 +267,7 @@ shape = SubResource("RectangleShape2D_xucnr")
 
 [node name="Stomanch" type="TextureProgressBar" parent="Sprite2D"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.5)
 offset_left = 251.0
 offset_top = 309.0
 offset_right = 358.0
@@ -374,6 +382,7 @@ unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_d5qx5")
 position = Vector2(8, 4.98453e-05)
 rotation = -1.57079
+emitting = false
 amount = 256
 process_material = SubResource("ParticleProcessMaterial_qhbqd")
 texture = ExtResource("2_ghh53")

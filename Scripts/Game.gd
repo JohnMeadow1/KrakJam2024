@@ -155,7 +155,10 @@ class Pierd:
 
 func _process(delta: float) -> void:
 	if insides.is_hungry:
-		glood.value += 10 * delta
+		glood.value += 2 * delta
+	else:
+		glood.value -= insides.nutrition
+		insides.nutrition = 0.0
 	
 	if OS.has_feature("editor"): return
 	if is_equal_approx(glood.ratio, 1.0):
