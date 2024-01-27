@@ -38,6 +38,7 @@ func set_wybory(wybory: String):
 		akcja.queue_free()
 	
 	if wybory.is_empty():
+		akcje_name.text = ""
 		return
 	
 	var wybo: Dictionary = wyborydata[wybory]

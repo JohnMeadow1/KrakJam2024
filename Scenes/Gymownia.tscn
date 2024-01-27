@@ -1,14 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://deprt7p4fe63l"]
+[gd_scene load_steps=9 format=3 uid="uid://deprt7p4fe63l"]
 
 [ext_resource type="Texture2D" uid="uid://b8yntpax5ufb" path="res://Textures/ScenaGym.png" id="1_yt132"]
 [ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="2_7m6fs"]
+[ext_resource type="PackedScene" uid="uid://d36kxajw430qq" path="res://Nodes/Prakticzarka.tscn" id="3_yesty"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
 
+@onready var progress_bar: ProgressBar = $ProgressBar
+
+var xp: int
+
 func _ready() -> void:
-	game.set_wybory(\"silka\")
+	game.set_wybory(\"\")
+
+func expij(ile: int):
+	xp += ile
+	progress_bar.value = xp
 "
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_20uoc"]
+b = Vector2(554, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_565hg"]
+b = Vector2(0, 628)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjvcx"]
+bg_color = Color(0, 0, 0, 0.501961)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xg7w"]
+bg_color = Color(1, 0.706624, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Gymownia" type="Node2D"]
 script = SubResource("GDScript_umvcr")
@@ -17,6 +46,47 @@ script = SubResource("GDScript_umvcr")
 modulate = Color(0.29, 0.29, 0.29, 1)
 texture = ExtResource("1_yt132")
 centered = false
+metadata/_edit_lock_ = true
 
 [node name="Gracz" parent="." instance=ExtResource("2_7m6fs")]
-position = Vector2(318, 396)
+position = Vector2(292, 365)
+
+[node name="Prakticzarka" parent="." instance=ExtResource("3_yesty")]
+position = Vector2(227, 217)
+ile_xp = 3
+
+[node name="Prakticzarka2" parent="." instance=ExtResource("3_yesty")]
+position = Vector2(126, 393)
+ile_xp = 3
+
+[node name="Prakticzarka3" parent="." instance=ExtResource("3_yesty")]
+position = Vector2(372, 517)
+ile_xp = 3
+
+[node name="Prakticzarka4" parent="." instance=ExtResource("3_yesty")]
+position = Vector2(443, 322)
+ile_xp = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_20uoc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_565hg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(554, 0)
+shape = SubResource("SegmentShape2D_565hg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 628)
+shape = SubResource("SegmentShape2D_20uoc")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 101.0
+offset_top = 18.0
+offset_right = 467.0
+offset_bottom = 45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vjvcx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5xg7w")
