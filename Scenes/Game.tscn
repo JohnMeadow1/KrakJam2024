@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Gracz1.gd" id="1_4jxwk"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_h8bl0"]
 [ext_resource type="Script" path="res://Scripts/Gracz2.gd" id="2_sqn37"]
-[ext_resource type="PackedScene" uid="uid://cp8bqsusglr5k" path="res://Scenes/Pasek.tscn" id="3_oynmy"]
+[ext_resource type="PackedScene" uid="uid://cp8bqsusglr5k" path="res://Nodes/Pasek.tscn" id="3_oynmy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knxka"]
 bg_color = Color(0, 0, 0, 1)

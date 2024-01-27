@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://deprt7p4fe63l"]
+[gd_scene load_steps=4 format=3 uid="uid://deprt7p4fe63l"]
 
 [ext_resource type="Texture2D" uid="uid://b8yntpax5ufb" path="res://Textures/ScenaGym.png" id="1_yt132"]
+[ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="2_7m6fs"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
@@ -16,3 +17,6 @@ script = SubResource("GDScript_umvcr")
 modulate = Color(0.29, 0.29, 0.29, 1)
 texture = ExtResource("1_yt132")
 centered = false
+
+[node name="Gracz" parent="." instance=ExtResource("2_7m6fs")]
+position = Vector2(318, 396)

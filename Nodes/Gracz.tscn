@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp2cgkpej81k2"]
+
+[ext_resource type="Texture2D" uid="uid://ct6x3jc1rvwcx" path="res://Textures/Gracz.png" id="1_3nj4v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ag6ja"]
+size = Vector2(64, 132)
+
+[node name="Gracz" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ag6ja")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3nj4v")
