@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://xnb144yip5bj"]
+[gd_scene load_steps=5 format=3 uid="uid://xnb144yip5bj"]
 
 [ext_resource type="Texture2D" uid="uid://b3f0opgjr5b74" path="res://Textures/TheOffice.png" id="1_4l7v1"]
 [ext_resource type="Texture2D" uid="uid://cbhl780q582uu" path="res://Textures/OfficeTable.png" id="2_tftd6"]
+[ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="3_ybcmu"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
@@ -20,3 +21,5 @@ centered = false
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 texture = ExtResource("2_tftd6")
 centered = false
+
+[node name="DjOgg" parent="." instance=ExtResource("3_ybcmu")]

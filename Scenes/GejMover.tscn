@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw1wl0d8f5r4s"]
+[gd_scene load_steps=5 format=3 uid="uid://bw1wl0d8f5r4s"]
 
 [ext_resource type="Texture2D" uid="uid://c46xlp5j1kw3v" path="res://Textures/Gamever.png" id="1_tvk3j"]
+[ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="2_g4r67"]
 
 [sub_resource type="GDScript" id="GDScript_b2d55"]
 script/source = "extends TextureRect
@@ -47,3 +48,6 @@ rotation = -0.0667286
 theme_override_fonts/font = SubResource("SystemFont_ia5yi")
 theme_override_font_sizes/font_size = 20
 text = "Spacja od nowa"
+
+[node name="DjOgg" parent="." instance=ExtResource("2_g4r67")]
+pitch_scale = 0.5

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://deprt7p4fe63l"]
+[gd_scene load_steps=11 format=3 uid="uid://deprt7p4fe63l"]
 
 [ext_resource type="Texture2D" uid="uid://b8yntpax5ufb" path="res://Textures/ScenaGym.png" id="1_yt132"]
 [ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="2_7m6fs"]
 [ext_resource type="PackedScene" uid="uid://d36kxajw430qq" path="res://Nodes/Prakticzarka.tscn" id="3_yesty"]
 [ext_resource type="PackedScene" uid="uid://dffw84alb15sh" path="res://Nodes/InnyLudzik.tscn" id="4_756vo"]
+[ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="5_annnb"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
@@ -113,3 +114,5 @@ position = Vector2(76, 218)
 
 [node name="InnyLudzik3" parent="Others" instance=ExtResource("4_756vo")]
 position = Vector2(388, 157)
+
+[node name="DjOgg" parent="." instance=ExtResource("5_annnb")]
