@@ -21,11 +21,11 @@ func _init() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Gracz":
-		body.jadalne = self
+		body.jadalne.append(self)
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.name == "Gracz":
-		body.jadalne = null
+		body.jadalne.erase(self)
 
 func can_eat() -> bool:
 	return get_tree().current_scene.glood.value >= hunger_requirement

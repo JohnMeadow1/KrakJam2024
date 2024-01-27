@@ -80,20 +80,20 @@ position = Vector2(292, 365)
 
 [node name="Ćw" type="Node2D" parent="."]
 
-[node name="Prakticzarka" parent="Ćw" instance=ExtResource("3_yesty")]
-position = Vector2(227, 217)
+[node name="Prakticzarka" parent="Ćw" instance_placeholder="res://Nodes/Prakticzarka.tscn"]
+position = Vector2(264, 188)
 ile_xp = 3
 
 [node name="Prakticzarka2" parent="Ćw" instance=ExtResource("3_yesty")]
-position = Vector2(126, 393)
+position = Vector2(101, 399)
 ile_xp = 3
 
 [node name="Prakticzarka3" parent="Ćw" instance=ExtResource("3_yesty")]
-position = Vector2(372, 517)
+position = Vector2(328, 557)
 ile_xp = 3
 
 [node name="Prakticzarka4" parent="Ćw" instance=ExtResource("3_yesty")]
-position = Vector2(443, 322)
+position = Vector2(473, 314)
 ile_xp = 3
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
