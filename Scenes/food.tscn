@@ -31,6 +31,7 @@ shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_5lus8")
 [node name="Food" type="RigidBody2D"]
 material = SubResource("ShaderMaterial_nb3e6")
 physics_material_override = SubResource("PhysicsMaterial_rfn6o")
+linear_damp = 1.0
 script = ExtResource("1_mced5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -39,3 +40,6 @@ shape = SubResource("CircleShape2D_6p4s3")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_k6ojq")
 texture = ExtResource("1_1ihcj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0

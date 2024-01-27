@@ -6,7 +6,7 @@ var is_farting := false
 var is_hungry := true
 
 var pressure_gain_per_nutriotion = 0.05
-var pressure_loss_to_farting = 0.01
+var pressure_loss_to_farting = 0.0025
 
 var blue_ratio:= 0.0
 var green_ratio:= 0.0
@@ -25,6 +25,7 @@ var nutrition:=0.0
 var acid := Color.BLACK
 var food_array = []
 const FOOD = preload("res://Scenes/food.tscn")
+@onready var growl = $Growl
 
 
 func _ready():
@@ -85,10 +86,10 @@ func _physics_process(delta):
 		pressure -= pressure_output * pressure_loss_to_farting
 	else:
 		if is_instance_valid(Globals.player):
-			Globals.player.fart(pressure_output, false)
+			Globals.player.fart(0.0, false)
 		%Gas.tint_under = Color(1,1,1,1)
 		%Gas.tint_progress = Color(1,1,1,0)
-		%FartHole.emitting=false
+		%FartHole.emitting = false
 
 	pressure_output *= float(is_farting)
 	var pressure_sin = pressure_output*1.1
@@ -109,7 +110,6 @@ func cubicPulse( c:float, w:float, x:float )->float:
 
 	
 func digest():
-	
 	is_hungry = true
 	for i in range(food_array.size(),0, -1):
 		#print(i-1)
@@ -120,7 +120,13 @@ func digest():
 	if nutrition>0:
 		pressure += nutrition * pressure_gain_per_nutriotion
 		is_hungry = false
-
+	if is_hungry:
+		if not growl.playing:
+			growl.play()
+	else:
+		if growl.playing:
+			growl.stop()
+			
 func update_blue():
 	%blue.max = spiner_blue.value
 	
