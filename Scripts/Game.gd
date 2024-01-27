@@ -16,6 +16,7 @@ var wyborydata: Dictionary
 
 var scena: Node
 var blokuje: bool
+var glood: float
 
 func _ready() -> void:
 	var t := TextDatabase.new()

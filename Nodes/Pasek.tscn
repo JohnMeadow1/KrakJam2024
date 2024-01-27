@@ -29,7 +29,7 @@ func decrease():
 
 [sub_resource type="Gradient" id="Gradient_nvu0f"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.32, 0.32, 0.32, 1)
+colors = PackedColorArray(0.316706, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mjbsj"]
 gradient = SubResource("Gradient_nvu0f")
@@ -38,7 +38,7 @@ height = 256
 
 [sub_resource type="Gradient" id="Gradient_bibng"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 1, 1)
+colors = PackedColorArray(1, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rdi20"]
 gradient = SubResource("Gradient_bibng")

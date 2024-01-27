@@ -54,6 +54,14 @@ offset_right = 309.0
 offset_bottom = 496.0
 text = "[Enter] / [X] = Powstrzymuj pierda"
 
+[node name="Label9" type="Label" parent="."]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 506.0
+offset_right = 312.0
+offset_bottom = 529.0
+text = "[Backspace] / [B] = Zjedz"
+
 [node name="Label8" type="Label" parent="."]
 layout_mode = 0
 offset_left = 485.0
@@ -64,10 +72,10 @@ text = "[A] / [D] / [Lewa gała] = Wybór wskaźnika"
 
 [node name="Label6" type="Label" parent="."]
 layout_mode = 0
-offset_left = 106.0
-offset_top = 521.0
-offset_right = 365.0
-offset_bottom = 544.0
+offset_left = 92.0
+offset_top = 536.0
+offset_right = 351.0
+offset_bottom = 559.0
 text = "[Spacja] / [A] = Akcja"
 
 [node name="Label7" type="Label" parent="."]
