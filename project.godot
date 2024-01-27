@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/NajważniejszaScenaWProjekcie.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://Textures/Guwno.png"
 
+[autoload]
+
+Globals="*res://globals.gd"
+
 [debug]
 
 gdscript/warnings/enable=false

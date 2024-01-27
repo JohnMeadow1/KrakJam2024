@@ -27,20 +27,27 @@ func _physics_process(delta):
 	button.rotation = value / 2.0
 	updated.emit()
 	
-	if not is_equal_approx(value, prev):
-		playing = 0.2
-	
-	$AudioStreamPlayer2D.stream_paused = playing <= 0
-	playing -= delta
+	if prev == value:
+		$AudioStreamPlayer2D.stream_paused = true
+	else:
+		$AudioStreamPlayer2D.stream_paused = false
+		
+	$AudioStreamPlayer2D.pitch_scale = 0.6+value*0.02
+	#if not is_equal_approx(value, prev):
+		#playing = 0.2
+	#
+	#$AudioStreamPlayer2D.stream_paused = playing <= 0
+	#playing -= delta
 
 func _on_button_down():
 	set_physics_process(true)
 	previous_mouse_position = get_local_mouse_position()
 	is_pressed = true
+	#$AudioStreamPlayer2D.playing = true
 	#$AudioStreamPlayer2D.seek(lastvalveposition)
  
 func _on_button_up():
 	set_physics_process(false)
 	is_pressed = false
-	$AudioStreamPlayer2D.stream_paused = true
-	playing = 0
+	$AudioStreamPlayer2D.playing = false
+	#playing = 0

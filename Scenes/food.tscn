@@ -14,7 +14,7 @@ friction = 0.1
 bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6p4s3"]
-radius = 25.0
+radius = 40.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_k76gf"]
 
@@ -22,6 +22,7 @@ radius = 25.0
 noise = SubResource("FastNoiseLite_k76gf")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k6ojq"]
+resource_local_to_scene = true
 shader = ExtResource("1_evllp")
 shader_parameter/digested = Color(1, 1, 1, 1)
 shader_parameter/dissolve_value = 1.0
@@ -37,5 +38,4 @@ shape = SubResource("CircleShape2D_6p4s3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_k6ojq")
-scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_1ihcj")

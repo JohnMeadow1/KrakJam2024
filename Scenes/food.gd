@@ -11,7 +11,7 @@ var surface_level:= Vector2(0,50)
 
 func _ready():
 	sprite_2d.material.set_shader_parameter("digested", composition )
-	material = material.duplicate()
+	#material = material.duplicate()
 	angular_velocity = randf_range(-20,20)
 	rotation = randf()*TAU
 

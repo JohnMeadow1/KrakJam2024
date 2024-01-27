@@ -9,10 +9,25 @@ var jadalne: Array
 var praktik
 
 var chapczy: bool
+@onready var fart_hole = %FartHole
+
+var fart_force:= Vector2.ZERO
+func _ready():
+	Globals.player = self
+
+func fart(pressure_output:float, is_emiting:bool):
+	fart_hole.emitting = is_emiting
+	fart_hole.amount_ratio = pressure_output
+	fart_hole.process_material.initial_velocity = Vector2(pressure_output*100, pressure_output*100+100)
+	var v2 = Vector2.DOWN.rotated(randf_range(-0.8,0.8))
+	fart_hole.process_material.direction = Vector3(v2.x,v2.y,0)
+	
+	fart_force = -v2.rotated(PI*0.5) * pressure_output*300*pragnienieniemaszansz_2d.scale.x
+
 
 func _physics_process(delta: float) -> void:
 	var move := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = move * 300
+	velocity = move * 300 + fart_force
 	move_and_slide()
 	
 	if not chapczy:

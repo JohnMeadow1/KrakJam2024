@@ -1,6 +1,6 @@
 extends Node2D
 
-var pressure := 0.0
+var pressure := 0.9
 var pressure_output := 0.0
 var is_farting := false
 var is_hungry := true
@@ -42,10 +42,8 @@ func add_food(tex:Texture2D, burn_efficiency:float, nutrition:float,  color:Colo
 
 func _physics_process(delta):
 	digest()
-	
-	var resitance = get_pierdlicznik()/100.0
-	
-	pressure_output = pressure * resitance
+	pressure = 0.9
+
 	
 	acid = Color(0,%green.value/100,0) + Color(%red.value/100,0,0) + Color(0,0,%blue.value/100)
 	stomanch.tint_progress = acid
@@ -71,24 +69,45 @@ func _physics_process(delta):
 	%Gas.scale.x = 0.5 + pressure * 0.1
 	
 	if is_farting:
-		
+		var resitance = get_pierdlicznik()/100.0
+		pressure_output = pressure * (resitance)
 		%Gas.tint_under = Color(1,1,1,0)
 		%Gas.tint_progress = Color(1,1,1,1)
 		%FartHole.emitting = true
 		
-		%FartHole.amount_ratio = pressure
-		%FartHole.process_material.initial_velocity = Vector2(pressure*300, pressure*300+100)
+		%FartHole.amount_ratio = pressure_output
+		%FartHole.process_material.initial_velocity = Vector2(pressure_output*300, pressure_output*300+100)
 		var force := (fart_hole.position.rotated(rigid_body_end.rotation) + Vector2(randf_range(-10,10),randf_range(-10,10))).normalized()
 		var force_position = -fart_hole.position.rotated(rigid_body_end.rotation) + rigid_body_end.position
-		rigid_body_end.apply_impulse(force * pressure*2.0, force_position)
-		
+		rigid_body_end.apply_impulse(force * pressure_output*2.0, force_position)
+		if is_instance_valid(Globals.player):
+			Globals.player.fart(pressure_output, true)
 		pressure -= pressure_output * pressure_loss_to_farting
 	else:
+		if is_instance_valid(Globals.player):
+			Globals.player.fart(pressure_output, false)
 		%Gas.tint_under = Color(1,1,1,1)
 		%Gas.tint_progress = Color(1,1,1,0)
 		%FartHole.emitting=false
 
+	#prints(pressure_output*4, sin(clamp(pressure_output*4 - PI/4.0,0, PI)))
+	var pressure_sin = pressure_output*1.1*PI
+	
+	$AudioStreamPlayer1.volume_db = linear_to_db(cubicPulse(0.2,0.2,pressure_output*1.1))
+	$AudioStreamPlayer2.volume_db = linear_to_db(cubicPulse(0.3,0.25,pressure_output*1.1))
+	$AudioStreamPlayer3.volume_db = linear_to_db(cubicPulse(0.5,0.3,pressure_output*1.1))
+	$AudioStreamPlayer4.volume_db = linear_to_db(cubicPulse(0.7,0.3,pressure_output*1.1))
+	$AudioStreamPlayer5.volume_db = linear_to_db(cubicPulse(0.9,0.2,pressure_output*1.1))
+	#prints(pressure_output*1.1, sin(pressure_sin))
+	
+func cubicPulse( c:float, w:float, x:float )->float:
+	x = abs(x - c)
+	if x>w : return 0.0
+	x /= w;
+	return 1.0 - x*x*(3.0-2.0*x)
 
+
+	
 func digest():
 	
 	is_hungry = true

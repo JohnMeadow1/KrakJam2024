@@ -48,14 +48,14 @@ particles_anim_loop = false
 [sub_resource type="Gradient" id="Gradient_vxfkn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_hbrg5"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t6m3k"]
 gradient = SubResource("Gradient_vxfkn")
 
 [sub_resource type="Curve" id="Curve_155bm"]
 _data = [Vector2(0, 0.376932), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_75svn"]
+[sub_resource type="CurveTexture" id="CurveTexture_elh12"]
 curve = SubResource("Curve_155bm")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qhbqd"]
@@ -70,9 +70,9 @@ gravity = Vector3(0, 0, 0)
 damping_max = 1.0
 scale_min = 0.3
 scale_max = 0.3
-scale_curve = SubResource("CurveTexture_75svn")
+scale_curve = SubResource("CurveTexture_elh12")
 color = Color(0.741152, 0.79, 0.3713, 1)
-color_ramp = SubResource("GradientTexture1D_hbrg5")
+color_ramp = SubResource("GradientTexture1D_t6m3k")
 
 [sub_resource type="GDScript" id="GDScript_bhbwh"]
 script/source = "extends Marker2D
@@ -530,15 +530,12 @@ autoplay = true
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_0t4nx")
-autoplay = true
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_imth4")
-autoplay = true
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_50tmv")
-autoplay = true
 
 [connection signal="button_down" from="Sprite2D/Lever_base/Button" to="Sprite2D/Lever_base" method="_on_button_down"]
 [connection signal="button_up" from="Sprite2D/Lever_base/Button" to="Sprite2D/Lever_base" method="_on_button_up"]

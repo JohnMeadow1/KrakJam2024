@@ -1,8 +1,8 @@
 [gd_scene load_steps=20 format=3 uid="uid://d1thio0e3qwea"]
 
-[ext_resource type="Texture2D" uid="uid://vo15adax6o0a" path="res://Textures/randkaBG.png" id="1_8dxca"]
-[ext_resource type="PackedScene" uid="uid://ctcfgw6w4dt2m" path="res://Nodes/Jadalne.tscn" id="2_vghul"]
-[ext_resource type="Texture2D" uid="uid://dahynqkrnbbm4" path="res://Textures/stolik.png" id="3_71ajr"]
+[ext_resource type="Texture2D" uid="uid://sdnf7w4t74gj" path="res://Textures/randkaBG.png" id="1_8dxca"]
+[ext_resource type="PackedScene" uid="uid://quyjjvbaegum" path="res://Nodes/Jadalne.tscn" id="2_vghul"]
+[ext_resource type="Texture2D" uid="uid://rrc463ydr1of" path="res://Textures/stolik.png" id="3_71ajr"]
 [ext_resource type="Texture2D" uid="uid://bk5m35did0wtq" path="res://Textures/chair.png" id="4_03ufa"]
 [ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="4_y7kfw"]
 [ext_resource type="Texture2D" uid="uid://npyo7qkikgpv" path="res://Textures/apple.png" id="5_2wc5h"]
@@ -36,7 +36,7 @@ b = Vector2(554, 0)
 b = Vector2(0, 628)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ag6ja"]
-size = Vector2(34, 156)
+size = Vector2(34, 31)
 
 [node name="Randka" type="Node2D"]
 script = SubResource("GDScript_umvcr")
@@ -121,12 +121,14 @@ position = Vector2(174, 402)
 position = Vector2(347, 402)
 script = ExtResource("9_jrbn0")
 hunger_requirement = 95.0
-color = Color(1, 1, 1, 1)
+color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graczka"]
+position = Vector2(0, -12.5)
 shape = SubResource("RectangleShape2D_ag6ja")
 
 [node name="Sprite2D" type="Sprite2D" parent="Graczka"]
+position = Vector2(0, -80.9999)
 rotation = -3.14159
 scale = Vector2(1, -1)
 texture = ExtResource("9_enf4y")
@@ -147,6 +149,7 @@ texture = ExtResource("16_str4e")
 
 [node name="Meat" parent="." instance=ExtResource("7_8pplv")]
 position = Vector2(279, 563)
+color = Color(1, 0, 0, 1)
 
 [connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
 [connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]

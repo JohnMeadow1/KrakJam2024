@@ -120,3 +120,4 @@ position = Vector2(76, 218)
 position = Vector2(388, 157)
 
 [node name="DjOgg" parent="." instance=ExtResource("5_annnb")]
+autoplay = false

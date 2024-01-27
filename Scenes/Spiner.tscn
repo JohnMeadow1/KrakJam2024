@@ -24,6 +24,7 @@ texture_normal = ExtResource("1_s7ws7")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_oikjq")
+volume_db = 15.0
 autoplay = true
 
 [connection signal="button_down" from="Button" to="." method="_on_button_down"]

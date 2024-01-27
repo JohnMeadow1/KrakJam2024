@@ -52,3 +52,4 @@ texture = ExtResource("1_7vsjx")
 centered = false
 
 [node name="DjOgg" parent="." instance=ExtResource("2_2aqsd")]
+autoplay = false

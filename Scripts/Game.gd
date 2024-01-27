@@ -157,7 +157,7 @@ class Pierd:
 	func _to_string() -> String:
 		return "volume %f stink %f length %f gruz? %s" % [volume, stink, length, with_gruz]
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if insides.is_hungry:
 		glood.value += 2 * delta
 	else:
