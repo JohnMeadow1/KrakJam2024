@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d36kxajw430qq"]
+[gd_scene load_steps=5 format=3 uid="uid://d36kxajw430qq"]
 
 [ext_resource type="Texture2D" uid="uid://dl28yeakhwwdw" path="res://Textures/Ćwiczeniówek.png" id="1_3isf6"]
+[ext_resource type="Material" uid="uid://cad5vshgcu3r8" path="res://Resources/Migeg.tres" id="1_rveuv"]
 
 [sub_resource type="GDScript" id="GDScript_hx5cn"]
 script/source = "extends \"res://Scripts/Jadalne.gd\"
@@ -37,6 +38,7 @@ func _process(delta: float) -> void:
 size = Vector2(64, 82)
 
 [node name="Prakticzarka" type="Area2D"]
+material = ExtResource("1_rveuv")
 script = SubResource("GDScript_hx5cn")
 hunger_requirement = 90.0
 color = Color(0.764706, 0.25098, 0.176471, 1)

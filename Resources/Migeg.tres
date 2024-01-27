@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cad5vshgcu3r8"]
+
+[sub_resource type="Shader" id="Shader_1yo0j"]
+code = "shader_type canvas_item;
+
+void fragment() {
+	COLOR.r += abs(sin(TIME * 4.0)) * 0.4;
+}
+"
+
+[resource]
+shader = SubResource("Shader_1yo0j")
