@@ -15,6 +15,7 @@ extends Control
 var wyborydata: Dictionary
 
 var scena: Node
+var blokuje: bool
 
 func _ready() -> void:
 	var t := TextDatabase.new()
@@ -75,6 +76,10 @@ func change_stat(stat: String, value: float):
 			whites.value += value
 
 func execute_pierd():
+	if blokuje:
+		# info?
+		return
+	
 	var pierd := Pierd.new()
 	pierd.volume = cukiers.pick - whites.pick
 	pierd.stink = fats.pick + whites.pick
@@ -84,7 +89,7 @@ func execute_pierd():
 	fats.value -= fats.pick * 0.1
 	whites.value -= whites.pick * 0.1
 	
-	var gruzarka: float = cukiers.value + fats.value + whites.value
+	var gruzarka: float = cukiers.pick + fats.pick + whites.pick
 	pierd.with_gruz = gruzarka > 70 and gruzarka < 110
 	
 	name_pierd(pierd)

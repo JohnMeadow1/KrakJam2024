@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://p05o88xsmaah"]
+[gd_scene load_steps=16 format=3 uid="uid://p05o88xsmaah"]
 
 [ext_resource type="Script" path="res://Scripts/Gracz1.gd" id="1_4jxwk"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_h8bl0"]
@@ -34,6 +34,24 @@ colors = PackedColorArray(1, 0, 0.0307937, 1)
 gradient = SubResource("Gradient_d0xag")
 width = 256
 height = 16
+
+[sub_resource type="Gradient" id="Gradient_nidud"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.501961)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_afqmm"]
+gradient = SubResource("Gradient_nidud")
+width = 192
+height = 8
+
+[sub_resource type="Gradient" id="Gradient_xn0on"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.445902, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jgi3l"]
+gradient = SubResource("Gradient_xn0on")
+width = 192
+height = 8
 
 [node name="Game" type="PanelContainer"]
 anchors_preset = 15
@@ -169,6 +187,25 @@ offset_left = 484.0
 offset_top = 587.0
 offset_right = 524.0
 offset_bottom = 610.0
+
+[node name="Label4" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 456.0
+offset_right = 275.0
+offset_bottom = 479.0
+text = "[Enter] Wstrzymuj pierd"
+
+[node name="Wstrzymator" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 91.0
+offset_top = 479.0
+offset_right = 283.0
+offset_bottom = 487.0
+step = 0.01
+texture_under = SubResource("GradientTexture2D_afqmm")
+texture_progress = SubResource("GradientTexture2D_jgi3l")
 
 [node name="Akcje" type="VBoxContainer" parent="HBoxContainer/MarginContainer/Scena"]
 layout_mode = 1
