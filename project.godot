@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Game.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://Textures/Guwno.png"
 
+[autoload]
+
+DjOgg="*res://Nodes/DJ_OGG.tscn"
+
 [debug]
 
 gdscript/warnings/enable=false
