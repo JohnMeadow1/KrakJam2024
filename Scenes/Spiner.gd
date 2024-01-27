@@ -26,11 +26,9 @@ func _physics_process(delta):
 	value = clamp(value, 0.0, 100.0)
 	button.rotation = value / 2.0
 	updated.emit()
-	if value == 0.0:
+	if is_zero_approx(value) or is_equal_approx(value, 100.0):
 		$AudioStreamPlayer2D.stream_paused = true
-	if value == 100.0:
-		$AudioStreamPlayer2D.stream_paused = true
-	if value == clamp(value, 0.1, 99.9):
+	else:
 		$AudioStreamPlayer2D.stream_paused = false
 
 func _on_button_down():
