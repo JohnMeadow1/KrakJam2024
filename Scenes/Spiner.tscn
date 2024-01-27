@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl7awoljs1gxs"]
+[gd_scene load_steps=4 format=3 uid="uid://bl7awoljs1gxs"]
 
 [ext_resource type="Texture2D" uid="uid://qh0u33nfif4w" path="res://Textures/Spiner_blue.png" id="1_s7ws7"]
 [ext_resource type="Script" path="res://Scenes/Spiner.gd" id="2_v13js"]
+[ext_resource type="AudioStream" uid="uid://4oe0dtr3njpl" path="res://Audio/sfx_spinner.wav" id="3_oikjq"]
 
 [node name="Spinner" type="Node2D"]
 script = ExtResource("2_v13js")
@@ -22,6 +23,8 @@ grow_vertical = 2
 texture_normal = ExtResource("1_s7ws7")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_oikjq")
+autoplay = true
 
 [connection signal="button_down" from="Button" to="." method="_on_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_up"]
