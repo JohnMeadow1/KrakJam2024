@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1thio0e3qwea"]
+[gd_scene load_steps=11 format=3 uid="uid://d1thio0e3qwea"]
 
 [ext_resource type="Texture2D" uid="uid://vo15adax6o0a" path="res://Textures/randkaBG.png" id="1_8dxca"]
 [ext_resource type="PackedScene" uid="uid://ctcfgw6w4dt2m" path="res://Nodes/Jadalne.tscn" id="2_vghul"]
@@ -6,12 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://bk5m35did0wtq" path="res://Textures/chair.png" id="4_03ufa"]
 [ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="4_y7kfw"]
 [ext_resource type="Texture2D" uid="uid://dt36vt4ux7kd4" path="res://Textures/kwiotek.png" id="5_hawg2"]
+[ext_resource type="PackedScene" uid="uid://dmw2aixk22wai" path="res://Nodes/Meat.tscn" id="7_8pplv"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
 
 func _ready() -> void:
-	game.set_wybory(\"randka\")
+	game.set_wybory(\"\")
 
 func execute_pierd(pierd):
 	var wstyd = pierd.volume * pierd.length * 0.01
@@ -37,6 +38,7 @@ metadata/_edit_lock_ = true
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 271)
 shape = SubResource("SegmentShape2D_7yuor")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
@@ -87,3 +89,6 @@ color = Color(0.221694, 0.866588, 0.182532, 1)
 
 [node name="Gracz" parent="." instance=ExtResource("4_y7kfw")]
 position = Vector2(49, 477)
+
+[node name="Meat" parent="." instance=ExtResource("7_8pplv")]
+position = Vector2(279, 563)
