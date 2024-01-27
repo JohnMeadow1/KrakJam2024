@@ -37,15 +37,16 @@ func _on_button_down():
 	set_physics_process(true)
 	previous_mouse_position = get_local_mouse_position()
 	is_pressed = true
-	$AudioStreamPlayer2D.seek(lastvalveposition)
+	#$AudioStreamPlayer2D.seek(lastvalveposition)
 	$AudioStreamPlayer2D.stream = spinnersound
 	$AudioStreamPlayer2D.play(lastvalveposition)
-
+	$AudioStreamPlayer2D.stream_paused = false
+ 
 func _on_button_up():
 	set_physics_process(false)
 	is_pressed = false
 	$AudioStreamPlayer2D.stream = spinnersound
-	$AudioStreamPlayer2D.stop()
+	$AudioStreamPlayer2D.stream_paused = true
 	
 
 
