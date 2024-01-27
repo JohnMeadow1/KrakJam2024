@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d1thio0e3qwea"]
+[gd_scene load_steps=19 format=3 uid="uid://d1thio0e3qwea"]
 
 [ext_resource type="Texture2D" uid="uid://vo15adax6o0a" path="res://Textures/randkaBG.png" id="1_8dxca"]
 [ext_resource type="PackedScene" uid="uid://ctcfgw6w4dt2m" path="res://Nodes/Jadalne.tscn" id="2_vghul"]
@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dt36vt4ux7kd4" path="res://Textures/kwiotek.png" id="5_hawg2"]
 [ext_resource type="Texture2D" uid="uid://bt42g8krfdxe7" path="res://Textures/danie1.png" id="6_lsmqb"]
 [ext_resource type="PackedScene" uid="uid://dmw2aixk22wai" path="res://Nodes/Meat.tscn" id="7_8pplv"]
+[ext_resource type="Texture2D" uid="uid://dxe37a4owa30h" path="res://Textures/Body/F-body.png" id="9_enf4y"]
+[ext_resource type="Texture2D" uid="uid://blraghqgve2pc" path="res://Textures/Body/L-hand.png" id="13_fxs2a"]
+[ext_resource type="Texture2D" uid="uid://cvqinr1l4xpco" path="res://Textures/Body/R-leg.png" id="14_rth8v"]
+[ext_resource type="Texture2D" uid="uid://c5q077uxnfgxa" path="res://Textures/Body/L-leg.png" id="15_4oqks"]
+[ext_resource type="Texture2D" uid="uid://bt2k04qkrbvgs" path="res://Textures/Body/R-hand.png" id="16_str4e"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
@@ -28,6 +33,9 @@ b = Vector2(554, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hf3l3"]
 b = Vector2(0, 628)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ag6ja"]
+size = Vector2(34, 156)
 
 [node name="Randka" type="Node2D"]
 script = SubResource("GDScript_umvcr")
@@ -107,6 +115,30 @@ color = Color(0.221694, 0.866588, 0.182532, 1)
 
 [node name="Gracz" parent="." instance=ExtResource("4_y7kfw")]
 position = Vector2(174, 402)
+
+[node name="Graczka" type="CharacterBody2D" parent="."]
+position = Vector2(347, 402)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graczka"]
+shape = SubResource("RectangleShape2D_ag6ja")
+
+[node name="Sprite2D" type="Sprite2D" parent="Graczka"]
+scale = Vector2(-1, 1)
+texture = ExtResource("9_enf4y")
+
+[node name="Lewareka" type="Sprite2D" parent="Graczka/Sprite2D"]
+show_behind_parent = true
+texture = ExtResource("13_fxs2a")
+
+[node name="Prawanoga" type="Sprite2D" parent="Graczka/Sprite2D"]
+texture = ExtResource("14_rth8v")
+
+[node name="Lewanoga" type="Sprite2D" parent="Graczka/Sprite2D"]
+show_behind_parent = true
+texture = ExtResource("15_4oqks")
+
+[node name="Prawareka" type="Sprite2D" parent="Graczka/Sprite2D"]
+texture = ExtResource("16_str4e")
 
 [node name="Meat" parent="." instance=ExtResource("7_8pplv")]
 position = Vector2(279, 563)

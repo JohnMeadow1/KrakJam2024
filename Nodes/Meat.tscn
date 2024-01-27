@@ -11,6 +11,10 @@ var czaser: float
 var direction: Vector2
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		set_physics_process(false)
+		return
+	
 	direction = Vector2.from_angle(randf() * TAU)
 
 func _physics_process(delta: float) -> void:
@@ -30,4 +34,5 @@ hunger_requirement = 40.0
 color = Color(0.825856, 0.157659, 0.658807, 1)
 
 [node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, 2.37704)
 texture = ExtResource("2_tsuv7")
