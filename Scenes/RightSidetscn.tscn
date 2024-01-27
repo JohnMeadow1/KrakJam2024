@@ -1,9 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://b5cq4s68gfarp"]
+[gd_scene load_steps=25 format=3 uid="uid://b5cq4s68gfarp"]
 
+[ext_resource type="Script" path="res://Scenes/RightSidetscn.gd" id="1_bbgw8"]
 [ext_resource type="Texture2D" uid="uid://cdnhcvhku5cd0" path="res://Textures/Right_side_background.png" id="1_mdlbc"]
 [ext_resource type="Script" path="res://Scripts/Gracz2.gd" id="2_a1xjw"]
 [ext_resource type="Texture2D" uid="uid://drvg7gicj0j64" path="res://Textures/fart_clouds.png" id="2_ghh53"]
-[ext_resource type="PackedScene" uid="uid://cp8bqsusglr5k" path="res://Scenes/Pasek.tscn" id="3_8nmv7"]
+[ext_resource type="PackedScene" uid="uid://dor22xoeew4dv" path="res://Scenes/Pasek.tscn" id="3_8nmv7"]
+[ext_resource type="Texture2D" uid="uid://dhy8wlhrj4y46" path="res://Textures/stomacz_outline.png" id="4_2h05x"]
+[ext_resource type="Texture2D" uid="uid://x0qp7fgi87t5" path="res://Textures/2x2.png" id="4_fi3va"]
+[ext_resource type="Texture2D" uid="uid://chpa5u1rpilsx" path="res://Textures/Spiner_green.png" id="5_5natd"]
+[ext_resource type="PackedScene" uid="uid://b7nx6ynk1ets0" path="res://Scenes/Spiner.tscn" id="6_cc6qd"]
+[ext_resource type="Texture2D" uid="uid://bcged5qgmqurf" path="res://Textures/Spiner_red.png" id="6_jgemg"]
+[ext_resource type="Texture2D" uid="uid://pn3328x0jtnv" path="res://Textures/stomacz_progress.png" id="6_uqupv"]
+[ext_resource type="Texture2D" uid="uid://dyij7o7sue4ao" path="res://Textures/tompka.png" id="9_ee7ml"]
+[ext_resource type="Texture2D" uid="uid://cwc6v5fpc3hbe" path="res://Textures/dot.png" id="11_n825l"]
+[ext_resource type="Texture2D" uid="uid://bsp0sqhlfjnts" path="res://Textures/3x3.png" id="12_lf5c2"]
 
 [sub_resource type="Gradient" id="Gradient_l6ims"]
 offsets = PackedFloat32Array(0)
@@ -12,6 +22,8 @@ colors = PackedColorArray(0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_dnnht"]
 gradient = SubResource("Gradient_l6ims")
 width = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ninw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d5qx5"]
 particles_animation = true
@@ -33,23 +45,43 @@ point_count = 2
 curve = SubResource("Curve_155bm")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qhbqd"]
-lifetime_randomness = 0.21
+lifetime_randomness = 0.2
 particle_flag_disable_z = true
 angle_min = 1.07288e-05
 angle_max = 360.0
 direction = Vector3(0, 1, 0)
 spread = 16.472
-initial_velocity_min = 23.5
-initial_velocity_max = 122.33
+initial_velocity_min = 177.76
+initial_velocity_max = 276.76
 gravity = Vector3(0, 0, 0)
 damping_max = 1.0
 scale_min = 0.3
 scale_max = 0.3
 scale_curve = SubResource("CurveTexture_elh12")
-color = Color(0.469083, 0.5, 0.235, 1)
+color = Color(0.741152, 0.79, 0.3713, 1)
 color_ramp = SubResource("GradientTexture1D_t6m3k")
 
+[sub_resource type="GDScript" id="GDScript_bhbwh"]
+script/source = "extends Marker2D
+
+@onready var dot = %Dot
+@onready var sprite_2d = $Sprite2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	var vektor_to = to_local(dot.global_position)
+	sprite_2d.scale.x = vektor_to.length()/3.0
+	sprite_2d.position = vektor_to*0.5
+	sprite_2d.rotation = vektor_to.angle()
+"
+
 [node name="RightSide" type="Node2D"]
+script = ExtResource("1_bbgw8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -60,18 +92,181 @@ offset_bottom = 650.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_dnnht")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_mdlbc")
 centered = false
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
+[node name="Lines" type="Node2D" parent="Sprite2D"]
+
+[node name="2x2" type="Sprite2D" parent="Sprite2D/Lines"]
+position = Vector2(714, 41)
+scale = Vector2(135, 2)
+texture = ExtResource("4_fi3va")
+
+[node name="2x3" type="Sprite2D" parent="Sprite2D/Lines"]
+position = Vector2(714, 81)
+scale = Vector2(80, 2)
+texture = ExtResource("4_fi3va")
+
+[node name="2x4" type="Sprite2D" parent="Sprite2D/Lines"]
+position = Vector2(708, 121)
+scale = Vector2(30, 2)
+texture = ExtResource("4_fi3va")
+
+[node name="2x5" type="Sprite2D" parent="Sprite2D/Lines"]
+position = Vector2(736, 169)
+rotation = 1.57079
+scale = Vector2(50, 2)
+texture = ExtResource("4_fi3va")
+
+[node name="2x6" type="Sprite2D" parent="Sprite2D/Lines"]
+position = Vector2(792, 113)
+rotation = 1.57079
+scale = Vector2(35, 2)
+texture = ExtResource("4_fi3va")
+
+[node name="2x7" type="Sprite2D" parent="Sprite2D/Lines"]
+position = Vector2(847, 59)
+rotation = 1.57079
+scale = Vector2(20, 2)
+texture = ExtResource("4_fi3va")
+
+[node name="Stomanch" type="TextureProgressBar" parent="Sprite2D"]
+unique_name_in_owner = true
+offset_left = 319.0
+offset_top = 307.0
+offset_right = 426.0
+offset_bottom = 412.0
+value = 30.0
+fill_mode = 3
+texture_under = ExtResource("4_2h05x")
+texture_progress = ExtResource("6_uqupv")
+
+[node name="SpinerBlue" parent="Sprite2D" instance=ExtResource("6_cc6qd")]
+position = Vector2(847, 78)
+scale = Vector2(0.4, 0.4)
+
+[node name="SpinerGreen" parent="Sprite2D" instance=ExtResource("6_cc6qd")]
+position = Vector2(792, 146)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_5natd")
+
+[node name="SpinerRed" parent="Sprite2D" instance=ExtResource("6_cc6qd")]
+position = Vector2(736, 215)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_jgemg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+position = Vector2(370, 494)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_7ninw")
+
+[node name="Line2D" type="Line2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(370, 502)
+points = PackedVector2Array(0, 0, 0, 20, 0, 40, 0, 60)
+width = 48.76
+texture = ExtResource("9_ee7ml")
+texture_mode = 2
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(370, 502)
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../RigidBody2D")
+angular_limit_enabled = true
+angular_limit_lower = -0.0349066
+angular_limit_upper = 0.0349066
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(370, 519)
+node_a = NodePath("../RigidBody2D")
+node_b = NodePath("../RigidBody2D2")
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(370, 537)
+node_a = NodePath("../RigidBody2D2")
+node_b = NodePath("../RigidBodyEND")
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(370, 510)
+rotation = 1.57079
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/RigidBody2D"]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("4_fi3va")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
+shape = SubResource("RectangleShape2D_7ninw")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(370, 528)
+rotation = 1.57079
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/RigidBody2D2"]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("4_fi3va")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D2"]
+shape = SubResource("RectangleShape2D_7ninw")
+
+[node name="RigidBodyEND" type="RigidBody2D" parent="Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(370, 546)
+rotation = 1.57079
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/RigidBodyEND"]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("4_fi3va")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBodyEND"]
+shape = SubResource("RectangleShape2D_7ninw")
+
+[node name="FartHole" type="GPUParticles2D" parent="Sprite2D/RigidBodyEND"]
+unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_d5qx5")
-position = Vector2(370, 523)
+position = Vector2(12, 1.39077e-05)
+rotation = -1.57079
 amount = 256
-amount_ratio = 0.068
 process_material = SubResource("ParticleProcessMaterial_qhbqd")
 texture = ExtResource("2_ghh53")
+
+[node name="Dot" type="Sprite2D" parent="Sprite2D/RigidBodyEND"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(8, 0)
+rotation = -1.57079
+texture = ExtResource("11_n825l")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Sprite2D"]
+position = Vector2(370, 502)
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../RigidBodyEND")
+rest_length = 50.0
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D"]
+position = Vector2(499, 531.5)
+script = SubResource("GDScript_bhbwh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Marker2D"]
+texture = ExtResource("12_lf5c2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -83,14 +278,14 @@ script = ExtResource("2_a1xjw")
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 2
-offset_left = 511.0
-offset_top = 12.0
-offset_right = 620.0
-offset_bottom = 35.0
+offset_left = 515.0
+offset_top = 13.0
+offset_right = 624.0
+offset_bottom = 36.0
 text = "Carbs"
 horizontal_alignment = 1
 
-[node name="Cukiers" parent="CanvasLayer/Control" instance=ExtResource("3_8nmv7")]
+[node name="blue" parent="CanvasLayer/Control" instance=ExtResource("3_8nmv7")]
 unique_name_in_owner = true
 modulate = Color(0, 0, 1, 1)
 layout_mode = 0
@@ -101,55 +296,36 @@ offset_bottom = 296.0
 
 [node name="Label2" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 2
-offset_left = 558.0
-offset_top = 299.0
-offset_right = 667.0
-offset_bottom = 322.0
+offset_left = 569.0
+offset_top = 53.0
+offset_right = 678.0
+offset_bottom = 76.0
 text = "Fatass"
 horizontal_alignment = 1
 
-[node name="Fats" parent="CanvasLayer/Control" instance=ExtResource("3_8nmv7")]
+[node name="green" parent="CanvasLayer/Control" instance=ExtResource("3_8nmv7")]
 unique_name_in_owner = true
 modulate = Color(0, 1, 0, 1)
 layout_mode = 0
 offset_left = 600.0
-offset_top = 40.0
+offset_top = 80.0
 offset_right = 632.0
-offset_bottom = 296.0
+offset_bottom = 336.0
 
 [node name="Label3" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 2
-offset_left = 612.0
-offset_top = 13.0
-offset_right = 721.0
-offset_bottom = 36.0
+offset_left = 628.0
+offset_top = 93.0
+offset_right = 737.0
+offset_bottom = 116.0
 text = "Proteins"
 horizontal_alignment = 1
 
-[node name="Whites" parent="CanvasLayer/Control" instance=ExtResource("3_8nmv7")]
+[node name="red" parent="CanvasLayer/Control" instance=ExtResource("3_8nmv7")]
 unique_name_in_owner = true
 modulate = Color(1, 0, 0, 1)
 layout_mode = 0
 offset_left = 649.0
-offset_top = 40.0
+offset_top = 120.0
 offset_right = 681.0
-offset_bottom = 296.0
-
-[node name="Label4" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 417.0
-offset_top = 545.0
-offset_right = 778.0
-offset_bottom = 568.0
-text = "[Spacja] Wykonaj pierd"
-horizontal_alignment = 1
-
-[node name="PierdName" type="Label" parent="CanvasLayer/Control"]
-unique_name_in_owner = true
-modulate = Color(0.649351, 0.282974, 0, 1)
-layout_mode = 0
-offset_left = 515.0
-offset_top = 483.0
-offset_right = 894.0
-offset_bottom = 506.0
-horizontal_alignment = 1
+offset_bottom = 376.0

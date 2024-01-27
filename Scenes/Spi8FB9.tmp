@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7nx6ynk1ets0"]
+
+[ext_resource type="Texture2D" uid="uid://qh0u33nfif4w" path="res://Textures/Spiner_blue.png" id="1_s7ws7"]
+[ext_resource type="Script" path="res://Scenes/Spiner.gd" id="2_v13js"]
+
+[node name="Spinner" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 490.0
+offset_top = 387.0
+offset_right = 530.0
+offset_bottom = 427.0
+script = ExtResource("2_v13js")
+texture = ExtResource("1_s7ws7")
+
+[node name="Button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = -89.0
+offset_right = 85.5
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_s7ws7")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_up"]

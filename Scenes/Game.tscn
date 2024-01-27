@@ -106,19 +106,19 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
 layout_mode = 0
-offset_left = 37.0
-offset_top = 495.0
-offset_right = 77.0
-offset_bottom = 518.0
+offset_left = -330.0
+offset_top = 691.0
+offset_right = -290.0
+offset_bottom = 714.0
 text = "Siła"
 
 [node name="Strength" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 208.0
-offset_top = 497.0
-offset_right = 464.0
-offset_bottom = 513.0
+offset_left = -159.0
+offset_top = 693.0
+offset_right = 97.0
+offset_bottom = 709.0
 step = 0.01
 value = 50.0
 texture_under = SubResource("GradientTexture2D_qk08e")
@@ -126,19 +126,19 @@ texture_progress = SubResource("GradientTexture2D_kper6")
 
 [node name="Label2" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
 layout_mode = 0
-offset_left = 37.0
-offset_top = 548.0
-offset_right = 127.0
-offset_bottom = 571.0
+offset_left = -330.0
+offset_top = 744.0
+offset_right = -240.0
+offset_bottom = 767.0
 text = "Inteligencja"
 
 [node name="Intelligence" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 208.0
-offset_top = 554.0
-offset_right = 464.0
-offset_bottom = 570.0
+offset_left = -159.0
+offset_top = 750.0
+offset_right = 97.0
+offset_bottom = 766.0
 step = 0.01
 value = 50.0
 texture_under = SubResource("GradientTexture2D_qk08e")
@@ -167,18 +167,46 @@ texture_progress = SubResource("GradientTexture2D_llo4f")
 [node name="DodajStrength" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 484.0
-offset_top = 495.0
-offset_right = 524.0
-offset_bottom = 518.0
+offset_left = 117.0
+offset_top = 691.0
+offset_right = 157.0
+offset_bottom = 714.0
+
+[node name="Label5" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 527.0
+offset_right = 92.0
+offset_bottom = 550.0
+text = "Głód"
+
+[node name="Glood" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 223.0
+offset_top = 529.0
+offset_right = 479.0
+offset_bottom = 545.0
+step = 0.01
+value = 50.0
+texture_under = SubResource("GradientTexture2D_qk08e")
+texture_progress = SubResource("GradientTexture2D_llo4f")
+
+[node name="DodajGlood" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 499.0
+offset_top = 527.0
+offset_right = 539.0
+offset_bottom = 550.0
 
 [node name="DodajInteligencja" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 484.0
-offset_top = 551.0
-offset_right = 524.0
-offset_bottom = 574.0
+offset_left = 117.0
+offset_top = 747.0
+offset_right = 157.0
+offset_bottom = 770.0
 
 [node name="DodajWstyd" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
 unique_name_in_owner = true

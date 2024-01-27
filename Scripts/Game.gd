@@ -7,6 +7,8 @@ extends Control
 @onready var strength: Range = %Strength
 @onready var intelligence: Range = %Intelligence
 @onready var shame: Range = %Shame
+@onready var glood: TextureProgressBar = %Glood
+@onready var dodaj_glood: Label = %DodajGlood
 
 @onready var akcje_name: Label = %AkcjeName
 @onready var true_scena: Control = %TrueScena
@@ -16,7 +18,6 @@ var wyborydata: Dictionary
 
 var scena: Node
 var blokuje: bool
-var glood: float
 
 func _ready() -> void:
 	var t := TextDatabase.new()
@@ -149,3 +150,8 @@ class Pierd:
 	
 	func _to_string() -> String:
 		return "volume %f stink %f length %f gruz? %s" % [volume, stink, length, with_gruz]
+
+func _process(delta: float) -> void:
+	glood.value += 10 * delta # tymczasowe
+	if is_equal_approx(glood.ratio, 1.0):
+		get_tree().change_scene_to_file("res://Scenes/Gej2Mover.tscn")
