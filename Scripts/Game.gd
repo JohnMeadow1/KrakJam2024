@@ -61,6 +61,10 @@ func change_stat(stat: String, value: float):
 			intelligence.value += value
 			show_dodaj(%DodajInteligencja, value)
 		"shame":
+			if is_equal_approx(shame.ratio, 1.0):
+				get_tree().change_scene_to_file("res://Scenes/GejMover.tscn")
+				return
+			
 			shame.value += value
 			show_dodaj(%DodajWstyd, value)
 		"cukiers":
@@ -128,7 +132,7 @@ func show_dodaj(dodaj: Label, value: int):
 		return
 	
 	var tween := create_tween()
-	tween.tween_callback(dodaj.set_text.bind("")).set_delay(1)
+	tween.tween_callback(dodaj.set_text.bind("")).set_delay(2)
 
 class Pierd:
 	var volume: float
