@@ -95,6 +95,7 @@ script/source = "extends Sprite2D
 var previous_mouse_position := Vector2.ZERO
 var value:= 0.0
 var is_on := false
+var is_forced := false
 @onready var button = $Button
 signal toggled
 
@@ -104,10 +105,14 @@ func _ready():
 	set_physics_process(false)
 
 func _physics_process(delta):
-	var angle_difference = atan2(previous_mouse_position.cross(get_local_mouse_position()), previous_mouse_position.dot(get_local_mouse_position()) )
-	previous_mouse_position = get_local_mouse_position()
-	value += angle_difference
-	value = clamp(value, 0.0, PI)
+	if is_forced: 
+		value += 0.5 * delta
+		value = min(value, PI)
+	else:
+		var angle_difference = atan2(previous_mouse_position.cross(get_local_mouse_position()), previous_mouse_position.dot(get_local_mouse_position()) )
+		previous_mouse_position = get_local_mouse_position()
+		value += angle_difference
+		value = clamp(value, 0.0, PI)
 	button.rotation = value -PI*0.5
 	if value > PI*0.9:
 		is_on = true
@@ -115,19 +120,27 @@ func _physics_process(delta):
 		is_on = false
 
 
+
 func _on_button_down():
-	set_physics_process(true)
-	previous_mouse_position = get_local_mouse_position()
+	if not is_forced:
+		set_physics_process(true)
+		previous_mouse_position = get_local_mouse_position()
 
 
 func _on_button_up():
-	set_physics_process(false)
+	if not is_forced:
+		set_physics_process(false)
 
 func toggle():
 	value = PI
 	button.rotation = value -PI*0.5
 	is_on = true
+	is_forced = true
+	set_physics_process(true)
 	
+func unblock():
+	is_forced = false
+	set_physics_process(false)
 "
 
 [node name="RightSide" type="Node2D"]

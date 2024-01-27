@@ -33,6 +33,10 @@ func _physics_process(delta):
 	if pressure >= 0.99:
 		%Lever_base.toggle()
 		
+	if %Lever_base.is_forced and pressure < 0.75:
+		%Lever_base.unblock()
+	
+	
 	is_farting = false
 	if %Lever_base.is_on:
 		is_farting = true
