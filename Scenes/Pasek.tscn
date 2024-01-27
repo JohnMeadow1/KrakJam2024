@@ -6,9 +6,9 @@ script/source = "extends Control
 @onready var maxx: TextureProgressBar = $Max
 @onready var valu: TextureProgressBar = $Value
 
-var value:=5.0
+var value := 25.0
 
-var max: float=10.0:
+var max: float=50.0:
 	set(v):
 		maxx.value = v
 		max = v
@@ -63,7 +63,7 @@ script = SubResource("GDScript_0hvfj")
 
 [node name="Max" type="TextureProgressBar" parent="."]
 layout_mode = 2
-value = 50.0
+value = 10.0
 fill_mode = 3
 texture_under = SubResource("GradientTexture2D_mjbsj")
 texture_progress = SubResource("GradientTexture2D_rdi20")

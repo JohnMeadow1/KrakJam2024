@@ -8,6 +8,8 @@ extends Area2D
 
 @export var hunger_requirement: float
 @export var color: Color
+@export var burn_efficiency: float = 0.1
+@export var nutrition: float = 10.0
 
 var prev_can_eat: bool
 
@@ -29,7 +31,7 @@ func can_eat() -> bool:
 	return get_tree().current_scene.glood.value >= hunger_requirement
 
 func zjedz():
-	get_tree().current_scene.insides.add_food($Sprite2D.texture)
+	get_tree().current_scene.insides.add_food($Sprite2D.texture, burn_efficiency, nutrition, color)
 	queue_free()
 
 func test_mig():
