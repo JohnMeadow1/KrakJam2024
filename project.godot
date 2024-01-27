@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Prrrrrrrr"
+config/name="Fush ro da"
 run/main_scene="res://Scenes/NajważniejszaScenaWProjekcie.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://Textures/Guwno.png"

@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp2cgkpej81k2"]
+[gd_scene load_steps=14 format=3 uid="uid://dp2cgkpej81k2"]
 
-[ext_resource type="Texture2D" uid="uid://ct6x3jc1rvwcx" path="res://Textures/Gracz.png" id="1_3nj4v"]
 [ext_resource type="Script" path="res://Scripts/Gracz.gd" id="1_n5idq"]
+[ext_resource type="Texture2D" uid="uid://dy6x64dlthytg" path="res://Textures/Body/M-body.png" id="2_2cy7l"]
 [ext_resource type="AudioStream" uid="uid://cxuftfsln5xap" path="res://Audio/sfx_chomp.wav" id="3_y2p72"]
 [ext_resource type="Texture2D" uid="uid://deyn2yodwd2w5" path="res://Textures/UP-teeth.png" id="4_b8ec2"]
+[ext_resource type="Texture2D" uid="uid://cvqinr1l4xpco" path="res://Textures/Body/R-leg.png" id="5_3qpb2"]
 [ext_resource type="Texture2D" uid="uid://htmuy5cgt8i8" path="res://Textures/DOWN-teeth.png" id="5_8usqf"]
+[ext_resource type="Texture2D" uid="uid://c5q077uxnfgxa" path="res://Textures/Body/L-leg.png" id="6_swtco"]
+[ext_resource type="Texture2D" uid="uid://bt2k04qkrbvgs" path="res://Textures/Body/R-hand.png" id="7_57jry"]
+[ext_resource type="Texture2D" uid="uid://blraghqgve2pc" path="res://Textures/Body/L-hand.png" id="8_f2tnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ag6ja"]
 size = Vector2(64, 132)
@@ -15,7 +19,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Zembs/Sprite2D3:rotation")
+tracks/0/path = NodePath("Sprite2D/Zembs/Sprite2D3:rotation")
 tracks/0/interp = 3
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +31,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Zembs:visible")
+tracks/1/path = NodePath("Sprite2D/Zembs:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -61,7 +65,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Zembs/Sprite2D3:rotation")
+tracks/0/path = NodePath("Sprite2D/Zembs/Sprite2D3:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -73,7 +77,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Zembs:visible")
+tracks/1/path = NodePath("Sprite2D/Zembs:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -96,7 +100,36 @@ script = ExtResource("1_n5idq")
 shape = SubResource("RectangleShape2D_ag6ja")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3nj4v")
+texture = ExtResource("2_2cy7l")
+
+[node name="Zembs" type="Node2D" parent="Sprite2D"]
+visible = false
+position = Vector2(-12, -63)
+scale = Vector2(0.477662, 0.477662)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D/Zembs"]
+position = Vector2(0, -7.62939e-06)
+texture = ExtResource("4_b8ec2")
+offset = Vector2(46, 26)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D/Zembs"]
+position = Vector2(0, -7.62939e-06)
+texture = ExtResource("5_8usqf")
+offset = Vector2(46, 26)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("5_3qpb2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+show_behind_parent = true
+texture = ExtResource("6_swtco")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("7_57jry")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprite2D"]
+show_behind_parent = true
+texture = ExtResource("8_f2tnf")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -30.0
@@ -114,21 +147,6 @@ theme_override_constants/outline_size = 2
 text = "[Backspace]"
 
 [node name="Hapsfx" type="AudioStreamPlayer" parent="."]
-
-[node name="Zembs" type="Node2D" parent="."]
-visible = false
-position = Vector2(-16, -37)
-scale = Vector2(0.477662, 0.477662)
-
-[node name="Sprite2D3" type="Sprite2D" parent="Zembs"]
-position = Vector2(0, -7.62939e-06)
-texture = ExtResource("4_b8ec2")
-offset = Vector2(46, 26)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Zembs"]
-position = Vector2(0, -7.62939e-06)
-texture = ExtResource("5_8usqf")
-offset = Vector2(46, 26)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
