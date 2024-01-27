@@ -25,4 +25,4 @@ texture_normal = ExtResource("1_s7ws7")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_up"]
-[connection signal="child_entered_tree" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_child_entered_tree"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
