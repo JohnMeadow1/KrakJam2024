@@ -1,8 +1,8 @@
 extends Control
 
-@onready var cukiers: MarginContainer = %Cukiers
-@onready var fats: MarginContainer = %Fats
-@onready var whites: MarginContainer = %Whites
+@onready var cukiers: MarginContainer = %RightSide.get_node("%blue")
+@onready var fats: MarginContainer = %RightSide.get_node("%green")
+@onready var whites: MarginContainer = %RightSide.get_node("%red")
 
 @onready var strength: Range = %Strength
 @onready var intelligence: Range = %Intelligence
@@ -14,10 +14,12 @@ extends Control
 @onready var true_scena: Control = %TrueScena
 @onready var true_akcje: VBoxContainer = %TrueAkcje
 
+@onready var insides: Node2D = %RightSide
+
 var wyborydata: Dictionary
 
 var scena: Node
-var blokuje: bool
+var blokuje: float
 
 func _ready() -> void:
 	var t := TextDatabase.new()
@@ -152,6 +154,8 @@ class Pierd:
 		return "volume %f stink %f length %f gruz? %s" % [volume, stink, length, with_gruz]
 
 func _process(delta: float) -> void:
-	glood.value += 10 * delta # tymczasowe
+	if insides.acid == Color.BLACK:
+		glood.value += 10 * delta
+	
 	if is_equal_approx(glood.ratio, 1.0):
 		get_tree().change_scene_to_file("res://Scenes/Gej2Mover.tscn")

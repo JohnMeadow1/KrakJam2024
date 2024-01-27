@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b5cq4s68gfarp"]
+[gd_scene load_steps=30 format=3 uid="uid://c1argpbtu1qr"]
 
 [ext_resource type="Script" path="res://Scenes/RightSidetscn.gd" id="1_bbgw8"]
 [ext_resource type="Texture2D" uid="uid://cdnhcvhku5cd0" path="res://Textures/Right_side_background.png" id="1_mdlbc"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://x0qp7fgi87t5" path="res://Textures/2x2.png" id="4_fi3va"]
 [ext_resource type="Texture2D" uid="uid://chpa5u1rpilsx" path="res://Textures/Spiner_green.png" id="5_5natd"]
 [ext_resource type="Texture2D" uid="uid://cpb5qb5nesect" path="res://Textures/GasChamber.png" id="6_44pep"]
-[ext_resource type="PackedScene" uid="uid://b7nx6ynk1ets0" path="res://Scenes/Spiner.tscn" id="6_cc6qd"]
+[ext_resource type="PackedScene" path="res://Scenes/Spiner.tscn" id="6_cc6qd"]
 [ext_resource type="Texture2D" uid="uid://bcged5qgmqurf" path="res://Textures/Spiner_red.png" id="6_jgemg"]
 [ext_resource type="Texture2D" uid="uid://pn3328x0jtnv" path="res://Textures/stomacz_progress.png" id="6_uqupv"]
 [ext_resource type="Texture2D" uid="uid://dmyv54vsutga2" path="res://Textures/GasChamber_fill.png" id="7_e25bb"]
@@ -19,14 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://bsp0sqhlfjnts" path="res://Textures/3x3.png" id="12_lf5c2"]
 [ext_resource type="Texture2D" uid="uid://rfmtgs0uwp1r" path="res://Textures/Lever_base.png" id="16_3c2u4"]
 [ext_resource type="Texture2D" uid="uid://didg4uyird4g3" path="res://Textures/Lever-lever.png" id="17_8x1ri"]
-
-[sub_resource type="Gradient" id="Gradient_l6ims"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dnnht"]
-gradient = SubResource("Gradient_l6ims")
-width = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ninw"]
 
@@ -145,17 +137,6 @@ func unblock():
 
 [node name="RightSide" type="Node2D"]
 script = ExtResource("1_bbgw8")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1160.0
-offset_bottom = 650.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture1D_dnnht")
-metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.501961, 0.501961, 0.501961, 1)
@@ -383,15 +364,14 @@ rotation = -1.5708
 pivot_offset = Vector2(62.705, 66.145)
 texture_normal = ExtResource("17_8x1ri")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="."]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 3
 script = ExtResource("2_a1xjw")
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
+[node name="Label" type="Label" parent="Control"]
 layout_mode = 2
 offset_left = 515.0
 offset_top = 13.0
@@ -400,7 +380,7 @@ offset_bottom = 36.0
 text = "Carbs"
 horizontal_alignment = 1
 
-[node name="blue" parent="CanvasLayer/Control" instance=ExtResource("3_8nmv7")]
+[node name="blue" parent="Control" instance=ExtResource("3_8nmv7")]
 unique_name_in_owner = true
 modulate = Color(0, 0, 1, 1)
 layout_mode = 0
@@ -409,7 +389,7 @@ offset_top = 40.0
 offset_right = 581.0
 offset_bottom = 296.0
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control"]
+[node name="Label2" type="Label" parent="Control"]
 layout_mode = 2
 offset_left = 569.0
 offset_top = 53.0
@@ -418,7 +398,7 @@ offset_bottom = 76.0
 text = "Fatass"
 horizontal_alignment = 1
 
-[node name="green" parent="CanvasLayer/Control" instance=ExtResource("3_8nmv7")]
+[node name="green" parent="Control" instance=ExtResource("3_8nmv7")]
 unique_name_in_owner = true
 modulate = Color(0, 1, 0, 1)
 layout_mode = 0
@@ -427,7 +407,7 @@ offset_top = 80.0
 offset_right = 632.0
 offset_bottom = 336.0
 
-[node name="Label3" type="Label" parent="CanvasLayer/Control"]
+[node name="Label3" type="Label" parent="Control"]
 layout_mode = 2
 offset_left = 628.0
 offset_top = 93.0
@@ -436,7 +416,7 @@ offset_bottom = 116.0
 text = "Proteins"
 horizontal_alignment = 1
 
-[node name="red" parent="CanvasLayer/Control" instance=ExtResource("3_8nmv7")]
+[node name="red" parent="Control" instance=ExtResource("3_8nmv7")]
 unique_name_in_owner = true
 modulate = Color(1, 0, 0, 1)
 layout_mode = 0

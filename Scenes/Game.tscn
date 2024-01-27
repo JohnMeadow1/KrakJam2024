@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Gracz1.gd" id="1_4jxwk"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_h8bl0"]
 [ext_resource type="Script" path="res://Scripts/Gracz2.gd" id="2_sqn37"]
-[ext_resource type="PackedScene" uid="uid://cp8bqsusglr5k" path="res://Nodes/Pasek.tscn" id="3_oynmy"]
+[ext_resource type="PackedScene" uid="uid://c1argpbtu1qr" path="res://Scenes/RightSidetscn.tscn" id="5_hptdk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knxka"]
 bg_color = Color(0, 0, 0, 1)
@@ -263,63 +263,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_sqn37")
 
-[node name="Label" type="Label" parent="HBoxContainer/Control"]
-layout_mode = 2
-offset_left = 93.0
-offset_top = 108.0
-offset_right = 202.0
-offset_bottom = 131.0
-text = "Węglowodany"
-horizontal_alignment = 1
-
-[node name="Cukiers" parent="HBoxContainer/Control" instance=ExtResource("3_oynmy")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 131.0
-offset_top = 145.0
-offset_right = 163.0
-offset_bottom = 401.0
-
-[node name="Label2" type="Label" parent="HBoxContainer/Control"]
-layout_mode = 2
-offset_left = 232.0
-offset_top = 108.0
-offset_right = 341.0
-offset_bottom = 131.0
-text = "Tłuszcze"
-horizontal_alignment = 1
-
-[node name="Fats" parent="HBoxContainer/Control" instance=ExtResource("3_oynmy")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 270.0
-offset_top = 145.0
-offset_right = 302.0
-offset_bottom = 401.0
-
-[node name="Label3" type="Label" parent="HBoxContainer/Control"]
-layout_mode = 2
-offset_left = 371.0
-offset_top = 108.0
-offset_right = 480.0
-offset_bottom = 131.0
-text = "Białka"
-horizontal_alignment = 1
-
-[node name="Whites" parent="HBoxContainer/Control" instance=ExtResource("3_oynmy")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 407.0
-offset_top = 145.0
-offset_right = 439.0
-offset_bottom = 401.0
-
 [node name="Label4" type="Label" parent="HBoxContainer/Control"]
 layout_mode = 0
-offset_left = 112.0
-offset_top = 498.0
-offset_right = 473.0
-offset_bottom = 521.0
+offset_left = 440.0
+offset_top = -206.0
+offset_right = 801.0
+offset_bottom = -183.0
 text = "[Shift] Wykonaj pierd"
 horizontal_alignment = 1
 
@@ -327,8 +276,13 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 modulate = Color(0.649351, 0.282974, 0, 1)
 layout_mode = 0
-offset_left = 89.0
-offset_top = 588.0
-offset_right = 468.0
-offset_bottom = 611.0
+offset_left = 417.0
+offset_top = -116.0
+offset_right = 796.0
+offset_bottom = -93.0
 horizontal_alignment = 1
+
+[node name="RightSide" parent="HBoxContainer/Control" instance=ExtResource("5_hptdk")]
+unique_name_in_owner = true
+
+[editable path="HBoxContainer/Control/RightSide"]

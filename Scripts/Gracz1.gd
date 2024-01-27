@@ -1,9 +1,11 @@
 extends Control
 
 @onready var pierdlicznik: TextureProgressBar = %Pierdlicznik
+@onready var insides: Node2D = %RightSide
 
 func _process(delta: float) -> void:
-	pierdlicznik.value += 30 * delta # tymczasowe
+	if insides.is_farting:
+		pierdlicznik.value += 25 * delta
 	
 	if Input.is_action_just_pressed("blokuj_pierd"):
 		pierdlicznik.value -= 5
