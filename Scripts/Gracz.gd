@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity.x > 0:
 		pragnienieniemaszansz_2d.scale = Vector2(1, 1)
-	else:
+	elif velocity.x < 0:
 		pragnienieniemaszansz_2d.scale = Vector2(-1, 1)
 	
 	if praktik:
