@@ -7,6 +7,9 @@ script/source = "extends Area2D
 
 @export var ile_xp: int
 
+var active: float
+var timer: float
+
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == \"Gracz\":
 		body.praktik = self
@@ -16,7 +19,14 @@ func _on_body_exited(body: Node2D) -> void:
 		body.praktik = null
 
 func practice():
-	owner.expij(ile_xp)
+	active = 0.5
+
+func _process(delta: float) -> void:
+	if active > 0:
+		timer += delta
+		if timer >= 0.5:
+			owner.expij(ile_xp)
+			timer = 0
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5536"]
