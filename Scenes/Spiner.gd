@@ -6,6 +6,8 @@ var is_pressed := false
 var previous_mouse_position := Vector2.ZERO
 var value = 50.0
 
+var spinnersound = preload("res://Audio/sfx_spinner.wav")
+
 @onready var button = $Button
 signal updated
 
@@ -28,8 +30,21 @@ func _on_button_down():
 	set_physics_process(true)
 	previous_mouse_position = get_local_mouse_position()
 	is_pressed = true
+	$AudioStreamPlayer2D.stream = spinnersound
+	$AudioStreamPlayer2D.play()
+	
 
 
 func _on_button_up():
 	set_physics_process(false)
 	is_pressed = false
+	$AudioStreamPlayer2D.stream = spinnersound
+	$AudioStreamPlayer2D.stop()
+
+
+func _on_audio_stream_player_2d_finished():
+	pass # Replace with function body.
+
+
+func _on_audio_stream_player_2d_child_entered_tree(node):
+	pass # Replace with function body.
