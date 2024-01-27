@@ -157,5 +157,6 @@ func _process(delta: float) -> void:
 	if insides.is_hungry:
 		glood.value += 10 * delta
 	
+	if OS.has_feature("editor"): return
 	if is_equal_approx(glood.ratio, 1.0):
 		get_tree().change_scene_to_file("res://Scenes/Gej2Mover.tscn")
