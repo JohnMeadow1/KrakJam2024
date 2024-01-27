@@ -42,7 +42,7 @@ func add_food(tex:Texture2D, burn_efficiency:float, nutrition:float,  color:Colo
 
 func _physics_process(delta):
 	digest()
-	pressure = 0.9
+	#pressure = 0.9
 
 	
 	acid = Color(0,%green.value/100,0) + Color(%red.value/100,0,0) + Color(0,0,%blue.value/100)
@@ -67,10 +67,10 @@ func _physics_process(delta):
 	#%Gas.tint_progress = Color(0.741,0.79,0.371, pressure)
 	%Gas.scale.y = 0.3 + pressure * 0.5
 	%Gas.scale.x = 0.5 + pressure * 0.1
-	
+	var resitance = get_pierdlicznik()/100.0
+	pressure_output = pressure * (resitance)
 	if is_farting:
-		var resitance = get_pierdlicznik()/100.0
-		pressure_output = pressure * (resitance)
+
 		%Gas.tint_under = Color(1,1,1,0)
 		%Gas.tint_progress = Color(1,1,1,1)
 		%FartHole.emitting = true
@@ -90,15 +90,15 @@ func _physics_process(delta):
 		%Gas.tint_progress = Color(1,1,1,0)
 		%FartHole.emitting=false
 
-	#prints(pressure_output*4, sin(clamp(pressure_output*4 - PI/4.0,0, PI)))
-	var pressure_sin = pressure_output*1.1*PI
+	pressure_output *= float(is_farting)
+	var pressure_sin = pressure_output*1.1
 	
-	$AudioStreamPlayer1.volume_db = linear_to_db(cubicPulse(0.2,0.2,pressure_output*1.1))
-	$AudioStreamPlayer2.volume_db = linear_to_db(cubicPulse(0.3,0.25,pressure_output*1.1))
-	$AudioStreamPlayer3.volume_db = linear_to_db(cubicPulse(0.5,0.3,pressure_output*1.1))
-	$AudioStreamPlayer4.volume_db = linear_to_db(cubicPulse(0.7,0.3,pressure_output*1.1))
-	$AudioStreamPlayer5.volume_db = linear_to_db(cubicPulse(0.9,0.2,pressure_output*1.1))
-	#prints(pressure_output*1.1, sin(pressure_sin))
+	$AudioStreamPlayer1.volume_db = linear_to_db(cubicPulse(0.2,0.2,pressure_sin))
+	$AudioStreamPlayer2.volume_db = linear_to_db(cubicPulse(0.3,0.25,pressure_sin))
+	$AudioStreamPlayer3.volume_db = linear_to_db(cubicPulse(0.5,0.3,pressure_sin))
+	$AudioStreamPlayer4.volume_db = linear_to_db(cubicPulse(0.7,0.25,pressure_sin))
+	$AudioStreamPlayer5.volume_db = linear_to_db(cubicPulse(0.9,0.2,pressure_sin))
+
 	
 func cubicPulse( c:float, w:float, x:float )->float:
 	x = abs(x - c)

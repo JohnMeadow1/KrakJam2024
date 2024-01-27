@@ -22,12 +22,13 @@ func fart(pressure_output:float, is_emiting:bool):
 	var v2 = Vector2.DOWN.rotated(randf_range(-0.8,0.8))
 	fart_hole.process_material.direction = Vector3(v2.x,v2.y,0)
 	
-	fart_force = -v2.rotated(PI*0.5) * pressure_output*300*pragnienieniemaszansz_2d.scale.x
+	fart_force = -v2.rotated(PI*0.5) * pressure_output*3*pragnienieniemaszansz_2d.scale.x
 
 
 func _physics_process(delta: float) -> void:
 	var move := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = move * 300 + fart_force
+	velocity = move * 300 
+	position += fart_force
 	move_and_slide()
 	
 	if not chapczy:

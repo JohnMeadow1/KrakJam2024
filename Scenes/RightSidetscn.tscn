@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b5cq4s68gfarp"]
+[gd_scene load_steps=44 format=3 uid="uid://b5cq4s68gfarp"]
 
 [ext_resource type="Script" path="res://Scenes/RightSidetscn.gd" id="1_bbgw8"]
 [ext_resource type="Script" path="res://Scripts/Gracz2.gd" id="2_a1xjw"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://bsp0sqhlfjnts" path="res://Textures/3x3.png" id="12_lf5c2"]
 [ext_resource type="Texture2D" uid="uid://rfmtgs0uwp1r" path="res://Textures/Lever_base.png" id="16_3c2u4"]
 [ext_resource type="Texture2D" uid="uid://didg4uyird4g3" path="res://Textures/Lever-lever.png" id="17_8x1ri"]
+[ext_resource type="AudioStream" uid="uid://4oe0dtr3njpl" path="res://Audio/sfx_spinner.wav" id="20_bjqls"]
+[ext_resource type="AudioStream" uid="uid://celv4760aw2fw" path="res://Audio/Heavy Switch (1).wav" id="21_nbelh"]
 [ext_resource type="AudioStream" uid="uid://dq0hkvab11mfa" path="res://Audio/sfx_pierd_1.wav" id="22_xlupa"]
 [ext_resource type="AudioStream" uid="uid://ct37acem3xsu1" path="res://Audio/sfx_pierd_2.wav" id="23_romdj"]
 [ext_resource type="AudioStream" uid="uid://dbdaxxms21030" path="res://Audio/sfx_pierd_3.wav" id="24_0t4nx"]
@@ -105,6 +107,8 @@ var is_forced := false
 @onready var button = $Button
 signal toggled
 
+@onready var squeek = $AudioStreamPlayer
+
 func _ready():
 	#button.pivot_offset = texture.get_size() * 0.5
 	#button.position = -button.pivot_offset
@@ -118,34 +122,47 @@ func _physics_process(delta):
 	else:
 		var angle_difference = atan2(previous_mouse_position.cross(get_local_mouse_position()), previous_mouse_position.dot(get_local_mouse_position()) )
 		previous_mouse_position = get_local_mouse_position()
+		var prev := value
 		target_value += angle_difference
 		target_value = clamp(target_value,0.0, PI)
 		if target_value > value:
 			value = min(value+0.2,target_value)
 		else:
 			value = max(value-0.2,target_value)
-			
+		squeek.pitch_scale = 0.8+value*0.2
+
+	
 		value = clamp(value, 0.0, PI)
+		if is_equal_approx(value, prev):
+			squeek.stream_paused = true
+		else:
+			squeek.stream_paused = false
+			
 	button.rotation = value -PI*0.5
-	if value > PI*0.9:
-		is_on = true
-	elif value < PI*0.1:
-		is_on = false
-
-
+	if value > PI * 0.9:
+		if not is_on:
+			is_on = true
+			if not $Klick.playing:
+				$Klick.play()
+	elif value < PI * 0.1:
+		if is_on:
+			is_on = false
+			if not $Klick.playing:
+				$Klick.play()
 
 func _on_button_down():
 	if not is_forced:
+		squeek.play()
 		set_physics_process(true)
 		previous_mouse_position = get_local_mouse_position()
 
-
 func _on_button_up():
 	if not is_forced:
+		squeek.stop()
 		set_physics_process(false)
 
 func toggle():
-
+	$Klick.play()
 	is_on = true
 	is_forced = true
 	set_physics_process(true)
@@ -441,6 +458,13 @@ offset_bottom = 76.0
 rotation = -1.5708
 pivot_offset = Vector2(62.705, 66.145)
 texture_normal = ExtResource("17_8x1ri")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sprite2D/Lever_base"]
+stream = ExtResource("20_bjqls")
+
+[node name="Klick" type="AudioStreamPlayer" parent="Sprite2D/Lever_base"]
+stream = ExtResource("21_nbelh")
+volume_db = -10.0
 
 [node name="Control" type="Control" parent="."]
 z_index = 10
