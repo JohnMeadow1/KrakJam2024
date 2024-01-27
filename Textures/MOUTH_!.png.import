@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3jlvpmlf774f"
-path="res://.godot/imported/ScenaRandka.png-6c477a292aa184941360a02b58e6fb52.ctex"
+uid="uid://dr22x80qmgxtj"
+path="res://.godot/imported/MOUTH_!.png-39f2e1f74930df37fed5e270747f3f4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/ScenaRandka.png"
-dest_files=["res://.godot/imported/ScenaRandka.png-6c477a292aa184941360a02b58e6fb52.ctex"]
+source_file="res://Textures/MOUTH_!.png"
+dest_files=["res://.godot/imported/MOUTH_!.png-39f2e1f74930df37fed5e270747f3f4d.ctex"]
 
 [params]
 

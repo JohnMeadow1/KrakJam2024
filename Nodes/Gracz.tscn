@@ -1,10 +1,93 @@
-[gd_scene load_steps=4 format=3 uid="uid://dp2cgkpej81k2"]
+[gd_scene load_steps=10 format=3 uid="uid://dp2cgkpej81k2"]
 
 [ext_resource type="Texture2D" uid="uid://ct6x3jc1rvwcx" path="res://Textures/Gracz.png" id="1_3nj4v"]
 [ext_resource type="Script" path="res://Scripts/Gracz.gd" id="1_n5idq"]
+[ext_resource type="AudioStream" uid="uid://cxuftfsln5xap" path="res://Audio/sfx_chomp.wav" id="3_y2p72"]
+[ext_resource type="Texture2D" uid="uid://deyn2yodwd2w5" path="res://Textures/UP-teeth.png" id="4_b8ec2"]
+[ext_resource type="Texture2D" uid="uid://htmuy5cgt8i8" path="res://Textures/DOWN-teeth.png" id="5_8usqf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ag6ja"]
 size = Vector2(64, 132)
+
+[sub_resource type="Animation" id="Animation_6e5r2"]
+resource_name = "Chaparka"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Zembs/Sprite2D3:rotation")
+tracks/0/interp = 3
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5),
+"update": 0,
+"values": [0.0, -0.523598, 0.0, -0.523598, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Zembs:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hapsfx")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_y2p72")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_y2p72")
+}],
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_clf6e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Zembs/Sprite2D3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Zembs:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rq38"]
+_data = {
+"Chaparka": SubResource("Animation_6e5r2"),
+"RESET": SubResource("Animation_clf6e")
+}
 
 [node name="Gracz" type="CharacterBody2D"]
 script = ExtResource("1_n5idq")
@@ -23,10 +106,31 @@ offset_bottom = 91.0
 text = "[Spacja]"
 
 [node name="Label2" type="Label" parent="."]
-offset_left = -49.0
-offset_top = -36.0
-offset_right = 43.0
-offset_bottom = -13.0
+offset_left = 43.0
+offset_top = -23.0
+offset_right = 135.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 text = "[Backspace]"
+
+[node name="Hapsfx" type="AudioStreamPlayer" parent="."]
+
+[node name="Zembs" type="Node2D" parent="."]
+visible = false
+position = Vector2(-16, -37)
+scale = Vector2(0.477662, 0.477662)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Zembs"]
+position = Vector2(0, -7.62939e-06)
+texture = ExtResource("4_b8ec2")
+offset = Vector2(46, 26)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Zembs"]
+position = Vector2(0, -7.62939e-06)
+texture = ExtResource("5_8usqf")
+offset = Vector2(46, 26)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4rq38")
+}
