@@ -7,3 +7,6 @@ func wybrany_akcja(akcja: String):
 
 func execute_pierd(pierd):
 	pass
+
+func pierd():
+	pass

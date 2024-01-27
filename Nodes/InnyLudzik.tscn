@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dffw84alb15sh"]
+
+[ext_resource type="Texture2D" uid="uid://brlvq402jvasv" path="res://Textures/Niegracz.png" id="1_px5me"]
+
+[sub_resource type="GDScript" id="GDScript_5jikc"]
+script/source = "extends Node2D
+
+func _physics_process(delta: float) -> void:
+	position = position + Vector2.from_angle(randf() * TAU) * 200 * delta
+	position = Vector2(clampf(position.x, 0, 554), clampf(position.y, 0, 628))
+"
+
+[node name="InnyLudzik" type="Node2D" groups=["inneludzikki"]]
+script = SubResource("GDScript_5jikc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_px5me")

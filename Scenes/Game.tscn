@@ -196,7 +196,7 @@ offset_right = 275.0
 offset_bottom = 479.0
 text = "[Enter] Wstrzymuj pierd"
 
-[node name="Wstrzymator" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
+[node name="Pierdlicznik" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 91.0
@@ -292,7 +292,7 @@ offset_left = 112.0
 offset_top = 498.0
 offset_right = 473.0
 offset_bottom = 521.0
-text = "[Spacja] Wykonaj pierd"
+text = "[Shift] Wykonaj pierd"
 horizontal_alignment = 1
 
 [node name="PierdName" type="Label" parent="HBoxContainer/Control"]

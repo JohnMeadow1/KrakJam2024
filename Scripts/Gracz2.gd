@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 		paski[selected_pasek].increase()
 	elif Input.is_action_pressed("less_pasek"):
 		paski[selected_pasek].decrease()
-	elif Input.is_action_just_pressed("akcja"):
+	elif Input.is_action_just_pressed("pierd"):
 		owner.execute_pierd()
 
 func update_wybrany_pasek():
