@@ -3,7 +3,7 @@ extends Node2D
 var pressure := 1.0
 var pressure_output := 0.0
 var is_farting := false
-var is_hungy := true
+var is_hungry := true
 
 
 var blue_ratio:= 0.0
@@ -20,9 +20,10 @@ var red_ratio:= 0.0
 @onready var line_2d = $Sprite2D/Line2D
 
 var acid := Color.BLACK
-var digest_array = [$Sprite2D/Stomanch2/Food]
+var digest_array = []
 
 func _ready():
+	digest_array.append($Sprite2D/Stomanch2/Food)
 	spiner_blue.updated.connect(update_blue)
 	spiner_green.updated.connect(update_green)
 	spiner_red.updated.connect(update_red)
