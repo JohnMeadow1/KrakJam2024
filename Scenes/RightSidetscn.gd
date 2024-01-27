@@ -1,6 +1,6 @@
 extends Node2D
 
-var pressure := 1.0
+var pressure := 0.0
 var pressure_output := 0.0
 var is_farting := false
 var is_hungry := true
