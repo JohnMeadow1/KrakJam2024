@@ -26,5 +26,5 @@ func _physics_process(delta: float) -> void:
 		praktik.practice()
 
 	if is_jadalne and Input.is_action_just_pressed("żryj"):
-		$Hapsfx.play()
+		$AnimationPlayer.play(&"Chaparka")
 		jadalne.zjedz()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3jlvpmlf774f"
-path="res://.godot/imported/ScenaRandka.png-6c477a292aa184941360a02b58e6fb52.ctex"
+uid="uid://dahynqkrnbbm4"
+path="res://.godot/imported/stolik.png-6e1c10f594de7cbb7df5d0e675cfd0b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/ScenaRandka.png"
-dest_files=["res://.godot/imported/ScenaRandka.png-6c477a292aa184941360a02b58e6fb52.ctex"]
+source_file="res://Textures/stolik.png"
+dest_files=["res://.godot/imported/stolik.png-6e1c10f594de7cbb7df5d0e675cfd0b6.ctex"]
 
 [params]
 

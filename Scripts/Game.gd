@@ -154,7 +154,7 @@ class Pierd:
 		return "volume %f stink %f length %f gruz? %s" % [volume, stink, length, with_gruz]
 
 func _process(delta: float) -> void:
-	if insides.acid == Color.BLACK:
+	if insides.is_hungry:
 		glood.value += 10 * delta
 	
 	if is_equal_approx(glood.ratio, 1.0):
