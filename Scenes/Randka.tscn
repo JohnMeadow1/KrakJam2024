@@ -46,6 +46,12 @@ var dialogi = [
 	\"A nic. Tak sobie głośno myślę\",
 	\"...\",
 	
+	\"Jak tam życie?\",
+	\"Znakomicie.\",
+	
+	\"Lubisz dzieci?\",
+	\"Tak, ale się długo gotują.\",
+	
 	#\"CLIP_CHILDREN_ONLY\",
 	#\"get\",
 	
@@ -130,10 +136,12 @@ func next_dialog():
 		rozmownik.hide()
 		dialogownik = null
 	)
-func pierd():
-	var dist :float = gracz.global_position.distance_to(graczka.global_position)
+func pierd(f):
+	if not is_instance_valid(graczka):
+		return
 	
-	game.change_stat(\"shame\", maxi(100 - dist, 0))
+	var dist :float= gracz.global_position.distance_to(graczka.global_position)
+	apply_wstyd_dist(dist, f)
 "
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7yuor"]

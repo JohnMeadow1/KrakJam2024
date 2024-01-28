@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmw2aixk22wai"]
+[gd_scene load_steps=5 format=3 uid="uid://dmw2aixk22wai"]
 
 [ext_resource type="PackedScene" uid="uid://quyjjvbaegum" path="res://Nodes/Jadalne.tscn" id="1_utye1"]
 [ext_resource type="Texture2D" uid="uid://d4mj4koyd4i1y" path="res://Textures/dog0.png" id="2_tsuv7"]
@@ -27,16 +27,22 @@ func _physics_process(delta: float) -> void:
 	direction = direction.rotated(randf_range(-0.3, 0.3))
 	position += direction * 100 * delta
 	
-	#var texize: Vector2 = $Sprite2D.texture.get_size() * 0.5
-	#texize= Vector2.ZERO
-	#position = Vector2(clampf(position.x, texize.x, 554 - texize.x), clampf(position.y, texize.y, 628 - texize.y))
+	var texize: Vector2 = $Sprite2D.texture.get_size() * 0.5
+	position = Vector2(clampf(position.x, texize.x, 554 - texize.x), clampf(position.y, texize.y, 628 - texize.y))
 "
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiwmg"]
+resource_local_to_scene = true
+size = Vector2(64, 45)
 
 [node name="Meat" instance=ExtResource("1_utye1")]
 script = SubResource("GDScript_ol22s")
 hunger_requirement = 40.0
 color = Color(0.825856, 0.157659, 0.658807, 1)
-extra_offset = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_eiwmg")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_tsuv7")
+offset = Vector2(0, 0)

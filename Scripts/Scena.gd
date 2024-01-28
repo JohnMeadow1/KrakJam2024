@@ -9,7 +9,7 @@ func wybrany_akcja(akcja: String):
 func execute_pierd(pierd):
 	pass
 
-func pierd():
+func pierd(f):
 	pass
 
 func goto_kibel(body: Node2D) -> void:
@@ -26,3 +26,7 @@ func return_from_kibel(body: Node2D) -> void:
 
 func backfromkibelmoveplayer():
 	pass
+
+func apply_wstyd_dist(dist, f):
+	var wst = f * 10000.0 / sqrt(dist) * get_physics_process_delta_time()
+	game.change_stat("shame", wst)

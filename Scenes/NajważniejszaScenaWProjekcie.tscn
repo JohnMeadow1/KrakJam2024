@@ -43,7 +43,7 @@ offset_left = 21.0
 offset_top = 78.0
 offset_right = 280.0
 offset_bottom = 101.0
-text = "[Enter] / [X] = Powstrzymuj pierda"
+text = "[Enter] / [B] = Powstrzymuj pierda"
 
 [node name="Label9" type="Label" parent="ColorRect"]
 layout_mode = 0
@@ -51,7 +51,7 @@ offset_left = 22.0
 offset_top = 105.0
 offset_right = 281.0
 offset_bottom = 128.0
-text = "[Backspace] / [B] = Zjedz"
+text = "[Backspace] / [X] = Zjedz"
 
 [node name="Label6" type="Label" parent="ColorRect"]
 layout_mode = 0
