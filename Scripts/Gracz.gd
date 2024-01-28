@@ -16,7 +16,8 @@ var chapczy: bool
 
 var fart_force:= Vector2.ZERO
 var hit_the_deck := false
-func _ready():
+
+func _enter_tree() -> void:
 	Globals.player = self
 
 func fart(pressure_output:float, is_emiting:bool):
