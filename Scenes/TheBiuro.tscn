@@ -127,7 +127,7 @@ position = Vector2(436, 577)
 [node name="Meat2" parent="." instance=ExtResource("7_b1g5p")]
 position = Vector2(55, 502)
 
-[node name="Dude" type="Area2D" parent="."]
+[node name="Dude" type="Area2D" parent="." groups=["inneludzikki"]]
 position = Vector2(47, 445)
 script = ExtResource("8_bm47l")
 hunger_requirement = 95.0
@@ -164,7 +164,7 @@ texture = ExtResource("11_0it1k")
 [node name="Prawareka" type="Sprite2D" parent="Dude/Sprite2D2"]
 texture = ExtResource("13_10djq")
 
-[node name="Dude2" type="Area2D" parent="."]
+[node name="Dude2" type="Area2D" parent="." groups=["inneludzikki"]]
 position = Vector2(523, 468)
 scale = Vector2(-1, 1)
 script = ExtResource("8_bm47l")
@@ -202,7 +202,7 @@ texture = ExtResource("12_hauuw")
 [node name="Prawareka" type="Sprite2D" parent="Dude2/Sprite2D2"]
 texture = ExtResource("16_7qvcv")
 
-[node name="Dude3" type="Area2D" parent="."]
+[node name="Dude3" type="Area2D" parent="." groups=["inneludzikki"]]
 position = Vector2(105, 392)
 scale = Vector2(0.855, 0.855)
 script = ExtResource("8_bm47l")
@@ -240,7 +240,7 @@ texture = ExtResource("12_hauuw")
 [node name="Prawareka" type="Sprite2D" parent="Dude3/Sprite2D2"]
 texture = ExtResource("13_10djq")
 
-[node name="Dude4" type="Area2D" parent="."]
+[node name="Dude4" type="Area2D" parent="." groups=["inneludzikki"]]
 position = Vector2(421, 392)
 scale = Vector2(-0.855, 0.855)
 script = ExtResource("8_bm47l")
