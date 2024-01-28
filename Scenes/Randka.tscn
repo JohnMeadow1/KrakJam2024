@@ -428,8 +428,7 @@ texture = ExtResource("16_str4e")
 [node name="Meat" parent="." instance=ExtResource("7_8pplv")]
 y_sort_enabled = true
 position = Vector2(285, 570)
-color = Color(1, 0, 0, 1)
-is_colliding = true
+script = null
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-11, 552)

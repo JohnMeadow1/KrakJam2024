@@ -36,6 +36,11 @@ func fart(pressure_output:float, is_emiting:bool):
 	
 		fart_force = -v2.rotated(PI*0.5) * pressure_output*3*pragnienieniemaszansz_2d.scale.x
 
+func reset():
+	%Sprite2D.rotation = 0.0
+	fart_force = Vector2.ZERO
+	velocity = Vector2.ZERO
+	
 
 func _physics_process(delta: float) -> void:
 	if hit_the_deck:
