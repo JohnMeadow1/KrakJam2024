@@ -123,14 +123,14 @@ func next_dialog():
 	dialogownik.tween_callback(next_dialog_lambda)
 	dialogownik.tween_callback(rozmownik.reset_size)
 	dialogownik.tween_callback($Gadinx.play)
-	dialogownik.tween_property(rozmownik, \"global_position\", $Gracz.global_position+Vector2(0,-360), 0.0)
+	dialogownik.tween_property(rozmownik, \"global_position:x\", $Gracz.global_position.x, 0.0)
 	dialogownik.tween_property(rozmownik, \"visible_ratio\", 1.0, 2.0)
 	dialogownik.tween_interval(1.0)
 	dialogownik.tween_callback(next_dialog_lambda)
 	dialogownik.tween_callback(rozmownik.reset_size)
 	dialogownik.tween_callback($Gadinx.play)
 	if has_node(\"Graczka\"):
-		dialogownik.tween_property(rozmownik, \"global_position\", $Graczka.global_position+Vector2(0,-360), 0.0)
+		dialogownik.tween_property(rozmownik, \"global_position:x\", $Graczka.global_position.x, 0.0)
 	dialogownik.tween_property(rozmownik, \"visible_ratio\", 1.0, 2.0)
 	dialogownik.tween_interval(1.0)
 	dialogownik.tween_callback(func():

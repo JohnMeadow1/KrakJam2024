@@ -225,7 +225,7 @@ offset_left = 147.0
 offset_top = 104.0
 offset_right = 331.0
 offset_bottom = 127.0
-text = "[Enter] Zwieracze"
+text = "[Shift] Zwieracze"
 horizontal_alignment = 2
 
 [node name="Pierdlicznik" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
