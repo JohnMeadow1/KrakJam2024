@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/mus_silownia.ogg-5fd80161e75e0d03be1ccecf3446
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

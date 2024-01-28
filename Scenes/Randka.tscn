@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d1thio0e3qwea"]
+[gd_scene load_steps=27 format=3 uid="uid://d1thio0e3qwea"]
 
 [ext_resource type="Texture2D" uid="uid://sdnf7w4t74gj" path="res://Textures/randkaBG.png" id="1_8dxca"]
 [ext_resource type="PackedScene" uid="uid://quyjjvbaegum" path="res://Nodes/Jadalne.tscn" id="2_vghul"]
@@ -14,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://cv8v256nqnxm7" path="res://Textures/R-legF.png" id="12_ia48d"]
 [ext_resource type="Texture2D" uid="uid://blraghqgve2pc" path="res://Textures/Body/L-hand.png" id="13_fxs2a"]
 [ext_resource type="Texture2D" uid="uid://dlb7t6r7h1o2c" path="res://Textures/L-legF.png" id="13_w2cf1"]
+[ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="16_jvxkv"]
 [ext_resource type="Texture2D" uid="uid://bt2k04qkrbvgs" path="res://Textures/Body/R-hand.png" id="16_str4e"]
+[ext_resource type="AudioStream" uid="uid://crrgr2m4mnfs8" path="res://Audio/mus_randka.ogg" id="17_bde4n"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
@@ -419,6 +421,9 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_14jk3")
 text = "Dymek rozmowy"
+
+[node name="DjOgg" parent="." instance=ExtResource("16_jvxkv")]
+stream = ExtResource("17_bde4n")
 
 [connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
 [connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]
