@@ -178,9 +178,12 @@ func gotokibel():
 	KIBEL = load("res://Scenes/Kibel.tscn").instantiate()
 	KIBEL.game = self
 	true_scena.add_child(KIBEL)
+	AudioServer.set_bus_effect_enabled(0, 0, true)
+
 
 func backfromthekibel():
 	true_scena.add_child(scena)
 	scena.backfromkibelmoveplayer()
+	AudioServer.set_bus_effect_enabled(0, 0, false)
 	
 	KIBEL.queue_free()
