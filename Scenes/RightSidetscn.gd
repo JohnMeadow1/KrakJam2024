@@ -11,7 +11,7 @@ var pressure_loss_to_farting = 0.0025
 var blue_ratio:= 0.0
 var green_ratio:= 0.0
 var red_ratio:= 0.0
-var nutrition:=0.0
+var nutrition:= 0.0
 
 @onready var spiner_blue = $Sprite2D/SpinerBlue
 @onready var spiner_green = $Sprite2D/SpinerGreen
@@ -29,7 +29,6 @@ const FOOD = preload("res://Scenes/food.tscn")
 
 
 func _ready():
-	food_array.append($Sprite2D/Stomanch2/Food)
 	spiner_blue.updated.connect(update_blue)
 	spiner_green.updated.connect(update_green)
 	spiner_red.updated.connect(update_red)
@@ -107,8 +106,6 @@ func cubicPulse( c:float, w:float, x:float )->float:
 	x /= w;
 	return 1.0 - x*x*(3.0-2.0*x)
 
-
-	
 func digest():
 	is_hungry = true
 	for i in range(food_array.size(),0, -1):
@@ -118,15 +115,17 @@ func digest():
 			food_array[i-1].queue_free()
 			food_array.remove_at(i-1)
 	if nutrition>0:
-		pressure += nutrition * pressure_gain_per_nutriotion
 		is_hungry = false
+		pressure += nutrition * pressure_gain_per_nutriotion
+		
 	if is_hungry:
 		if not growl.playing:
 			growl.play()
 	else:
 		if growl.playing:
 			growl.stop()
-			
+
+
 func update_blue():
 	%blue.max = spiner_blue.value
 	
