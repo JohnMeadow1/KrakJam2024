@@ -3,6 +3,7 @@ extends Node
 var player:CharacterBody2D
 
 func _ready() -> void:
+	return
 	if OS.has_feature("editor"):
 		get_window().mode = Window.MODE_WINDOWED
 		get_window().size /= 2
