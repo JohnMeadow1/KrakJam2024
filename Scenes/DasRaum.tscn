@@ -275,6 +275,7 @@ texture = ExtResource("7_65gvp")
 [node name="Plant" parent="." instance=ExtResource("5_uv5bf")]
 position = Vector2(520, 622)
 sprite = ExtResource("8_f43i4")
+hunger_requirement = 60.0
 color = Color(1, 1, 0, 1)
 is_colliding = true
 
