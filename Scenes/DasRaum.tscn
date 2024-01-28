@@ -131,7 +131,7 @@ position = Vector2(383, 578)
 position = Vector2(328, 348)
 sprite = ExtResource("4_8k8nk")
 color = Color(0.5, 0.5, 0.5, 1)
-burn_efficiency = 0.01
+burn_efficiency = 0.001
 nutrition = 1.0
 
 [node name="CollisionShape2D" parent="Biurwa" index="0"]

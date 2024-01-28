@@ -16,6 +16,7 @@ extends Area2D
 	set(s):
 		extra_offset = s
 		$Sprite2D.offset.y = s.y
+		$Sprite2D.offset.x = s.x
 
 var prev_can_eat: bool
 
