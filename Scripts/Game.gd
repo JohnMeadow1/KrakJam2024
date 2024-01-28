@@ -185,6 +185,7 @@ func backfromthekibel():
 	scena.blokgotokibel = true
 	true_scena.add_child(scena)
 	scena.backfromkibelmoveplayer()
+	scena.gracz.reset()
 	AudioServer.set_bus_effect_enabled(0, 0, false)
 	
 	KIBEL.queue_free()
