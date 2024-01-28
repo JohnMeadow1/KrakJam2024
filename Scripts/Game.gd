@@ -28,7 +28,7 @@ func _ready() -> void:
 	t.load_from_path("res://Resources/Wybory.cfg")
 	wyborydata = t.get_dictionary()
 	
-	load_scena("ScenaFridge")
+	load_scena("DasRaum")
 
 func load_scena(scenaname: String):
 	if scenaname in zrobione_sceny:

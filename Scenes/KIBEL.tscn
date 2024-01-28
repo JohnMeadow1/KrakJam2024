@@ -73,14 +73,12 @@ position = Vector2(72, 540)
 sprite = ExtResource("5_itptt")
 hunger_requirement = 90.0
 color = Color(0.192614, 0.696871, 0.284563, 1)
-extra_offset = Vector2(0, 0)
 
 [node name="TuNieSrać" parent="." instance=ExtResource("4_jaiko")]
 position = Vector2(200, 414)
 sprite = ExtResource("6_nijch")
 hunger_requirement = 80.0
 color = Color(0.825856, 0.114209, 0.263453, 1)
-extra_offset = Vector2(0, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(373, 373)

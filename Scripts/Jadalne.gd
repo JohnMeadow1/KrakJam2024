@@ -23,6 +23,10 @@ func _ready():
 	if not is_colliding:
 		if has_node("StaticBody2D"):
 			$StaticBody2D.queue_free()
+	
+	if not has_node("Sprite2D"):
+		return
+	
 	$Sprite2D.offset.y = -$Sprite2D.get_rect().size.y*0.5 + extra_offset.y
 	$Sprite2D.offset.x = extra_offset.x
 
@@ -51,6 +55,9 @@ func test_mig():
 	if can_eat() != prev_can_eat:
 		prev_can_eat = can_eat()
 	else:
+		return
+	
+	if not has_node("Sprite2D"):
 		return
 	
 	if prev_can_eat:
