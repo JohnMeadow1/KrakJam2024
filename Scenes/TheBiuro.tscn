@@ -297,7 +297,7 @@ color = Color(1, 1, 0, 1)
 position = Vector2(311, 483)
 scale = Vector2(0.68, 0.68)
 sprite = ExtResource("13_hfxmb")
-color = Color(0, 100, 0, 1)
+color = Color(0, 1, 0, 1)
 extra_offset = Vector2(0, -187.055)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

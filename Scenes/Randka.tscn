@@ -130,6 +130,10 @@ func next_dialog():
 		rozmownik.hide()
 		dialogownik = null
 	)
+func pierd():
+	var dist :float= gracz.global_position.distance_to(graczka.global_position)
+	
+	game.change_stat(\"shame\", maxi(100 - dist, 0))
 "
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7yuor"]
