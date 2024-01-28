@@ -79,7 +79,6 @@ position = Vector2(79, 482)
 sprite = ExtResource("5_itptt")
 hunger_requirement = 90.0
 color = Color(0.192614, 0.696871, 0.284563, 1)
-burn_efficiency = 0.001
 is_colliding = true
 extra_offset = Vector2(-30, 0)
 
@@ -89,7 +88,6 @@ scale = Vector2(-1, 1)
 sprite = ExtResource("5_itptt")
 hunger_requirement = 90.0
 color = Color(0.192614, 0.696871, 0.284563, 1)
-burn_efficiency = 0.001
 is_colliding = true
 extra_offset = Vector2(-30, 0)
 
@@ -98,7 +96,6 @@ position = Vector2(215, 397)
 sprite = ExtResource("6_nijch")
 hunger_requirement = 80.0
 color = Color(0.184527, 0.372351, 1, 1)
-burn_efficiency = 0.001
 is_colliding = true
 extra_offset = Vector2(0, -30)
 
@@ -116,7 +113,6 @@ position = Vector2(150, 401)
 scale = Vector2(0.625, 0.625)
 sprite = ExtResource("7_fs207")
 color = Color(1, 1, 0, 1)
-burn_efficiency = 0.001
 nutrition = 5.0
 
 [node name="698390Poster" type="Sprite2D" parent="."]
@@ -135,7 +131,6 @@ texture = ExtResource("9_jk5d1")
 position = Vector2(481, 436)
 sprite = ExtResource("11_w7dom")
 color = Color(0.360784, 0.282353, 0.180392, 1)
-burn_efficiency = 0.001
 nutrition = 20.0
 is_colliding = true
 extra_offset = Vector2(0, 66)

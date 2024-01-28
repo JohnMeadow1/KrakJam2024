@@ -39,10 +39,10 @@ func fart(pressure_output:float, is_emiting:bool):
 
 func _physics_process(delta: float) -> void:
 	if hit_the_deck:
-		rotation = lerp(rotation, PI*0.5*pragnienieniemaszansz_2d.scale.x, 0.25)
+		%Sprite2D.rotation = lerp(%Sprite2D.rotation, PI*0.5*pragnienieniemaszansz_2d.scale.x, 0.25)
 		pragnienieniemaszansz_2d.position = lerp(pragnienieniemaszansz_2d.position,Vector2(0,0),0.25)
 	else:
-		rotation = lerp(rotation, 0.0, 0.25)
+		%Sprite2D.rotation = lerp(%Sprite2D.rotation, 0.0, 0.25)
 		pragnienieniemaszansz_2d.position = lerp(pragnienieniemaszansz_2d.position,Vector2(0,-75),0.25)
 		var move := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		velocity = move * 300 

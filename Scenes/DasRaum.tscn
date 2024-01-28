@@ -144,7 +144,6 @@ position = Vector2(383, 578)
 position = Vector2(328, 348)
 sprite = ExtResource("4_8k8nk")
 color = Color(0.5, 0.5, 0.5, 1)
-burn_efficiency = 0.001
 nutrition = 1.0
 
 [node name="CollisionShape2D" parent="Biurwa" index="0"]
@@ -174,7 +173,6 @@ label_settings = SubResource("LabelSettings_8rrd5")
 [node name="28Styczeń" parent="." instance=ExtResource("5_uv5bf")]
 position = Vector2(399, 348)
 color = Color(0.5, 0.5, 0.5, 1)
-burn_efficiency = 0.001
 nutrition = 1.0
 
 [node name="CollisionShape2D" parent="28Styczeń" index="0"]
@@ -206,7 +204,6 @@ label_settings = SubResource("LabelSettings_pgt4v")
 position = Vector2(143, 528)
 sprite = ExtResource("4_7q5hm")
 color = Color(0.5, 0.5, 0.5, 1)
-burn_efficiency = 0.001
 nutrition = 1.0
 
 [node name="CollisionShape2D" parent="JakŻyć" index="0"]
@@ -246,7 +243,6 @@ position = Vector2(187, 481)
 sprite = ExtResource("5_3x7tu")
 hunger_requirement = 20.0
 color = Color(0.41, 0.348568, 0.2911, 1)
-burn_efficiency = 0.001
 extra_offset = Vector2(0, 20)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Bed"]
@@ -278,7 +274,6 @@ position = Vector2(520, 622)
 sprite = ExtResource("8_f43i4")
 hunger_requirement = 60.0
 color = Color(1, 1, 0, 1)
-burn_efficiency = 0.001
 nutrition = 5.0
 is_colliding = true
 
@@ -287,7 +282,6 @@ position = Vector2(491, 492)
 sprite = ExtResource("9_r8wfn")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
-burn_efficiency = 0.001
 is_colliding = true
 
 [node name="Graczka" type="Area2D" parent="."]
@@ -295,7 +289,6 @@ position = Vector2(466, 447)
 script = ExtResource("13_dmdga")
 hunger_requirement = 95.0
 color = Color(1, 0, 0, 1)
-burn_efficiency = 0.001
 nutrition = 50.0
 is_colliding = true
 metadata/_edit_group_ = true

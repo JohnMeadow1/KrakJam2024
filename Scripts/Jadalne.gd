@@ -9,7 +9,7 @@ extends Area2D
 
 @export var hunger_requirement: float
 @export var color: Color
-@export var burn_efficiency: float = 0.1
+var burn_efficiency: float = 0.01
 @export var nutrition: float = 10.0
 @export var is_colliding: bool = false
 @export var extra_offset: Vector2:

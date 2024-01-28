@@ -316,6 +316,7 @@ position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_ag6ja")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -75)
 texture = ExtResource("2_4vegi")
 
