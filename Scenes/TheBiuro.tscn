@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://xnb144yip5bj"]
+[gd_scene load_steps=25 format=3 uid="uid://xnb144yip5bj"]
 
 [ext_resource type="Texture2D" uid="uid://b3f0opgjr5b74" path="res://Textures/TheOffice.png" id="1_4l7v1"]
 [ext_resource type="Texture2D" uid="uid://cbhl780q582uu" path="res://Textures/OfficeTable.png" id="2_tftd6"]
@@ -23,7 +23,10 @@
 script/source = "extends \"res://Scripts/Scena.gd\"
 
 func _ready() -> void:
-	game.set_wybory(\"office\")
+	game.set_wybory(\"\")
+
+func backfromkibelmoveplayer():
+	$Gracz.position.x += 50
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka7wv"]
@@ -32,8 +35,14 @@ size = Vector2(34, 31)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rvigf"]
 b = Vector2(554, 0)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gcrfl"]
+b = Vector2(0, 448)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_44l4k"]
 b = Vector2(0, 628)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7bdc"]
+size = Vector2(4, 138)
 
 [node name="Biuroffice" type="Node2D"]
 y_sort_enabled = true
@@ -228,14 +237,12 @@ texture = ExtResource("13_10djq")
 position = Vector2(520, 622)
 sprite = ExtResource("18_x7hb4")
 color = Color(1, 1, 0, 1)
-extra_offset = Vector2(0, 0)
 
 [node name="Jadalne3" parent="." instance=ExtResource("5_uv5bf")]
 position = Vector2(447, 366)
 scale = Vector2(0.625, 0.625)
 sprite = ExtResource("18_x7hb4")
 color = Color(1, 1, 0, 1)
-extra_offset = Vector2(0, 0)
 
 [node name="Jadalne2" parent="." instance=ExtResource("5_uv5bf")]
 position = Vector2(311, 483)
@@ -261,7 +268,7 @@ rotation = 2.31949
 shape = SubResource("SegmentShape2D_rvigf")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("SegmentShape2D_44l4k")
+shape = SubResource("SegmentShape2D_gcrfl")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(554, 0)
@@ -271,6 +278,19 @@ shape = SubResource("SegmentShape2D_44l4k")
 position = Vector2(0, 628)
 shape = SubResource("SegmentShape2D_rvigf")
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-8, 539)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_a7bdc")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 567.0
+offset_right = 55.0
+offset_bottom = 590.0
+text = "<WC"
+
 [connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
 [connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]
 [connection signal="body_entered" from="Graczka4" to="Graczka4" method="_on_body_entered"]
@@ -279,3 +299,4 @@ shape = SubResource("SegmentShape2D_rvigf")
 [connection signal="body_exited" from="Graczka2" to="Graczka2" method="_on_body_exited"]
 [connection signal="body_entered" from="Graczka3" to="Graczka3" method="_on_body_entered"]
 [connection signal="body_exited" from="Graczka3" to="Graczka3" method="_on_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="goto_kibel"]

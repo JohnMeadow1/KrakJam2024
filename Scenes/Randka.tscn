@@ -1,8 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://d1thio0e3qwea"]
+[gd_scene load_steps=25 format=3 uid="uid://d1thio0e3qwea"]
 
-[ext_resource type="Texture2D" uid="uid://sdnf7w4t74gj" path="res://Textures/randkaBG.png" id="1_8dxca"]
+[ext_resource type="Texture2D" uid="uid://vo15adax6o0a" path="res://Textures/randkaBG.png" id="1_8dxca"]
 [ext_resource type="PackedScene" uid="uid://quyjjvbaegum" path="res://Nodes/Jadalne.tscn" id="2_vghul"]
-[ext_resource type="Texture2D" uid="uid://rrc463ydr1of" path="res://Textures/stolik.png" id="3_71ajr"]
+[ext_resource type="Texture2D" uid="uid://dahynqkrnbbm4" path="res://Textures/stolik.png" id="3_71ajr"]
 [ext_resource type="Texture2D" uid="uid://bk5m35did0wtq" path="res://Textures/chair.png" id="4_03ufa"]
 [ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="4_y7kfw"]
 [ext_resource type="Texture2D" uid="uid://npyo7qkikgpv" path="res://Textures/apple.png" id="5_2wc5h"]
@@ -19,24 +19,114 @@
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
 
+@onready var rozmownik: Label = %Label
+
+var dialogi = [
+	\"Ładna dzisiaj pogoda.\",
+	\"Prawda.\",
+	
+	\"Prawie tak ładna jak ty ( ͡° ͜ʖ ͡°)\",
+	\"(◍•ᴗ•◍)\",
+	
+	\"Dobre jedzenie tu mają co nie?\",
+	\"Może być.\",
+]
+
+var dialogownik: Tween
+var current_linia: int
+
 func _ready() -> void:
 	game.set_wybory(\"\")
+	rozmownik.hide()
 
 func execute_pierd(pierd):
 	var wstyd = pierd.volume * pierd.length * 0.01
 	wstyd += pierd.stink
 	wstyd += int(pierd.with_gruz) * 300
 	game.change_stat(\"shame\", wstyd)
+
+func backfromkibelmoveplayer():
+	$Gracz.position.x += 50
+
+func next_dialog():
+	if dialogownik:
+		return
+	
+	if current_linia >= dialogi.size():
+		game.zrobione_sceny.append(\"Randka\")
+		game.load_scena(\"DasRaum\")
+	
+	rozmownik.show()
+	var next_dialog_lambda = func():
+		rozmownik.visible_ratio = 0
+		rozmownik.text = dialogi[current_linia]
+		current_linia += 1
+	
+	dialogownik = create_tween()
+	dialogownik.tween_callback(next_dialog_lambda)
+	dialogownik.tween_callback(rozmownik.reset_size)
+	dialogownik.tween_property(rozmownik, \"position:x\", 150.0, 0.0)
+	dialogownik.tween_property(rozmownik, \"visible_ratio\", 1.0, 2.0)
+	dialogownik.tween_interval(1.0)
+	dialogownik.tween_callback(next_dialog_lambda)
+	dialogownik.tween_callback(rozmownik.reset_size)
+	dialogownik.tween_property(rozmownik, \"position:x\", 300.0, 0.0)
+	dialogownik.tween_property(rozmownik, \"visible_ratio\", 1.0, 2.0)
+	dialogownik.tween_interval(1.0)
+	dialogownik.tween_callback(func():
+		rozmownik.hide()
+		dialogownik = null
+	)
 "
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7yuor"]
 b = Vector2(554, 0)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pf87x"]
+b = Vector2(0, 456)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hf3l3"]
 b = Vector2(0, 628)
 
+[sub_resource type="GDScript" id="GDScript_cdenl"]
+script/source = "extends \"res://Scripts/Jadalne.gd\"
+
+func _on_body_entered(body: Node2D) -> void:
+	super(body)
+	
+	if body.name == \"Gracz\":
+		body.praktik = self
+
+func _on_body_exited(body: Node2D) -> void:
+	super(body)
+	
+	if body.name == \"Gracz\":
+		body.praktik = null
+
+func practice():
+	owner.next_dialog()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_563d5"]
+resource_local_to_scene = true
+size = Vector2(143, 45)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ag6ja"]
 size = Vector2(34, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x33je"]
+size = Vector2(4, 138)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14jk3"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="Randka" type="Node2D"]
 y_sort_enabled = true
@@ -64,7 +154,7 @@ rotation = 2.31949
 shape = SubResource("SegmentShape2D_7yuor")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("SegmentShape2D_hf3l3")
+shape = SubResource("SegmentShape2D_pf87x")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(554, 0)
@@ -81,16 +171,22 @@ sprite = ExtResource("5_hawg2")
 hunger_requirement = 50.0
 color = Color(0.221694, 0.866588, 0.182532, 1)
 is_colliding = true
-extra_offset = Vector2(0, 0)
 
 [node name="Stół" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(275, 497)
-sprite = ExtResource("3_71ajr")
+script = SubResource("GDScript_cdenl")
 hunger_requirement = 80.0
 color = Color(0.182532, 0.21478, 0.866588, 1)
 burn_efficiency = 0.01
 is_colliding = true
-extra_offset = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="Stół" index="0"]
+position = Vector2(3.5, -38)
+shape = SubResource("RectangleShape2D_563d5")
+
+[node name="Sprite2D" parent="Stół" index="1"]
+texture = ExtResource("3_71ajr")
+offset = Vector2(0, -60)
 
 [node name="NormalneJedzenie" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(238, 503)
@@ -115,27 +211,26 @@ hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
 is_colliding = true
-extra_offset = Vector2(0, 0)
 
 [node name="Krzesło2" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(149, 497)
-scale = Vector2(-1, 1)
+rotation = -3.14159
+scale = Vector2(1, -1)
 sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
 is_colliding = true
-extra_offset = Vector2(0, 0)
 
 [node name="Stół3" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(251, 613)
-scale = Vector2(-1.125, 1.125)
+rotation = -3.14159
+scale = Vector2(1.125, -1.125)
 sprite = ExtResource("3_71ajr")
 hunger_requirement = 80.0
 color = Color(0.182532, 0.21478, 0.866588, 1)
 burn_efficiency = 0.01
 is_colliding = true
-extra_offset = Vector2(0, 0)
 
 [node name="Krzesło5" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(326, 614)
@@ -145,17 +240,16 @@ hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
 is_colliding = true
-extra_offset = Vector2(0, 0)
 
 [node name="Krzesło6" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(175, 613)
-scale = Vector2(-1.125, 1.125)
+rotation = -3.14159
+scale = Vector2(1.125, -1.125)
 sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
 is_colliding = true
-extra_offset = Vector2(0, 0)
 
 [node name="Stół2" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(325, 397)
@@ -165,7 +259,6 @@ hunger_requirement = 80.0
 color = Color(0.182532, 0.21478, 0.866588, 1)
 burn_efficiency = 0.01
 is_colliding = true
-extra_offset = Vector2(0, 0)
 
 [node name="NormalneJedzenie3" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(324, 408)
@@ -193,7 +286,6 @@ hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
 is_colliding = true
-extra_offset = Vector2(0, 0)
 
 [node name="Krzesło4" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(390, 377)
@@ -203,16 +295,15 @@ hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
 is_colliding = true
-extra_offset = Vector2(0, 0)
 
 [node name="🌼2" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(515, 614)
-scale = Vector2(-1.155, 1.155)
+rotation = -3.14159
+scale = Vector2(1.155, -1.155)
 sprite = ExtResource("5_hawg2")
 hunger_requirement = 50.0
 color = Color(0.221694, 0.866588, 0.182532, 1)
 is_colliding = true
-extra_offset = Vector2(0, 0)
 
 [node name="Gracz" parent="." instance=ExtResource("4_y7kfw")]
 position = Vector2(207, 480)
@@ -263,5 +354,48 @@ position = Vector2(285, 570)
 color = Color(1, 0, 0, 1)
 is_colliding = true
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-11, 552)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_x33je")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 567.0
+offset_right = 55.0
+offset_bottom = 590.0
+text = "<WC"
+
+[node name="CenterContainer" type="Control" parent="."]
+z_index = 99
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 245.0
+offset_right = 545.0
+offset_bottom = 285.0
+
+[node name="Label" type="Label" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 30.5
+offset_top = -19.5
+offset_right = 176.5
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_14jk3")
+text = "Dymek rozmowy"
+
 [connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
 [connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="goto_kibel"]
+
+[editable path="Stół"]

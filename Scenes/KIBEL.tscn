@@ -1,0 +1,92 @@
+[gd_scene load_steps=14 format=3 uid="uid://cmvequg2u8155"]
+
+[ext_resource type="Script" path="res://Scripts/Scena.gd" id="1_35ged"]
+[ext_resource type="Texture2D" uid="uid://bx8vmhik7veyn" path="res://Textures/WCbg.png" id="1_r85u1"]
+[ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="2_h3yjr"]
+[ext_resource type="PackedScene" uid="uid://quyjjvbaegum" path="res://Nodes/Jadalne.tscn" id="4_jaiko"]
+[ext_resource type="Texture2D" uid="uid://bexafpct1s48c" path="res://Textures/tron.png" id="5_itptt"]
+[ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="5_n431o"]
+[ext_resource type="Texture2D" uid="uid://cbkj8vv561dlh" path="res://Textures/umywalka.png" id="6_nijch"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_20uoc"]
+b = Vector2(554, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_565hg"]
+b = Vector2(0, 628)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lfojf"]
+a = Vector2(0, 2)
+b = Vector2(142, -108)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3idjp"]
+a = Vector2(0, 2)
+b = Vector2(176, 2)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3pjoa"]
+a = Vector2(410, 106)
+b = Vector2(294, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn5hp"]
+size = Vector2(124, 8)
+
+[node name="KIBEL" type="Node2D"]
+script = ExtResource("1_35ged")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.29, 0.29, 0.29, 1)
+texture = ExtResource("1_r85u1")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_20uoc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_565hg")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 496)
+shape = SubResource("SegmentShape2D_lfojf")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(142, 386)
+shape = SubResource("SegmentShape2D_3idjp")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(142, 386)
+shape = SubResource("SegmentShape2D_3pjoa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(554, 0)
+shape = SubResource("SegmentShape2D_565hg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 628)
+shape = SubResource("SegmentShape2D_20uoc")
+
+[node name="DjOgg" parent="." instance=ExtResource("5_n431o")]
+
+[node name="TronKrólaSrania" parent="." instance=ExtResource("4_jaiko")]
+position = Vector2(72, 540)
+sprite = ExtResource("5_itptt")
+hunger_requirement = 90.0
+color = Color(0.192614, 0.696871, 0.284563, 1)
+
+[node name="TuNieSrać" parent="." instance=ExtResource("4_jaiko")]
+position = Vector2(200, 414)
+sprite = ExtResource("6_nijch")
+hunger_requirement = 80.0
+color = Color(0.825856, 0.114209, 0.263453, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(373, 373)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_qn5hp")
+
+[node name="Gracz" parent="." instance=ExtResource("2_h3yjr")]
+position = Vector2(363, 546)
+
+[connection signal="body_entered" from="Area2D" to="." method="return_from_kibel"]

@@ -20,6 +20,7 @@ var wyborydata: Dictionary
 var zrobione_sceny: Array[String]
 
 var scena: Node
+var KIBEL: Node
 var blokuje: float
 
 func _ready() -> void:
@@ -27,7 +28,7 @@ func _ready() -> void:
 	t.load_from_path("res://Resources/Wybory.cfg")
 	wyborydata = t.get_dictionary()
 	
-	load_scena("ScenaFridge")
+	load_scena("DasRaum")
 
 func load_scena(scenaname: String):
 	if scenaname in zrobione_sceny:
@@ -170,3 +171,19 @@ func _physics_process(delta: float) -> void:
 	if OS.has_feature("editor"): return
 	if is_equal_approx(glood.ratio, 1.0):
 		get_tree().change_scene_to_file("res://Scenes/Gej2Mover.tscn")
+
+func gotokibel():
+	true_scena.remove_child(scena)
+	
+	KIBEL = load("res://Scenes/Kibel.tscn").instantiate()
+	KIBEL.game = self
+	true_scena.add_child(KIBEL)
+	AudioServer.set_bus_effect_enabled(0, 0, true)
+
+
+func backfromthekibel():
+	true_scena.add_child(scena)
+	scena.backfromkibelmoveplayer()
+	AudioServer.set_bus_effect_enabled(0, 0, false)
+	
+	KIBEL.queue_free()

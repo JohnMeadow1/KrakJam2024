@@ -367,6 +367,7 @@ process_material = SubResource("ParticleProcessMaterial_kch05")
 texture = ExtResource("9_ash8m")
 
 [node name="Label" type="Label" parent="."]
+z_index = 99
 offset_left = -30.0
 offset_top = 9.0
 offset_right = 31.0
@@ -374,6 +375,7 @@ offset_bottom = 32.0
 text = "[Spacja]"
 
 [node name="Label2" type="Label" parent="."]
+z_index = 99
 offset_left = -41.0
 offset_top = -180.0
 offset_right = 51.0
