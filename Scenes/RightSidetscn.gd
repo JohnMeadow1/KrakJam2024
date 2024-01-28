@@ -26,6 +26,7 @@ var acid := Color.BLACK
 var food_array = []
 const FOOD = preload("res://Scenes/food.tscn")
 @onready var growl = $Growl
+@onready var thoughts = $Thoughts
 
 
 func _ready():
@@ -33,12 +34,44 @@ func _ready():
 	spiner_green.updated.connect(update_green)
 	spiner_red.updated.connect(update_red)
 	
-func add_food(tex:Texture2D, burn_efficiency:float, nutrition:float,  color:Color):
+func add_food(tex:Texture2D, burn_efficiency:float, nutrition:float,  color:Color, name:String):
 	var new_food = FOOD.instantiate()
 	new_food.initialize(tex, burn_efficiency, nutrition,  color )
 	new_food.position = %Marker2D.position
 	%Stomanch2.add_child(new_food)
 	food_array.append(new_food)
+	
+	var tekst:String = ""
+	match name:
+		"Biurwa":
+			tekst = "whats this?"
+		"TronKrólaSrania","TronKrólaSrania2","TuNieSrać":
+			tekst = "WHY, JUST WHY?"
+		"Plant","🌼2","🌼":
+			tekst = "Mmmm, fiber!"
+		"JakŻyć":
+			tekst = "what?"
+		"Bed":
+			tekst = "HOW ???"
+		"Stół","Stół2","Stół3":
+			tekst = "NO!, God NO!"
+		"Meat","Meat2":
+			tekst = "Hey cutie"
+		"Graczka":
+			tekst = "'Przez żołądek do serca?', Thats what she said."
+		"Dude":
+			tekst = ["FRESH MEAT!","Looks like meats back on the menu boys!"].pick_random()
+		"Apple","Apple2":
+			tekst = "Friuts :)"
+		"Plate","Plate2":
+			tekst = "That is nice"
+		_ when name.begins_with("Krzesło"):
+			tekst = "_-_"
+			
+	if tekst.length()>0:
+		thoughts.think(tekst)
+	
+	
 
 func _physics_process(delta):
 	digest()
@@ -64,6 +97,7 @@ func _physics_process(delta):
 	is_farting = false
 	if %Lever_base.is_on:
 		is_farting = true
+		
 
 	%Gas.tint_over = Color(0.741,0.79,0.371, pressure)
 	#%Gas.tint_progress = Color(0.741,0.79,0.371, pressure)

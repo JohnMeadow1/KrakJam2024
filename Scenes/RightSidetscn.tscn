@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b5cq4s68gfarp"]
+[gd_scene load_steps=50 format=3 uid="uid://b5cq4s68gfarp"]
 
 [ext_resource type="Script" path="res://Scenes/RightSidetscn.gd" id="1_bbgw8"]
 [ext_resource type="Script" path="res://Scripts/Gracz2.gd" id="2_a1xjw"]
@@ -27,7 +27,9 @@
 [ext_resource type="AudioStream" uid="uid://dbdaxxms21030" path="res://Audio/sfx_pierd_3.wav" id="24_0t4nx"]
 [ext_resource type="AudioStream" uid="uid://nge0c3mrcoud" path="res://Audio/sfx_pierd_4.wav" id="25_imth4"]
 [ext_resource type="AudioStream" uid="uid://dx4wq52rqnhdu" path="res://Audio/sfx_pierd_5.wav" id="26_50tmv"]
+[ext_resource type="Script" path="res://Scenes/Thoughts.gd" id="29_owv6p"]
 [ext_resource type="AudioStream" uid="uid://dokv7o3b05ks3" path="res://Audio/intestinal-gurgling-3.wav" id="29_ro5rd"]
+[ext_resource type="Texture2D" uid="uid://wiwpotup7glv" path="res://Textures/dymki.png" id="30_5vdc4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwwu2"]
 size = Vector2(200, 20)
@@ -146,6 +148,7 @@ func _physics_process(delta):
 			if not $Klick.playing:
 				$Klick.pitch_scale = randf_range(0.8,1.2)
 				$Klick.play()
+				get_parent().get_parent().thoughts.think(\"here we go\")
 	elif value < PI * 0.1:
 		if is_on:
 			is_on = false
@@ -153,6 +156,8 @@ func _physics_process(delta):
 			if not $Klick.playing:
 				$Klick.pitch_scale = randf_range(0.8,1.2)
 				$Klick.play()
+				
+				
 
 func _on_button_down():
 	if not is_forced:
@@ -172,11 +177,13 @@ func toggle():
 	is_forced = true
 	%Label4.text = \"Forced open!\"
 	set_physics_process(true)
+	get_parent().get_parent().thoughts.think(\"Can't ... hold ... it.\")
 	
 func unblock():
 	%Label4.text = \"Ready\"
 	is_forced = false
 	set_physics_process(false)
+	get_parent().get_parent().thoughts.think(\"that's better\")
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_8oua0"]
@@ -187,6 +194,71 @@ font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_7t5sk"]
 font_size = 23
+
+[sub_resource type="LabelSettings" id="LabelSettings_kru8y"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_xo1r0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Thoughts/Dymki:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Thoughts/Dymki:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nba67"]
+resource_name = "think"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Thoughts/Dymki:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Thoughts/Dymki:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fde4p"]
+_data = {
+"RESET": SubResource("Animation_xo1r0"),
+"think": SubResource("Animation_nba67")
+}
 
 [node name="RightSide" type="Node2D"]
 script = ExtResource("1_bbgw8")
@@ -584,6 +656,35 @@ autoplay = true
 stream = ExtResource("29_ro5rd")
 volume_db = -15.0
 autoplay = true
+
+[node name="Thoughts" type="Node2D" parent="."]
+script = ExtResource("29_owv6p")
+
+[node name="Dymki" type="Sprite2D" parent="Thoughts"]
+visible = false
+position = Vector2(51, 196)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("30_5vdc4")
+centered = false
+flip_h = true
+
+[node name="Label" type="Label" parent="Thoughts/Dymki"]
+offset_left = 21.0
+offset_top = 15.0
+offset_right = 300.0
+offset_bottom = 145.0
+scale = Vector2(0.3, 0.3)
+text = "How did he eat that?"
+label_settings = SubResource("LabelSettings_kru8y")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Thoughts"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_fde4p")
+}
 
 [connection signal="button_down" from="Sprite2D/Lever_base/Button" to="Sprite2D/Lever_base" method="_on_button_down"]
 [connection signal="button_up" from="Sprite2D/Lever_base/Button" to="Sprite2D/Lever_base" method="_on_button_up"]

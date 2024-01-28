@@ -102,7 +102,7 @@ shape = SubResource("RectangleShape2D_qn5hp")
 [node name="Gracz" parent="." instance=ExtResource("2_h3yjr")]
 position = Vector2(363, 546)
 
-[node name="Jadalne3" parent="." instance=ExtResource("4_jaiko")]
+[node name="Plant" parent="." instance=ExtResource("4_jaiko")]
 position = Vector2(150, 401)
 scale = Vector2(0.625, 0.625)
 sprite = ExtResource("7_fs207")
