@@ -23,6 +23,8 @@ var scena: Node
 var KIBEL: Node
 var blokuje: float
 
+var wstydtimeout: float
+
 func _ready() -> void:
 	var t := TextDatabase.new()
 	t.load_from_path("res://Resources/Wybory.cfg")
@@ -75,6 +77,9 @@ func change_stat(stat: String, value: float):
 			if is_equal_approx(shame.ratio, 1.0):
 				get_tree().change_scene_to_file("res://Scenes/GejMover.tscn")
 				return
+			
+			if value > 0:
+				wstydtimeout = 1
 			
 			shame.value += value
 			show_dodaj(%DodajWstyd, value)
@@ -159,7 +164,9 @@ class Pierd:
 		return "volume %f stink %f length %f gruz? %s" % [volume, stink, length, with_gruz]
 
 func _physics_process(delta: float) -> void:
-	change_stat("shame", -1 * delta)
+	wstydtimeout -= delta
+	if wstydtimeout <= 0:
+		change_stat("shame", -10 * delta)
 	
 	if insides.is_hungry:
 		glood.value += 2 * delta
