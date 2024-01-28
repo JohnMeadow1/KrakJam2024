@@ -122,11 +122,13 @@ polygon = PackedVector2Array(-241.25, 15, -120, -85, 133.75, -82, 245, 13)
 
 [node name="Meat" parent="." instance=ExtResource("7_b1g5p")]
 position = Vector2(436, 577)
-script = null
+hunger_requirement = 10.0
+color = Color(1, 0, 0.188499, 1)
 
 [node name="Meat2" parent="." instance=ExtResource("7_b1g5p")]
 position = Vector2(55, 502)
-script = null
+hunger_requirement = 10.0
+color = Color(1, 0, 0.145123, 1)
 
 [node name="Dude" type="Area2D" parent="." groups=["inneludzikki"]]
 position = Vector2(47, 445)

@@ -40,7 +40,7 @@ func reset():
 	%Sprite2D.rotation = 0.0
 	fart_force = Vector2.ZERO
 	velocity = Vector2.ZERO
-	
+	fart_hole.amount_ratio = 0
 
 func _physics_process(delta: float) -> void:
 	if hit_the_deck:

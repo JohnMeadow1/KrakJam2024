@@ -28,5 +28,6 @@ func backfromkibelmoveplayer():
 	pass
 
 func apply_wstyd_dist(dist, f):
-	var wst = f * 10000.0 / sqrt(dist) * get_physics_process_delta_time()
-	game.change_stat("shame", wst)
+	var wst = f * 10000.0 / sqrt(dist)
+	wst = minf(wst, 25)
+	game.change_stat("shame", wst * get_physics_process_delta_time())
