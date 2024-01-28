@@ -131,7 +131,7 @@ func next_dialog():
 		dialogownik = null
 	)
 func pierd():
-	var dist :float= gracz.global_position.distance_to(graczka.global_position)
+	var dist :float = gracz.global_position.distance_to(graczka.global_position)
 	
 	game.change_stat(\"shame\", maxi(100 - dist, 0))
 "
@@ -238,6 +238,7 @@ scale = Vector2(0.735, 0.735)
 sprite = ExtResource("5_hawg2")
 hunger_requirement = 50.0
 color = Color(0.221694, 0.866588, 0.182532, 1)
+burn_efficiency = 0.001
 nutrition = 5.0
 is_colliding = true
 
@@ -246,7 +247,7 @@ position = Vector2(275, 497)
 script = SubResource("GDScript_cdenl")
 hunger_requirement = 80.0
 color = Color(0.182532, 0.21478, 0.866588, 1)
-burn_efficiency = 0.01
+burn_efficiency = 0.001
 is_colliding = true
 
 [node name="CollisionShape2D" parent="Stół" index="0"]
@@ -262,7 +263,7 @@ position = Vector2(238, 503)
 sprite = ExtResource("5_2wc5h")
 hunger_requirement = 30.0
 color = Color(0.182532, 0.866588, 0.696729, 1)
-burn_efficiency = 0.04
+burn_efficiency = 0.004
 nutrition = 5.0
 extra_offset = Vector2(0, -99.85)
 
@@ -271,7 +272,7 @@ position = Vector2(304, 499)
 sprite = ExtResource("6_lsmqb")
 hunger_requirement = 30.0
 color = Color(0.866588, 0.182532, 0.348238, 1)
-burn_efficiency = 0.04
+burn_efficiency = 0.004
 nutrition = 5.0
 extra_offset = Vector2(0, -89.645)
 
@@ -280,7 +281,7 @@ position = Vector2(390, 497)
 sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
-burn_efficiency = 0.01
+burn_efficiency = 0.001
 nutrition = 2.0
 is_colliding = true
 
@@ -291,7 +292,7 @@ scale = Vector2(1, -1)
 sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
-burn_efficiency = 0.01
+burn_efficiency = 0.001
 nutrition = 2.0
 is_colliding = true
 
@@ -302,7 +303,7 @@ scale = Vector2(1.125, -1.125)
 sprite = ExtResource("3_71ajr")
 hunger_requirement = 80.0
 color = Color(0.182532, 0.21478, 0.866588, 1)
-burn_efficiency = 0.01
+burn_efficiency = 0.001
 nutrition = 5.0
 is_colliding = true
 
@@ -312,7 +313,7 @@ scale = Vector2(1.125, 1.125)
 sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
-burn_efficiency = 0.01
+burn_efficiency = 0.001
 nutrition = 2.0
 is_colliding = true
 
@@ -323,7 +324,7 @@ scale = Vector2(1.125, -1.125)
 sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
-burn_efficiency = 0.01
+burn_efficiency = 0.001
 nutrition = 2.0
 is_colliding = true
 
@@ -333,7 +334,7 @@ scale = Vector2(0.69, 0.69)
 sprite = ExtResource("3_71ajr")
 hunger_requirement = 80.0
 color = Color(0.182532, 0.21478, 0.866588, 1)
-burn_efficiency = 0.01
+burn_efficiency = 0.001
 nutrition = 5.0
 is_colliding = true
 
@@ -343,7 +344,7 @@ scale = Vector2(0.69, 0.69)
 sprite = ExtResource("5_2wc5h")
 hunger_requirement = 30.0
 color = Color(0.182532, 0.866588, 0.696729, 1)
-burn_efficiency = 0.04
+burn_efficiency = 0.004
 nutrition = 5.0
 extra_offset = Vector2(0, -99.85)
 
@@ -353,7 +354,7 @@ scale = Vector2(0.69, 0.69)
 sprite = ExtResource("6_lsmqb")
 hunger_requirement = 30.0
 color = Color(0.866588, 0.182532, 0.348238, 1)
-burn_efficiency = 0.04
+burn_efficiency = 0.004
 nutrition = 5.0
 extra_offset = Vector2(0, -89.645)
 
@@ -363,7 +364,7 @@ scale = Vector2(0.72, 0.72)
 sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
-burn_efficiency = 0.01
+burn_efficiency = 0.001
 nutrition = 2.0
 is_colliding = true
 
@@ -373,7 +374,7 @@ scale = Vector2(0.69, 0.69)
 sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
-burn_efficiency = 0.01
+burn_efficiency = 0.001
 nutrition = 2.0
 is_colliding = true
 
@@ -384,6 +385,7 @@ scale = Vector2(1.155, -1.155)
 sprite = ExtResource("5_hawg2")
 hunger_requirement = 50.0
 color = Color(0.221694, 0.866588, 0.182532, 1)
+burn_efficiency = 0.001
 nutrition = 5.0
 is_colliding = true
 
@@ -395,6 +397,7 @@ position = Vector2(349, 493)
 script = ExtResource("9_jrbn0")
 hunger_requirement = 95.0
 color = Color(1, 0, 0, 1)
+burn_efficiency = 0.001
 nutrition = 50.0
 is_colliding = true
 metadata/_edit_group_ = true
@@ -434,6 +437,7 @@ texture = ExtResource("16_str4e")
 y_sort_enabled = true
 position = Vector2(285, 570)
 color = Color(1, 0, 0, 1)
+burn_efficiency = 0.001
 is_colliding = true
 
 [node name="Area2D" type="Area2D" parent="."]

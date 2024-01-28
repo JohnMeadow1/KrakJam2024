@@ -123,15 +123,18 @@ polygon = PackedVector2Array(-241.25, 15, -120, -85, 133.75, -82, 245, 13)
 
 [node name="Meat" parent="." instance=ExtResource("7_b1g5p")]
 position = Vector2(436, 577)
+burn_efficiency = 0.001
 
 [node name="Meat2" parent="." instance=ExtResource("7_b1g5p")]
 position = Vector2(55, 502)
+burn_efficiency = 0.001
 
 [node name="Dude" type="Area2D" parent="." groups=["inneludzikki"]]
 position = Vector2(47, 445)
 script = ExtResource("8_bm47l")
 hunger_requirement = 95.0
 color = Color(1, 0, 0, 1)
+burn_efficiency = 0.001
 is_colliding = true
 metadata/_edit_group_ = true
 
@@ -170,6 +173,7 @@ scale = Vector2(-1, 1)
 script = ExtResource("8_bm47l")
 hunger_requirement = 95.0
 color = Color(1, 0, 0, 1)
+burn_efficiency = 0.001
 is_colliding = true
 metadata/_edit_group_ = true
 
@@ -208,6 +212,7 @@ scale = Vector2(0.855, 0.855)
 script = ExtResource("8_bm47l")
 hunger_requirement = 95.0
 color = Color(1, 0, 0, 1)
+burn_efficiency = 0.001
 is_colliding = true
 metadata/_edit_group_ = true
 
@@ -246,6 +251,7 @@ scale = Vector2(-0.855, 0.855)
 script = ExtResource("8_bm47l")
 hunger_requirement = 95.0
 color = Color(1, 0, 0, 1)
+burn_efficiency = 0.001
 is_colliding = true
 metadata/_edit_group_ = true
 
@@ -282,6 +288,7 @@ texture = ExtResource("13_10djq")
 position = Vector2(520, 622)
 sprite = ExtResource("18_x7hb4")
 color = Color(1, 1, 0, 1)
+burn_efficiency = 0.001
 nutrition = 5.0
 
 [node name="🌼" parent="." instance=ExtResource("5_uv5bf")]
@@ -289,6 +296,7 @@ position = Vector2(447, 366)
 scale = Vector2(0.625, 0.625)
 sprite = ExtResource("18_x7hb4")
 color = Color(1, 1, 0, 1)
+burn_efficiency = 0.001
 nutrition = 5.0
 
 [node name="Apple" parent="." instance=ExtResource("5_uv5bf")]
@@ -296,6 +304,7 @@ position = Vector2(311, 483)
 scale = Vector2(0.68, 0.68)
 sprite = ExtResource("13_hfxmb")
 color = Color(0, 1, 0, 1)
+burn_efficiency = 0.001
 nutrition = 5.0
 extra_offset = Vector2(0, -187.055)
 

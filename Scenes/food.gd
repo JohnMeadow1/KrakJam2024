@@ -2,7 +2,7 @@ extends RigidBody2D
 
 var composition := Color.GREEN
 var total_nutrition := 10.0
-var digestion_efficiency:= 1.0
+var digestion_efficiency:= 0.5
 var current_nutrition := 0.0
 
 var digested := 1.0
