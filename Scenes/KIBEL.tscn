@@ -95,7 +95,7 @@ extra_offset = Vector2(-30, 0)
 position = Vector2(215, 397)
 sprite = ExtResource("6_nijch")
 hunger_requirement = 80.0
-color = Color(0.825856, 0.114209, 0.263453, 1)
+color = Color(0.184527, 0.372351, 1, 1)
 is_colliding = true
 extra_offset = Vector2(0, -30)
 
@@ -113,6 +113,7 @@ position = Vector2(150, 401)
 scale = Vector2(0.625, 0.625)
 sprite = ExtResource("7_fs207")
 color = Color(1, 1, 0, 1)
+nutrition = 5.0
 
 [node name="698390Poster" type="Sprite2D" parent="."]
 position = Vector2(420, 277)
@@ -131,7 +132,7 @@ position = Vector2(481, 436)
 sprite = ExtResource("11_w7dom")
 color = Color(0.360784, 0.282353, 0.180392, 1)
 burn_efficiency = 0.01
-nutrition = 100.0
+nutrition = 20.0
 is_colliding = true
 extra_offset = Vector2(0, 66)
 

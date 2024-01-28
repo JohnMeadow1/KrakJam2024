@@ -238,6 +238,7 @@ scale = Vector2(0.735, 0.735)
 sprite = ExtResource("5_hawg2")
 hunger_requirement = 50.0
 color = Color(0.221694, 0.866588, 0.182532, 1)
+nutrition = 5.0
 is_colliding = true
 
 [node name="Stół" parent="." instance=ExtResource("2_vghul")]
@@ -262,6 +263,7 @@ sprite = ExtResource("5_2wc5h")
 hunger_requirement = 30.0
 color = Color(0.182532, 0.866588, 0.696729, 1)
 burn_efficiency = 0.04
+nutrition = 5.0
 extra_offset = Vector2(0, -99.85)
 
 [node name="Plate2" parent="." instance=ExtResource("2_vghul")]
@@ -270,6 +272,7 @@ sprite = ExtResource("6_lsmqb")
 hunger_requirement = 30.0
 color = Color(0.866588, 0.182532, 0.348238, 1)
 burn_efficiency = 0.04
+nutrition = 5.0
 extra_offset = Vector2(0, -89.645)
 
 [node name="Krzesło" parent="." instance=ExtResource("2_vghul")]
@@ -278,6 +281,7 @@ sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
+nutrition = 2.0
 is_colliding = true
 
 [node name="Krzesło2" parent="." instance=ExtResource("2_vghul")]
@@ -288,6 +292,7 @@ sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
+nutrition = 2.0
 is_colliding = true
 
 [node name="Stół3" parent="." instance=ExtResource("2_vghul")]
@@ -298,6 +303,7 @@ sprite = ExtResource("3_71ajr")
 hunger_requirement = 80.0
 color = Color(0.182532, 0.21478, 0.866588, 1)
 burn_efficiency = 0.01
+nutrition = 5.0
 is_colliding = true
 
 [node name="Krzesło5" parent="." instance=ExtResource("2_vghul")]
@@ -307,6 +313,7 @@ sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
+nutrition = 2.0
 is_colliding = true
 
 [node name="Krzesło6" parent="." instance=ExtResource("2_vghul")]
@@ -317,6 +324,7 @@ sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
+nutrition = 2.0
 is_colliding = true
 
 [node name="Stół2" parent="." instance=ExtResource("2_vghul")]
@@ -326,6 +334,7 @@ sprite = ExtResource("3_71ajr")
 hunger_requirement = 80.0
 color = Color(0.182532, 0.21478, 0.866588, 1)
 burn_efficiency = 0.01
+nutrition = 5.0
 is_colliding = true
 
 [node name="Apple" parent="." instance=ExtResource("2_vghul")]
@@ -335,6 +344,7 @@ sprite = ExtResource("5_2wc5h")
 hunger_requirement = 30.0
 color = Color(0.182532, 0.866588, 0.696729, 1)
 burn_efficiency = 0.04
+nutrition = 5.0
 extra_offset = Vector2(0, -99.85)
 
 [node name="Plate" parent="." instance=ExtResource("2_vghul")]
@@ -344,6 +354,7 @@ sprite = ExtResource("6_lsmqb")
 hunger_requirement = 30.0
 color = Color(0.866588, 0.182532, 0.348238, 1)
 burn_efficiency = 0.04
+nutrition = 5.0
 extra_offset = Vector2(0, -89.645)
 
 [node name="Krzesło3" parent="." instance=ExtResource("2_vghul")]
@@ -353,6 +364,7 @@ sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
+nutrition = 2.0
 is_colliding = true
 
 [node name="Krzesło4" parent="." instance=ExtResource("2_vghul")]
@@ -362,6 +374,7 @@ sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
+nutrition = 2.0
 is_colliding = true
 
 [node name="🌼2" parent="." instance=ExtResource("2_vghul")]
@@ -371,6 +384,7 @@ scale = Vector2(1.155, -1.155)
 sprite = ExtResource("5_hawg2")
 hunger_requirement = 50.0
 color = Color(0.221694, 0.866588, 0.182532, 1)
+nutrition = 5.0
 is_colliding = true
 
 [node name="Gracz" parent="." instance=ExtResource("4_y7kfw")]
@@ -381,7 +395,7 @@ position = Vector2(349, 493)
 script = ExtResource("9_jrbn0")
 hunger_requirement = 95.0
 color = Color(1, 0, 0, 1)
-nutrition = 100.0
+nutrition = 50.0
 is_colliding = true
 metadata/_edit_group_ = true
 

@@ -277,6 +277,7 @@ position = Vector2(520, 622)
 sprite = ExtResource("8_f43i4")
 hunger_requirement = 60.0
 color = Color(1, 1, 0, 1)
+nutrition = 5.0
 is_colliding = true
 
 [node name="Krzesło" parent="." instance=ExtResource("5_uv5bf")]
@@ -292,7 +293,7 @@ position = Vector2(466, 447)
 script = ExtResource("13_dmdga")
 hunger_requirement = 95.0
 color = Color(1, 0, 0, 1)
-nutrition = 100.0
+nutrition = 50.0
 is_colliding = true
 metadata/_edit_group_ = true
 
