@@ -63,6 +63,8 @@ func add_food(tex:Texture2D, burn_efficiency:float, nutrition:float,  color:Colo
 			tekst = "Friuts :)"
 		"Plate","Plate2":
 			tekst = "That is nice"
+		"Piano":
+			tekst = "🎶Wood🎵Metal🎶"
 		_ when name.begins_with("Dude"):
 			tekst = ["FRESH MEAT!","Looks like meats back on the menu boys!"].pick_random()
 		_ when name.begins_with("Krzesło"):

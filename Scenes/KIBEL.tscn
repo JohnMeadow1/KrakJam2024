@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmvequg2u8155"]
+[gd_scene load_steps=19 format=3 uid="uid://cmvequg2u8155"]
 
 [ext_resource type="Script" path="res://Scripts/Scena.gd" id="1_35ged"]
 [ext_resource type="Texture2D" uid="uid://bx8vmhik7veyn" path="res://Textures/WCbg.png" id="1_r85u1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dxwlk3tndyuv3" path="res://Textures/698390_poster.png" id="8_tlry3"]
 [ext_resource type="Texture2D" uid="uid://3gj7b7s6c2qe" path="res://Textures/toilet posters.jpg" id="9_jk5d1"]
 [ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="10_ifj70"]
+[ext_resource type="Texture2D" uid="uid://c4g11qxh0ktou" path="res://Textures/piano.png" id="11_w7dom"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_20uoc"]
 b = Vector2(554, 0)
@@ -31,6 +32,10 @@ b = Vector2(294, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qn5hp"]
 size = Vector2(124, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2qih"]
+resource_local_to_scene = true
+size = Vector2(64, 45)
 
 [node name="KIBEL" type="Node2D"]
 y_sort_enabled = true
@@ -78,7 +83,7 @@ is_colliding = true
 extra_offset = Vector2(-30, 0)
 
 [node name="TronKrólaSrania2" parent="." instance=ExtResource("4_jaiko")]
-position = Vector2(500, 482)
+position = Vector2(489, 512)
 scale = Vector2(-1, 1)
 sprite = ExtResource("5_itptt")
 hunger_requirement = 90.0
@@ -121,4 +126,30 @@ texture = ExtResource("9_jk5d1")
 
 [node name="DjOgg" parent="." instance=ExtResource("10_ifj70")]
 
+[node name="Piano" parent="." instance=ExtResource("4_jaiko")]
+position = Vector2(481, 436)
+sprite = ExtResource("11_w7dom")
+color = Color(0.360784, 0.282353, 0.180392, 1)
+burn_efficiency = 0.01
+nutrition = 100.0
+is_colliding = true
+extra_offset = Vector2(0, 66)
+
+[node name="CollisionShape2D" parent="Piano" index="0"]
+shape = SubResource("RectangleShape2D_d2qih")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Piano/CollisionShape2D" index="0"]
+position = Vector2(0, -42)
+polygon = PackedVector2Array(-76, 13, -18, 11, 71, 111, 7, 111)
+
+[node name="Sprite2D" parent="Piano" index="1"]
+texture = ExtResource("11_w7dom")
+offset = Vector2(0, -59)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Piano/StaticBody2D" index="1"]
+position = Vector2(0, -60)
+polygon = PackedVector2Array(-57, 11, -18, 11, 71, 111, 23, 111)
+
 [connection signal="body_entered" from="Area2D" to="." method="return_from_kibel"]
+
+[editable path="Piano"]
