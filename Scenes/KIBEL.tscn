@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmvequg2u8155"]
+[gd_scene load_steps=13 format=3 uid="uid://cmvequg2u8155"]
 
 [ext_resource type="Script" path="res://Scripts/Scena.gd" id="1_35ged"]
 [ext_resource type="Texture2D" uid="uid://bx8vmhik7veyn" path="res://Textures/WCbg.png" id="1_r85u1"]
 [ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="2_h3yjr"]
 [ext_resource type="PackedScene" uid="uid://quyjjvbaegum" path="res://Nodes/Jadalne.tscn" id="4_jaiko"]
 [ext_resource type="Texture2D" uid="uid://bexafpct1s48c" path="res://Textures/tron.png" id="5_itptt"]
-[ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="5_n431o"]
 [ext_resource type="Texture2D" uid="uid://cbkj8vv561dlh" path="res://Textures/umywalka.png" id="6_nijch"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_20uoc"]
@@ -65,8 +64,6 @@ shape = SubResource("SegmentShape2D_565hg")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 628)
 shape = SubResource("SegmentShape2D_20uoc")
-
-[node name="DjOgg" parent="." instance=ExtResource("5_n431o")]
 
 [node name="TronKrólaSrania" parent="." instance=ExtResource("4_jaiko")]
 position = Vector2(72, 540)

@@ -302,7 +302,6 @@ shape = SubResource("RectangleShape2D_xucnr")
 
 [node name="Stomanch" type="TextureProgressBar" parent="Sprite2D"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.5)
 offset_left = 218.667
 offset_top = 242.667
 offset_right = 325.667
@@ -311,6 +310,7 @@ scale = Vector2(1.5, 1.5)
 value = 40.0
 fill_mode = 3
 texture_progress = ExtResource("6_uqupv")
+tint_progress = Color(1, 1, 1, 0.93)
 
 [node name="Gas" type="TextureProgressBar" parent="Sprite2D"]
 unique_name_in_owner = true
@@ -534,7 +534,8 @@ offset_right = 963.0
 offset_bottom = 988.0
 text = "You are digestive system.
 Sustain your human.
-Maximize the embaresment!"
+Maximize the embaresment!
+I don't understand my human."
 label_settings = SubResource("LabelSettings_7t5sk")
 horizontal_alignment = 1
 
@@ -565,7 +566,6 @@ autoplay = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_romdj")
-volume_db = -80.0
 autoplay = true
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]

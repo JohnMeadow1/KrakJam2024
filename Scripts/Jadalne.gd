@@ -20,7 +20,7 @@ extends Area2D
 var prev_can_eat: bool
 
 func _ready():
-	if not is_colliding:
+	if not is_colliding and not Engine.is_editor_hint():
 		if has_node("StaticBody2D"):
 			$StaticBody2D.queue_free()
 	
