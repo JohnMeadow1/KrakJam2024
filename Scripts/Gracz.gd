@@ -49,6 +49,8 @@ func _physics_process(delta: float) -> void:
 	position += fart_force
 	move_and_slide()
 	
+	scale = Vector2.ONE + Vector2((position.y - 480)/600,(position.y - 480)/600)
+	
 	#if not chapczy:
 	if velocity.is_zero_approx():
 		if hit_the_deck:

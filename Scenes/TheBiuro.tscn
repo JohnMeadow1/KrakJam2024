@@ -1,10 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://xnb144yip5bj"]
+[gd_scene load_steps=23 format=3 uid="uid://xnb144yip5bj"]
 
 [ext_resource type="Texture2D" uid="uid://b3f0opgjr5b74" path="res://Textures/TheOffice.png" id="1_4l7v1"]
 [ext_resource type="Texture2D" uid="uid://cbhl780q582uu" path="res://Textures/OfficeTable.png" id="2_tftd6"]
-[ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="3_ybcmu"]
 [ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="4_uglc2"]
-[ext_resource type="PackedScene" uid="uid://dffw84alb15sh" path="res://Nodes/InnyLudzik.tscn" id="5_0msl3"]
+[ext_resource type="PackedScene" uid="uid://quyjjvbaegum" path="res://Nodes/Jadalne.tscn" id="5_uv5bf"]
+[ext_resource type="PackedScene" uid="uid://dmw2aixk22wai" path="res://Nodes/Meat.tscn" id="7_b1g5p"]
+[ext_resource type="Script" path="res://Scripts/Jadalne.gd" id="8_bm47l"]
+[ext_resource type="Texture2D" uid="uid://cpnnow4mrsw6j" path="res://Textures/M-body2.png" id="8_dgxn0"]
+[ext_resource type="Texture2D" uid="uid://ccivsqyhkh8pd" path="res://Textures/M-body3.png" id="9_2gy4j"]
+[ext_resource type="Texture2D" uid="uid://bh2roobjkuh3i" path="res://Textures/R-leg2.png" id="10_e53q6"]
+[ext_resource type="Texture2D" uid="uid://72mmve2lopwa" path="res://Textures/L-hand3.png" id="10_wry07"]
+[ext_resource type="Texture2D" uid="uid://b4jeun58ss67h" path="res://Textures/L-leg2.png" id="11_0it1k"]
+[ext_resource type="Texture2D" uid="uid://b84r0883jflqs" path="res://Textures/R-leg3.png" id="11_473c6"]
+[ext_resource type="Texture2D" uid="uid://caj3uucjhwik" path="res://Textures/L-leg3.png" id="12_hauuw"]
+[ext_resource type="Texture2D" uid="uid://b256fmucln0st" path="res://Textures/R-hand3.png" id="13_10djq"]
+[ext_resource type="Texture2D" uid="uid://npyo7qkikgpv" path="res://Textures/apple.png" id="13_hfxmb"]
+[ext_resource type="Texture2D" uid="uid://boymq3rbhn4we" path="res://Textures/L-hand2.png" id="13_n1q84"]
+[ext_resource type="Texture2D" uid="uid://dxoijl2y6piss" path="res://Textures/R-hand2.png" id="16_7qvcv"]
+[ext_resource type="Texture2D" uid="uid://dt36vt4ux7kd4" path="res://Textures/kwiotek.png" id="18_x7hb4"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
@@ -13,33 +26,256 @@ func _ready() -> void:
 	game.set_wybory(\"office\")
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ka7wv"]
+size = Vector2(34, 31)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_rvigf"]
+b = Vector2(554, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_44l4k"]
+b = Vector2(0, 628)
+
 [node name="Biuroffice" type="Node2D"]
+y_sort_enabled = true
 script = SubResource("GDScript_umvcr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4l7v1")
 centered = false
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-z_index = 1
-texture = ExtResource("2_tftd6")
-centered = false
-
-[node name="DjOgg" parent="." instance=ExtResource("3_ybcmu")]
-
 [node name="Gracz" parent="." instance=ExtResource("4_uglc2")]
-position = Vector2(114, 289)
+position = Vector2(198, 550)
 
-[node name="InnyLudzik" parent="." instance=ExtResource("5_0msl3")]
-position = Vector2(49, 313)
-freeze = true
+[node name="Table" parent="." instance=ExtResource("5_uv5bf")]
+position = Vector2(268, 463)
+scale = Vector2(0.8, 1)
+sprite = ExtResource("2_tftd6")
+hunger_requirement = 90.0
+color = Color(0.33, 0.2684, 0.2145, 1)
+burn_efficiency = 0.001
+extra_offset = Vector2(0, 190)
 
-[node name="InnyLudzik2" parent="." instance=ExtResource("5_0msl3")]
-position = Vector2(484, 284)
+[node name="StaticBody2D2" type="StaticBody2D" parent="Table"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Table/StaticBody2D2"]
+polygon = PackedVector2Array(-216, 6, -110, -78, 121, -77, 233, 6)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Table"]
+polygon = PackedVector2Array(-241.25, 15, -120, -85, 133.75, -82, 245, 13)
+
+[node name="Meat" parent="." instance=ExtResource("7_b1g5p")]
+position = Vector2(436, 577)
+
+[node name="Meat2" parent="." instance=ExtResource("7_b1g5p")]
+position = Vector2(55, 502)
+
+[node name="Graczka" type="Area2D" parent="."]
+position = Vector2(47, 445)
+script = ExtResource("8_bm47l")
+hunger_requirement = 95.0
+color = Color(1, 0, 0, 1)
+nutrition = 100.0
+is_colliding = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graczka"]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_ka7wv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Graczka"]
+visible = false
+position = Vector2(0, -80.9999)
 scale = Vector2(-1, 1)
-freeze = true
+offset = Vector2(0, -0.5)
 
-[node name="InnyLudzik3" parent="." instance=ExtResource("5_0msl3")]
-position = Vector2(524, 319)
+[node name="Sprite2D2" type="Sprite2D" parent="Graczka"]
+self_modulate = Color(0.620167, 1, 0.47, 1)
+position = Vector2(0, -80)
+texture = ExtResource("8_dgxn0")
+
+[node name="Lewareka" type="Sprite2D" parent="Graczka/Sprite2D2"]
+show_behind_parent = true
+texture = ExtResource("10_wry07")
+
+[node name="Prawanoga" type="Sprite2D" parent="Graczka/Sprite2D2"]
+texture = ExtResource("10_e53q6")
+
+[node name="Lewanoga" type="Sprite2D" parent="Graczka/Sprite2D2"]
+show_behind_parent = true
+texture = ExtResource("11_0it1k")
+
+[node name="Prawareka" type="Sprite2D" parent="Graczka/Sprite2D2"]
+texture = ExtResource("13_10djq")
+
+[node name="Graczka4" type="Area2D" parent="."]
+position = Vector2(523, 468)
 scale = Vector2(-1, 1)
-freeze = true
+script = ExtResource("8_bm47l")
+hunger_requirement = 95.0
+color = Color(1, 0, 0, 1)
+nutrition = 100.0
+is_colliding = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graczka4"]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_ka7wv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Graczka4"]
+visible = false
+position = Vector2(0, -80.9999)
+scale = Vector2(-1, 1)
+offset = Vector2(0, -0.5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Graczka4"]
+self_modulate = Color(1, 0.53, 0.53, 1)
+position = Vector2(0, -80)
+texture = ExtResource("8_dgxn0")
+
+[node name="Lewareka" type="Sprite2D" parent="Graczka4/Sprite2D2"]
+show_behind_parent = true
+texture = ExtResource("13_n1q84")
+
+[node name="Prawanoga" type="Sprite2D" parent="Graczka4/Sprite2D2"]
+texture = ExtResource("11_473c6")
+
+[node name="Lewanoga" type="Sprite2D" parent="Graczka4/Sprite2D2"]
+show_behind_parent = true
+texture = ExtResource("12_hauuw")
+
+[node name="Prawareka" type="Sprite2D" parent="Graczka4/Sprite2D2"]
+texture = ExtResource("16_7qvcv")
+
+[node name="Graczka2" type="Area2D" parent="."]
+position = Vector2(105, 392)
+scale = Vector2(0.855, 0.855)
+script = ExtResource("8_bm47l")
+hunger_requirement = 95.0
+color = Color(1, 0, 0, 1)
+nutrition = 100.0
+is_colliding = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graczka2"]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_ka7wv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Graczka2"]
+visible = false
+position = Vector2(0, -80.9999)
+scale = Vector2(-1, 1)
+offset = Vector2(0, -0.5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Graczka2"]
+self_modulate = Color(0.55, 1, 0.9775, 1)
+position = Vector2(0, -80)
+texture = ExtResource("9_2gy4j")
+
+[node name="Lewareka" type="Sprite2D" parent="Graczka2/Sprite2D2"]
+show_behind_parent = true
+texture = ExtResource("10_wry07")
+
+[node name="Prawanoga" type="Sprite2D" parent="Graczka2/Sprite2D2"]
+texture = ExtResource("11_473c6")
+
+[node name="Lewanoga" type="Sprite2D" parent="Graczka2/Sprite2D2"]
+show_behind_parent = true
+texture = ExtResource("12_hauuw")
+
+[node name="Prawareka" type="Sprite2D" parent="Graczka2/Sprite2D2"]
+texture = ExtResource("13_10djq")
+
+[node name="Graczka3" type="Area2D" parent="."]
+position = Vector2(421, 392)
+scale = Vector2(-0.855, 0.855)
+script = ExtResource("8_bm47l")
+hunger_requirement = 95.0
+color = Color(1, 0, 0, 1)
+nutrition = 100.0
+is_colliding = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graczka3"]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_ka7wv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Graczka3"]
+visible = false
+position = Vector2(0, -80.9999)
+scale = Vector2(-1, 1)
+offset = Vector2(0, -0.5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Graczka3"]
+self_modulate = Color(0.59, 0.574758, 0.4071, 1)
+position = Vector2(0, -80)
+texture = ExtResource("8_dgxn0")
+
+[node name="Lewareka" type="Sprite2D" parent="Graczka3/Sprite2D2"]
+show_behind_parent = true
+texture = ExtResource("10_wry07")
+
+[node name="Prawanoga" type="Sprite2D" parent="Graczka3/Sprite2D2"]
+texture = ExtResource("11_473c6")
+
+[node name="Lewanoga" type="Sprite2D" parent="Graczka3/Sprite2D2"]
+show_behind_parent = true
+texture = ExtResource("12_hauuw")
+
+[node name="Prawareka" type="Sprite2D" parent="Graczka3/Sprite2D2"]
+texture = ExtResource("13_10djq")
+
+[node name="Jadalne" parent="." instance=ExtResource("5_uv5bf")]
+position = Vector2(520, 622)
+sprite = ExtResource("18_x7hb4")
+color = Color(1, 1, 0, 1)
+extra_offset = Vector2(0, 0)
+
+[node name="Jadalne3" parent="." instance=ExtResource("5_uv5bf")]
+position = Vector2(447, 366)
+scale = Vector2(0.625, 0.625)
+sprite = ExtResource("18_x7hb4")
+color = Color(1, 1, 0, 1)
+extra_offset = Vector2(0, 0)
+
+[node name="Jadalne2" parent="." instance=ExtResource("5_uv5bf")]
+position = Vector2(311, 483)
+scale = Vector2(0.68, 0.68)
+sprite = ExtResource("13_hfxmb")
+color = Color(0, 100, 0, 1)
+extra_offset = Vector2(0, -158.025)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 332)
+shape = SubResource("SegmentShape2D_rvigf")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(368, 255)
+rotation = 0.76909
+shape = SubResource("SegmentShape2D_rvigf")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(174, 257)
+rotation = 2.31949
+shape = SubResource("SegmentShape2D_rvigf")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_44l4k")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(554, 0)
+shape = SubResource("SegmentShape2D_44l4k")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 628)
+shape = SubResource("SegmentShape2D_rvigf")
+
+[connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
+[connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]
+[connection signal="body_entered" from="Graczka4" to="Graczka4" method="_on_body_entered"]
+[connection signal="body_exited" from="Graczka4" to="Graczka4" method="_on_body_exited"]
+[connection signal="body_entered" from="Graczka2" to="Graczka2" method="_on_body_entered"]
+[connection signal="body_exited" from="Graczka2" to="Graczka2" method="_on_body_exited"]
+[connection signal="body_entered" from="Graczka3" to="Graczka3" method="_on_body_entered"]
+[connection signal="body_exited" from="Graczka3" to="Graczka3" method="_on_body_exited"]

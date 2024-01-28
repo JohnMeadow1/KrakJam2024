@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://dffw84alb15sh"]
 
-[ext_resource type="Texture2D" uid="uid://dy6x64dlthytg" path="res://Textures/Body/M-body.png" id="1_0d5ob"]
-[ext_resource type="Texture2D" uid="uid://blraghqgve2pc" path="res://Textures/Body/L-hand.png" id="2_ek1at"]
-[ext_resource type="Texture2D" uid="uid://cvqinr1l4xpco" path="res://Textures/Body/R-leg.png" id="3_iejh5"]
-[ext_resource type="Texture2D" uid="uid://c5q077uxnfgxa" path="res://Textures/Body/L-leg.png" id="4_bg7cb"]
-[ext_resource type="Texture2D" uid="uid://bt2k04qkrbvgs" path="res://Textures/Body/R-hand.png" id="5_abmlm"]
+[ext_resource type="Texture2D" uid="uid://ccivsqyhkh8pd" path="res://Textures/M-body3.png" id="1_7i652"]
+[ext_resource type="Texture2D" uid="uid://72mmve2lopwa" path="res://Textures/L-hand3.png" id="2_fbxej"]
+[ext_resource type="Texture2D" uid="uid://b84r0883jflqs" path="res://Textures/R-leg3.png" id="3_ggp7n"]
+[ext_resource type="Texture2D" uid="uid://caj3uucjhwik" path="res://Textures/L-leg3.png" id="4_3dijv"]
+[ext_resource type="Texture2D" uid="uid://b256fmucln0st" path="res://Textures/R-hand3.png" id="5_io2ci"]
 
 [sub_resource type="GDScript" id="GDScript_5jikc"]
 script/source = "extends Node2D
@@ -116,21 +116,22 @@ script = SubResource("GDScript_5jikc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.697295, 1, 0.737025, 1)
-texture = ExtResource("1_0d5ob")
+position = Vector2(0, -80)
+texture = ExtResource("1_7i652")
 
 [node name="Lewareka" type="Sprite2D" parent="Sprite2D"]
 show_behind_parent = true
-texture = ExtResource("2_ek1at")
+texture = ExtResource("2_fbxej")
 
 [node name="Prawanoga" type="Sprite2D" parent="Sprite2D"]
-texture = ExtResource("3_iejh5")
+texture = ExtResource("3_ggp7n")
 
 [node name="Lewanoga" type="Sprite2D" parent="Sprite2D"]
 show_behind_parent = true
-texture = ExtResource("4_bg7cb")
+texture = ExtResource("4_3dijv")
 
 [node name="Prawareka" type="Sprite2D" parent="Sprite2D"]
-texture = ExtResource("5_abmlm")
+texture = ExtResource("5_io2ci")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

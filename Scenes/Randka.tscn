@@ -53,6 +53,16 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 332)
 shape = SubResource("SegmentShape2D_7yuor")
 
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(387, 263)
+rotation = 0.76909
+shape = SubResource("SegmentShape2D_7yuor")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(180, 261)
+rotation = 2.31949
+shape = SubResource("SegmentShape2D_7yuor")
+
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("SegmentShape2D_hf3l3")
 
@@ -66,6 +76,7 @@ shape = SubResource("SegmentShape2D_7yuor")
 
 [node name="🌼" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(118, 373)
+scale = Vector2(0.735, 0.735)
 sprite = ExtResource("5_hawg2")
 hunger_requirement = 50.0
 color = Color(0.221694, 0.866588, 0.182532, 1)
@@ -116,9 +127,87 @@ burn_efficiency = 0.01
 is_colliding = true
 extra_offset = Vector2(0, 0)
 
+[node name="Stół3" parent="." instance=ExtResource("2_vghul")]
+position = Vector2(251, 613)
+scale = Vector2(-1.125, 1.125)
+sprite = ExtResource("3_71ajr")
+hunger_requirement = 80.0
+color = Color(0.182532, 0.21478, 0.866588, 1)
+burn_efficiency = 0.01
+is_colliding = true
+extra_offset = Vector2(0, 0)
+
+[node name="Krzesło5" parent="." instance=ExtResource("2_vghul")]
+position = Vector2(326, 614)
+scale = Vector2(1.125, 1.125)
+sprite = ExtResource("4_03ufa")
+hunger_requirement = 70.0
+color = Color(0.182532, 0.630975, 0.866588, 1)
+burn_efficiency = 0.01
+is_colliding = true
+extra_offset = Vector2(0, 0)
+
+[node name="Krzesło6" parent="." instance=ExtResource("2_vghul")]
+position = Vector2(175, 613)
+scale = Vector2(-1.125, 1.125)
+sprite = ExtResource("4_03ufa")
+hunger_requirement = 70.0
+color = Color(0.182532, 0.630975, 0.866588, 1)
+burn_efficiency = 0.01
+is_colliding = true
+extra_offset = Vector2(0, 0)
+
+[node name="Stół2" parent="." instance=ExtResource("2_vghul")]
+position = Vector2(325, 397)
+scale = Vector2(0.69, 0.69)
+sprite = ExtResource("3_71ajr")
+hunger_requirement = 80.0
+color = Color(0.182532, 0.21478, 0.866588, 1)
+burn_efficiency = 0.01
+is_colliding = true
+extra_offset = Vector2(0, 0)
+
+[node name="NormalneJedzenie3" parent="." instance=ExtResource("2_vghul")]
+position = Vector2(324, 408)
+scale = Vector2(0.69, 0.69)
+sprite = ExtResource("5_2wc5h")
+hunger_requirement = 30.0
+color = Color(0.182532, 0.866588, 0.696729, 1)
+burn_efficiency = 0.04
+extra_offset = Vector2(0, -99.85)
+
+[node name="NormalneJedzenie4" parent="." instance=ExtResource("2_vghul")]
+position = Vector2(316, 401)
+scale = Vector2(0.69, 0.69)
+sprite = ExtResource("6_lsmqb")
+hunger_requirement = 30.0
+color = Color(0.866588, 0.182532, 0.348238, 1)
+burn_efficiency = 0.04
+extra_offset = Vector2(0, -89.645)
+
+[node name="Krzesło3" parent="." instance=ExtResource("2_vghul")]
+position = Vector2(419, 398)
+scale = Vector2(0.72, 0.72)
+sprite = ExtResource("4_03ufa")
+hunger_requirement = 70.0
+color = Color(0.182532, 0.630975, 0.866588, 1)
+burn_efficiency = 0.01
+is_colliding = true
+extra_offset = Vector2(0, 0)
+
+[node name="Krzesło4" parent="." instance=ExtResource("2_vghul")]
+position = Vector2(390, 377)
+scale = Vector2(0.69, 0.69)
+sprite = ExtResource("4_03ufa")
+hunger_requirement = 70.0
+color = Color(0.182532, 0.630975, 0.866588, 1)
+burn_efficiency = 0.01
+is_colliding = true
+extra_offset = Vector2(0, 0)
+
 [node name="🌼2" parent="." instance=ExtResource("2_vghul")]
 position = Vector2(515, 614)
-scale = Vector2(-1, 1)
+scale = Vector2(-1.155, 1.155)
 sprite = ExtResource("5_hawg2")
 hunger_requirement = 50.0
 color = Color(0.221694, 0.866588, 0.182532, 1)
@@ -173,7 +262,6 @@ y_sort_enabled = true
 position = Vector2(285, 570)
 color = Color(1, 0, 0, 1)
 is_colliding = true
-extra_offset = Vector2(0, 0)
 
 [connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
 [connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]
