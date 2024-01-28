@@ -10,12 +10,15 @@ extends \"res://Scripts/Jadalne.gd\"
 var czaser: float
 var direction: Vector2
 
+var meat_texture = [preload(\"res://Textures/cat0.png\"), preload(\"res://Textures/dog0.png\")]
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		set_physics_process(false)
 		return
 	super()
 	direction = Vector2.from_angle(randf() * TAU)
+	sprite = meat_texture[randi()%2]
 
 func _physics_process(delta: float) -> void:
 	czaser += delta
@@ -33,7 +36,7 @@ func _physics_process(delta: float) -> void:
 script = SubResource("GDScript_ol22s")
 hunger_requirement = 40.0
 color = Color(0.825856, 0.157659, 0.658807, 1)
-extra_offset = null
+extra_offset = Vector2(0, 0)
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_tsuv7")

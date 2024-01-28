@@ -14,7 +14,7 @@ friction = 0.1
 bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6p4s3"]
-radius = 40.0
+radius = 30.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_k76gf"]
 

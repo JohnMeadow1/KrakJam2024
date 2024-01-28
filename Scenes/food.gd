@@ -21,6 +21,7 @@ func _ready():
 	#material = material.duplicate()
 	angular_velocity = randf_range(-20,20)
 	rotation = randf()*TAU
+	sprite_2d.scale = Vector2(1.5,1.5)
 
 func initialize(in_tex:Texture2D, in_efficiency:float, in_nutrition:float, in_composition:Color):
 	$Sprite2D.texture = in_tex
