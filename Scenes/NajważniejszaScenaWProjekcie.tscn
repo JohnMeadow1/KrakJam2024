@@ -81,7 +81,7 @@ text = "Gracz 1"
 layout_mode = 0
 offset_left = 1431.0
 offset_top = 62.0
-offset_right = 1801.0
+offset_right = 1775.0
 offset_bottom = 160.0
 color = Color(0, 0, 0, 0.572549)
 
@@ -91,7 +91,7 @@ offset_left = 24.0
 offset_top = 57.0
 offset_right = 336.0
 offset_bottom = 80.0
-text = "[A] / [D] / [Lewa gała] = Wybór wskaźnika"
+text = "Myszka = kręcenie kurkiem i dźwignią pierdu"
 
 [node name="Label4" type="Label" parent="ColorRect2"]
 layout_mode = 0
