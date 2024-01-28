@@ -3,8 +3,8 @@ extends Node2D
 @onready var animation_player = $AnimationPlayer
 
 func think(text:String):
-	if not animation_player.is_playing():
-		animation_player.play("think")
-	else:
-		animation_player.seek(0.0)
+	if animation_player.is_playing():
+		animation_player.stop()
+	
+	animation_player.play("think")
 	label.text = text
