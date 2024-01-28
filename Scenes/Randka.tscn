@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d1thio0e3qwea"]
+[gd_scene load_steps=33 format=3 uid="uid://d1thio0e3qwea"]
 
 [ext_resource type="Texture2D" uid="uid://vo15adax6o0a" path="res://Textures/randkaBG.png" id="1_8dxca"]
 [ext_resource type="PackedScene" uid="uid://quyjjvbaegum" path="res://Nodes/Jadalne.tscn" id="2_vghul"]
@@ -18,6 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://bt2k04qkrbvgs" path="res://Textures/Body/R-hand.png" id="16_str4e"]
 [ext_resource type="AudioStream" uid="uid://crrgr2m4mnfs8" path="res://Audio/mus_randka.ogg" id="17_bde4n"]
 [ext_resource type="Script" path="res://Scripts/Wygrywacz.gd" id="18_p5036"]
+[ext_resource type="AudioStream" uid="uid://kgk885tsxegf" path="res://Audio/sfx_talk_1.wav" id="19_xtv8b"]
+[ext_resource type="AudioStream" uid="uid://fucgied6xf06" path="res://Audio/sfx_talk_2.wav" id="20_wqwtd"]
+[ext_resource type="AudioStream" uid="uid://dilya4lfhwwcx" path="res://Audio/sfx_talk_3.wav" id="21_n4266"]
+[ext_resource type="AudioStream" uid="uid://cq4jqbedlxd0t" path="res://Audio/sfx_talk_4.wav" id="22_0tbbh"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
@@ -112,11 +116,13 @@ func next_dialog():
 	dialogownik = create_tween()
 	dialogownik.tween_callback(next_dialog_lambda)
 	dialogownik.tween_callback(rozmownik.reset_size)
+	dialogownik.tween_callback($Gadinx.play)
 	dialogownik.tween_property(rozmownik, \"global_position\", gracz.global_position+Vector2(0,-360), 0.0)
 	dialogownik.tween_property(rozmownik, \"visible_ratio\", 1.0, 2.0)
 	dialogownik.tween_interval(1.0)
 	dialogownik.tween_callback(next_dialog_lambda)
 	dialogownik.tween_callback(rozmownik.reset_size)
+	dialogownik.tween_callback($Gadinx.play)
 	dialogownik.tween_property(rozmownik, \"global_position\", graczka.global_position+Vector2(0,-360), 0.0)
 	dialogownik.tween_property(rozmownik, \"visible_ratio\", 1.0, 2.0)
 	dialogownik.tween_interval(1.0)
@@ -174,6 +180,17 @@ corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bdm80"]
+streams_count = 4
+stream_0/stream = ExtResource("19_xtv8b")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("20_wqwtd")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("21_n4266")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("22_0tbbh")
+stream_3/weight = 1.0
 
 [node name="Randka" type="Node2D"]
 y_sort_enabled = true
@@ -451,6 +468,9 @@ stream = ExtResource("17_bde4n")
 [node name="Wygrywacz" type="Node" parent="."]
 script = ExtResource("18_p5036")
 scena = "Randka"
+
+[node name="Gadinx" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_bdm80")
 
 [connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
 [connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]
