@@ -16,11 +16,12 @@ extends Area2D
 	set(s):
 		extra_offset = s
 		$Sprite2D.offset.y = s.y
+		$Sprite2D.offset.x = s.x
 
 var prev_can_eat: bool
 
 func _ready():
-	if not is_colliding:
+	if not is_colliding and not Engine.is_editor_hint():
 		if has_node("StaticBody2D"):
 			$StaticBody2D.queue_free()
 	

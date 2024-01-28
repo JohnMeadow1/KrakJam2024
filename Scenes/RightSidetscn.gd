@@ -46,7 +46,9 @@ func _physics_process(delta):
 
 	
 	acid = Color(0,%green.value/100,0) + Color(%red.value/100,0,0) + Color(0,0,%blue.value/100)
-	stomanch.tint_progress = acid
+	stomanch.tint_progress.r = acid.r
+	stomanch.tint_progress.g = acid.g
+	stomanch.tint_progress.b = acid.b
 
 	line_2d.points[3]=%PinJoint2D.to_local(%PinJoint2D2.global_position)
 	line_2d.points[4]=%PinJoint2D.to_local(%RigidBody2D2.global_position)
