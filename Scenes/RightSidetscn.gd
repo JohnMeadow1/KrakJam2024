@@ -93,7 +93,7 @@ func _physics_process(delta):
 
 	pressure_output *= float(is_farting)
 	var pressure_sin = pressure_output*1.1
-	
+	prints(pressure_sin,$AudioStreamPlayer1.volume_db)
 	$AudioStreamPlayer1.volume_db = linear_to_db(cubicPulse(0.2,0.2,pressure_sin))
 	$AudioStreamPlayer2.volume_db = linear_to_db(cubicPulse(0.3,0.25,pressure_sin))
 	$AudioStreamPlayer3.volume_db = linear_to_db(cubicPulse(0.5,0.3,pressure_sin))
