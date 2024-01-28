@@ -166,7 +166,7 @@ class Pierd:
 func _physics_process(delta: float) -> void:
 	wstydtimeout -= delta
 	if wstydtimeout <= 0:
-		change_stat("shame", -10 * delta)
+		change_stat("shame", -3 * delta)
 	
 	if insides.is_hungry:
 		glood.value += 2 * delta
