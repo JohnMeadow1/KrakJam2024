@@ -326,7 +326,7 @@ texture = ExtResource("18_wpm0u")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Node2D"]
-offset_left = 128.0
+offset_left = 96.0
 offset_top = 15.0
 offset_right = 443.0
 offset_bottom = 91.0
