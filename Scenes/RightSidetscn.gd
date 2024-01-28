@@ -6,7 +6,7 @@ var is_farting := false
 var is_hungry := true
 
 var pressure_gain_per_nutriotion = 0.15
-var pressure_loss_to_farting = 0.0025
+var pressure_loss_to_farting = 0.0045
 
 var blue_ratio:= 0.0
 var green_ratio:= 0.0
