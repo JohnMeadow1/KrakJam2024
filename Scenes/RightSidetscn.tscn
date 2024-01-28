@@ -467,7 +467,7 @@ stream = ExtResource("20_bjqls")
 
 [node name="Klick" type="AudioStreamPlayer" parent="Sprite2D/Lever_base"]
 stream = ExtResource("21_nbelh")
-volume_db = -10.0
+volume_db = -12.0
 
 [node name="Control" type="Control" parent="."]
 z_index = 10
