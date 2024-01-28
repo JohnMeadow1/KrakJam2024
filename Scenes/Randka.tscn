@@ -137,7 +137,7 @@ func next_dialog():
 		dialogownik = null
 	)
 func pierd(f):
-	if not is_instance_valid(graczka):
+	if not is_instance_valid(graczka) or not is_instance_valid(gracz):
 		return
 	
 	var dist :float= gracz.global_position.distance_to(graczka.global_position)
