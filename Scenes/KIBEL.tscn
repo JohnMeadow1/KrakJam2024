@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmvequg2u8155"]
+[gd_scene load_steps=17 format=3 uid="uid://cmvequg2u8155"]
 
 [ext_resource type="Script" path="res://Scripts/Scena.gd" id="1_35ged"]
 [ext_resource type="Texture2D" uid="uid://bx8vmhik7veyn" path="res://Textures/WCbg.png" id="1_r85u1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dt36vt4ux7kd4" path="res://Textures/kwiotek.png" id="7_fs207"]
 [ext_resource type="Texture2D" uid="uid://dxwlk3tndyuv3" path="res://Textures/698390_poster.png" id="8_tlry3"]
 [ext_resource type="Texture2D" uid="uid://3gj7b7s6c2qe" path="res://Textures/toilet posters.jpg" id="9_jk5d1"]
+[ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="10_ifj70"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_20uoc"]
 b = Vector2(554, 0)
@@ -117,5 +118,7 @@ texture = ExtResource("8_tlry3")
 position = Vector2(280, 284)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_jk5d1")
+
+[node name="DjOgg" parent="." instance=ExtResource("10_ifj70")]
 
 [connection signal="body_entered" from="Area2D" to="." method="return_from_kibel"]
