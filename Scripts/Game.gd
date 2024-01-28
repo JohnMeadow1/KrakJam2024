@@ -20,6 +20,7 @@ var wyborydata: Dictionary
 var zrobione_sceny: Array[String]
 
 var scena: Node
+var KIBEL: Node
 var blokuje: float
 
 func _ready() -> void:
@@ -170,3 +171,16 @@ func _physics_process(delta: float) -> void:
 	if OS.has_feature("editor"): return
 	if is_equal_approx(glood.ratio, 1.0):
 		get_tree().change_scene_to_file("res://Scenes/Gej2Mover.tscn")
+
+func gotokibel():
+	true_scena.remove_child(scena)
+	
+	KIBEL = load("res://Scenes/Kibel.tscn").instantiate()
+	KIBEL.game = self
+	true_scena.add_child(KIBEL)
+
+func backfromthekibel():
+	true_scena.add_child(scena)
+	scena.backfromkibelmoveplayer()
+	
+	KIBEL.queue_free()

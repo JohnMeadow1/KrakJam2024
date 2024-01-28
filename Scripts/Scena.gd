@@ -10,3 +10,18 @@ func execute_pierd(pierd):
 
 func pierd():
 	pass
+
+func goto_kibel(body: Node2D) -> void:
+	if not body.name == "Gracz":
+		return
+	
+	game.gotokibel.call_deferred()
+
+func return_from_kibel(body: Node2D) -> void:
+	if not body.name == "Gracz":
+		return
+	
+	game.backfromthekibel.call_deferred()
+
+func backfromkibelmoveplayer():
+	pass

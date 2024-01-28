@@ -1,8 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://d1thio0e3qwea"]
+[gd_scene load_steps=22 format=3 uid="uid://d1thio0e3qwea"]
 
-[ext_resource type="Texture2D" uid="uid://sdnf7w4t74gj" path="res://Textures/randkaBG.png" id="1_8dxca"]
+[ext_resource type="Texture2D" uid="uid://vo15adax6o0a" path="res://Textures/randkaBG.png" id="1_8dxca"]
 [ext_resource type="PackedScene" uid="uid://quyjjvbaegum" path="res://Nodes/Jadalne.tscn" id="2_vghul"]
-[ext_resource type="Texture2D" uid="uid://rrc463ydr1of" path="res://Textures/stolik.png" id="3_71ajr"]
+[ext_resource type="Texture2D" uid="uid://dahynqkrnbbm4" path="res://Textures/stolik.png" id="3_71ajr"]
 [ext_resource type="Texture2D" uid="uid://bk5m35did0wtq" path="res://Textures/chair.png" id="4_03ufa"]
 [ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="4_y7kfw"]
 [ext_resource type="Texture2D" uid="uid://npyo7qkikgpv" path="res://Textures/apple.png" id="5_2wc5h"]
@@ -27,16 +27,25 @@ func execute_pierd(pierd):
 	wstyd += pierd.stink
 	wstyd += int(pierd.with_gruz) * 300
 	game.change_stat(\"shame\", wstyd)
+
+func backfromkibelmoveplayer():
+	$Gracz.position.x += 50
 "
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7yuor"]
 b = Vector2(554, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pf87x"]
+b = Vector2(0, 456)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hf3l3"]
 b = Vector2(0, 628)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ag6ja"]
 size = Vector2(34, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x33je"]
+size = Vector2(4, 138)
 
 [node name="Randka" type="Node2D"]
 y_sort_enabled = true
@@ -64,7 +73,7 @@ rotation = 2.31949
 shape = SubResource("SegmentShape2D_7yuor")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("SegmentShape2D_hf3l3")
+shape = SubResource("SegmentShape2D_pf87x")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(554, 0)
@@ -263,5 +272,19 @@ position = Vector2(285, 570)
 color = Color(1, 0, 0, 1)
 is_colliding = true
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-11, 552)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_x33je")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 567.0
+offset_right = 55.0
+offset_bottom = 590.0
+text = "<WC"
+
 [connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
 [connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="goto_kibel"]
