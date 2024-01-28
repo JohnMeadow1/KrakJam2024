@@ -182,8 +182,11 @@ func gotokibel():
 
 
 func backfromthekibel():
+	scena.blokgotokibel = true
 	true_scena.add_child(scena)
 	scena.backfromkibelmoveplayer()
 	AudioServer.set_bus_effect_enabled(0, 0, false)
 	
 	KIBEL.queue_free()
+	await get_tree().physics_frame
+	scena.blokgotokibel = false

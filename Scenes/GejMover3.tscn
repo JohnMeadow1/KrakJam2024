@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5t72icjfr08r"]
+
+[ext_resource type="Texture2D" uid="uid://c46xlp5j1kw3v" path="res://Textures/Gamever.png" id="1_wachl"]
+[ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="2_stfn7"]
+
+[sub_resource type="Shader" id="Shader_kwnac"]
+code = "shader_type canvas_item;
+
+void fragment() {
+	COLOR.rgb = mix(COLOR.rgb, vec3(0.2, 0.2, 0.5), 0.5);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3e6cl"]
+shader = SubResource("Shader_kwnac")
+
+[sub_resource type="GDScript" id="GDScript_b2d55"]
+script/source = "extends TextureRect
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_SPACE:
+			get_tree().change_scene_to_file(ProjectSettings.get(\"application/run/main_scene\"))
+"
+
+[sub_resource type="SystemFont" id="SystemFont_ia5yi"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[node name="GejMover" type="TextureRect"]
+material = SubResource("ShaderMaterial_3e6cl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wachl")
+script = SubResource("GDScript_b2d55")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 392.0
+offset_top = 478.0
+offset_right = 1466.0
+offset_bottom = 605.0
+rotation = 0.212049
+theme_override_fonts/font = SubResource("SystemFont_ia5yi")
+theme_override_font_sizes/font_size = 90
+text = "UMIERASZ Z SAMOTNOŚCI"
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(1, 0.874343, 0, 1)
+layout_mode = 0
+offset_left = 445.0
+offset_top = 862.0
+offset_right = 1519.0
+offset_bottom = 989.0
+rotation = -0.0667286
+theme_override_fonts/font = SubResource("SystemFont_ia5yi")
+theme_override_font_sizes/font_size = 20
+text = "Spacja od nowa"
+
+[node name="DjOgg" parent="." instance=ExtResource("2_stfn7")]
+pitch_scale = 0.5

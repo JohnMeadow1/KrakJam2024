@@ -34,6 +34,7 @@ var dialogi = [
 
 var dialogownik: Tween
 var current_linia: int
+var exits := 2
 
 func _ready() -> void:
 	game.set_wybory(\"\")
@@ -45,8 +46,30 @@ func execute_pierd(pierd):
 	wstyd += int(pierd.with_gruz) * 300
 	game.change_stat(\"shame\", wstyd)
 
+func goto_kibel(body: Node2D) -> void:
+	if blokgotokibel:
+		return
+	
+	if exits == 0:
+		$Gracz.queue_free()
+		
+		rozmownik.show()
+		rozmownik.position.x = 300
+		rozmownik.text = \"Aby chodzi do tego kibla. Mam tego dość, nara frajerze.\"
+		rozmownik.visible_ratio = 0
+		
+		var tw := create_tween()
+		tw.tween_property(rozmownik, \"visible_ratio\", 1.0, 2.0)
+		tw.tween_interval(1.0)
+		tw.tween_callback(get_tree().change_scene_to_file.bind(\"res://Scenes/GejMover3.tscn\"))
+		return
+	
+	super(body)
+
 func backfromkibelmoveplayer():
 	$Gracz.position.x += 50
+	exits -= 1
+	%Kibelabel.text = \"<WC\\n%d/2\" % exits
 
 func next_dialog():
 	if dialogownik:
@@ -360,12 +383,14 @@ position = Vector2(-11, 552)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_x33je")
 
-[node name="Label" type="Label" parent="."]
+[node name="Kibelabel" type="Label" parent="."]
+unique_name_in_owner = true
 offset_left = 15.0
 offset_top = 567.0
 offset_right = 55.0
 offset_bottom = 590.0
-text = "<WC"
+text = "<WC
+2/2"
 
 [node name="CenterContainer" type="Control" parent="."]
 z_index = 99

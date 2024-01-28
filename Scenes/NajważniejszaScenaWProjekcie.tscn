@@ -8,6 +8,7 @@ script/source = "extends Control
 
 func _ready() -> void:
 	$Label.text = ProjectSettings.get(\"application/config/name\")
+	$Button.grab_focus.call_deferred()
 
 func _on_button_pressed() -> void:
 	$DjOgg.playing = false
