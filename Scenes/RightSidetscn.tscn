@@ -27,7 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://dbdaxxms21030" path="res://Audio/sfx_pierd_3.wav" id="24_0t4nx"]
 [ext_resource type="AudioStream" uid="uid://nge0c3mrcoud" path="res://Audio/sfx_pierd_4.wav" id="25_imth4"]
 [ext_resource type="AudioStream" uid="uid://dx4wq52rqnhdu" path="res://Audio/sfx_pierd_5.wav" id="26_50tmv"]
-[ext_resource type="AudioStream" uid="uid://c1ohfw7raae1a" path="res://Audio/sfx_gurgle.wav" id="28_yq0ta"]
+[ext_resource type="AudioStream" uid="uid://dokv7o3b05ks3" path="res://Audio/intestinal-gurgling-3.wav" id="29_ro5rd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwwu2"]
 size = Vector2(200, 20)
@@ -467,7 +467,7 @@ stream = ExtResource("20_bjqls")
 
 [node name="Klick" type="AudioStreamPlayer" parent="Sprite2D/Lever_base"]
 stream = ExtResource("21_nbelh")
-volume_db = -12.0
+volume_db = -10.0
 
 [node name="Control" type="Control" parent="."]
 z_index = 10
@@ -560,10 +560,12 @@ offset_bottom = 565.0
 
 [node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_xlupa")
+volume_db = -80.0
 autoplay = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_romdj")
+volume_db = -80.0
 autoplay = true
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
@@ -579,7 +581,8 @@ stream = ExtResource("26_50tmv")
 autoplay = true
 
 [node name="Growl" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("28_yq0ta")
+stream = ExtResource("29_ro5rd")
+volume_db = -15.0
 autoplay = true
 
 [connection signal="button_down" from="Sprite2D/Lever_base/Button" to="Sprite2D/Lever_base" method="_on_button_down"]

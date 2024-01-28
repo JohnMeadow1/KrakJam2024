@@ -191,7 +191,6 @@ offset_top = 53.0
 offset_right = 598.0
 offset_bottom = 69.0
 step = 0.01
-value = 50.0
 texture_under = SubResource("GradientTexture2D_qk08e")
 texture_progress = SubResource("GradientTexture2D_llo4f")
 
