@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dt36vt4ux7kd4" path="res://Textures/kwiotek.png" id="5_hawg2"]
 [ext_resource type="Texture2D" uid="uid://bt42g8krfdxe7" path="res://Textures/danie1.png" id="6_lsmqb"]
 [ext_resource type="PackedScene" uid="uid://dmw2aixk22wai" path="res://Nodes/Meat.tscn" id="7_8pplv"]
-[ext_resource type="Texture2D" uid="uid://dxe37a4owa30h" path="res://Textures/Body/F-body.png" id="9_enf4y"]
 [ext_resource type="Script" path="res://Scripts/Jadalne.gd" id="9_jrbn0"]
+[ext_resource type="Texture2D" uid="uid://disilaltmapl1" path="res://Textures/F-body.png" id="10_vhsjf"]
+[ext_resource type="Texture2D" uid="uid://cv8v256nqnxm7" path="res://Textures/R-legF.png" id="12_ia48d"]
 [ext_resource type="Texture2D" uid="uid://blraghqgve2pc" path="res://Textures/Body/L-hand.png" id="13_fxs2a"]
-[ext_resource type="Texture2D" uid="uid://cvqinr1l4xpco" path="res://Textures/Body/R-leg.png" id="14_rth8v"]
-[ext_resource type="Texture2D" uid="uid://c5q077uxnfgxa" path="res://Textures/Body/L-leg.png" id="15_4oqks"]
+[ext_resource type="Texture2D" uid="uid://dlb7t6r7h1o2c" path="res://Textures/L-legF.png" id="13_w2cf1"]
 [ext_resource type="Texture2D" uid="uid://bt2k04qkrbvgs" path="res://Textures/Body/R-hand.png" id="16_str4e"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
@@ -39,6 +39,7 @@ b = Vector2(0, 628)
 size = Vector2(34, 31)
 
 [node name="Randka" type="Node2D"]
+y_sort_enabled = true
 script = SubResource("GDScript_umvcr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -49,7 +50,7 @@ metadata/_edit_lock_ = true
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 271)
+position = Vector2(0, 332)
 shape = SubResource("SegmentShape2D_7yuor")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
@@ -64,92 +65,114 @@ position = Vector2(0, 628)
 shape = SubResource("SegmentShape2D_7yuor")
 
 [node name="🌼" parent="." instance=ExtResource("2_vghul")]
-position = Vector2(160, 306)
-rotation = 3.14159
-scale = Vector2(1, -1)
+position = Vector2(118, 373)
 sprite = ExtResource("5_hawg2")
 hunger_requirement = 50.0
 color = Color(0.221694, 0.866588, 0.182532, 1)
+is_colliding = true
+extra_offset = null
 
 [node name="Stół" parent="." instance=ExtResource("2_vghul")]
-position = Vector2(277, 436)
+position = Vector2(275, 497)
 sprite = ExtResource("3_71ajr")
 hunger_requirement = 80.0
 color = Color(0.182532, 0.21478, 0.866588, 1)
+is_colliding = true
+extra_offset = null
 
 [node name="NormalneJedzenie" parent="." instance=ExtResource("2_vghul")]
-position = Vector2(238, 379)
+position = Vector2(238, 503)
 rotation = -3.14159
 scale = Vector2(1, -1)
 sprite = ExtResource("5_2wc5h")
 hunger_requirement = 30.0
 color = Color(0.182532, 0.866588, 0.696729, 1)
+extra_offset = Vector2(0, -99.85)
 
 [node name="NormalneJedzenie2" parent="." instance=ExtResource("2_vghul")]
-position = Vector2(295, 388)
+position = Vector2(304, 501)
 rotation = -3.14159
 scale = Vector2(1, -1)
 sprite = ExtResource("6_lsmqb")
 hunger_requirement = 30.0
 color = Color(0.866588, 0.182532, 0.348238, 1)
+extra_offset = Vector2(0, -89.645)
 
 [node name="Krzesło" parent="." instance=ExtResource("2_vghul")]
-position = Vector2(392, 436)
+position = Vector2(390, 497)
 sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
+is_colliding = true
+extra_offset = null
 
 [node name="Krzesło2" parent="." instance=ExtResource("2_vghul")]
-position = Vector2(151, 436)
+position = Vector2(149, 497)
 scale = Vector2(-1, 1)
 sprite = ExtResource("4_03ufa")
 hunger_requirement = 70.0
 color = Color(0.182532, 0.630975, 0.866588, 1)
+is_colliding = true
+extra_offset = null
 
 [node name="🌼2" parent="." instance=ExtResource("2_vghul")]
-position = Vector2(483, 527)
-rotation = -3.14159
-scale = Vector2(1, -1)
+position = Vector2(515, 614)
 sprite = ExtResource("5_hawg2")
 hunger_requirement = 50.0
 color = Color(0.221694, 0.866588, 0.182532, 1)
+is_colliding = true
+extra_offset = null
 
 [node name="Gracz" parent="." instance=ExtResource("4_y7kfw")]
-position = Vector2(174, 402)
+position = Vector2(207, 480)
 
 [node name="Graczka" type="Area2D" parent="."]
-position = Vector2(347, 402)
+position = Vector2(349, 493)
 script = ExtResource("9_jrbn0")
 hunger_requirement = 95.0
 color = Color(1, 0, 0, 1)
+burn_efficiency = 0.01
+nutrition = 100.0
+is_colliding = true
+extra_offset = null
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graczka"]
 position = Vector2(0, -12.5)
 shape = SubResource("RectangleShape2D_ag6ja")
 
 [node name="Sprite2D" type="Sprite2D" parent="Graczka"]
+visible = false
 position = Vector2(0, -80.9999)
-rotation = -3.14159
-scale = Vector2(1, -1)
-texture = ExtResource("9_enf4y")
+scale = Vector2(-1, 1)
+texture = ExtResource("10_vhsjf")
+offset = Vector2(0, -87.5)
 
-[node name="Lewareka" type="Sprite2D" parent="Graczka/Sprite2D"]
+[node name="Sprite2D2" type="Sprite2D" parent="Graczka"]
+position = Vector2(0, -80.9999)
+scale = Vector2(-1, 1)
+texture = ExtResource("10_vhsjf")
+
+[node name="Lewareka" type="Sprite2D" parent="Graczka/Sprite2D2"]
 show_behind_parent = true
 texture = ExtResource("13_fxs2a")
 
-[node name="Prawanoga" type="Sprite2D" parent="Graczka/Sprite2D"]
-texture = ExtResource("14_rth8v")
-
-[node name="Lewanoga" type="Sprite2D" parent="Graczka/Sprite2D"]
+[node name="Lewanoga" type="Sprite2D" parent="Graczka/Sprite2D2"]
 show_behind_parent = true
-texture = ExtResource("15_4oqks")
+texture = ExtResource("13_w2cf1")
 
-[node name="Prawareka" type="Sprite2D" parent="Graczka/Sprite2D"]
+[node name="Prawanoga" type="Sprite2D" parent="Graczka/Sprite2D2"]
+show_behind_parent = true
+texture = ExtResource("12_ia48d")
+
+[node name="Prawareka" type="Sprite2D" parent="Graczka/Sprite2D2"]
 texture = ExtResource("16_str4e")
 
 [node name="Meat" parent="." instance=ExtResource("7_8pplv")]
-position = Vector2(279, 563)
+y_sort_enabled = true
+position = Vector2(285, 570)
 color = Color(1, 0, 0, 1)
+is_colliding = true
 
 [connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
 [connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]

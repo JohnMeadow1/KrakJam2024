@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var how_to_play: Label = $Label
 @onready var how_to_devour: Label = $Label2
 @onready var nanimator: AnimationPlayer = $AnimationPlayer
+@onready var nanimator_2 = $AnimationPlayer2
+
 @onready var pragnienieniemaszansz_2d: Sprite2D = $Sprite2D
 
 var jadalne: Array
@@ -10,6 +12,7 @@ var praktik
 
 var chapczy: bool
 @onready var fart_hole = %FartHole
+@onready var czompers = $Sprite2D/Zembs2
 
 var fart_force:= Vector2.ZERO
 var hit_the_deck := false
@@ -44,11 +47,14 @@ func _physics_process(delta: float) -> void:
 	position += fart_force
 	move_and_slide()
 	
-	if not chapczy:
-		if velocity.is_zero_approx():
-			nanimator.play(&"Stanie")
+	#if not chapczy:
+	if velocity.is_zero_approx():
+		if hit_the_deck:
+			nanimator.play(&"Swing")
 		else:
-			nanimator.play(&"Chodzenie")
+			nanimator.play(&"Stanie")
+	else:
+		nanimator.play(&"Chodzenie")
 	
 	if velocity.x > 0:
 		pragnienieniemaszansz_2d.scale = Vector2(1, 1)
@@ -76,8 +82,8 @@ func _physics_process(delta: float) -> void:
 	if yadalne and Input.is_action_just_pressed("żryj"):
 		yadalne.zjedz()
 		
-		if not chapczy:
-			chapczy = true
-			nanimator.play(&"Chaparka")
-			await nanimator.animation_finished
-			chapczy = false
+		#if not chapczy:
+			#chapczy = true
+		nanimator_2.play(&"Chaparka")
+			#await nanimator.animation_finished
+			#chapczy = false

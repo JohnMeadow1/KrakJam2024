@@ -5,13 +5,26 @@ extends Area2D
 	set(s):
 		sprite = s
 		$Sprite2D.texture = s
+		
 
 @export var hunger_requirement: float
 @export var color: Color
 @export var burn_efficiency: float = 0.1
 @export var nutrition: float = 10.0
+@export var is_colliding: bool = false
+@export var extra_offset: Vector2:
+	set(s):
+		extra_offset = s
+		$Sprite2D.offset.y = s.y
 
 var prev_can_eat: bool
+
+func _ready():
+	if not is_colliding:
+		if has_node("StaticBody2D"):
+			$StaticBody2D.queue_free()
+	$Sprite2D.offset.y = -$Sprite2D.get_rect().size.y*0.5 + extra_offset.y
+	$Sprite2D.offset.x = extra_offset.x
 
 func _init() -> void:
 	if not Engine.is_editor_hint():

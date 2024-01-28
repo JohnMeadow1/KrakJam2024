@@ -164,6 +164,9 @@ func _physics_process(delta: float) -> void:
 		glood.value -= insides.nutrition
 		insides.nutrition = 0.0
 	
+	if is_instance_valid(Globals.player):
+		Globals.player.czompers.scale.y = glood.value/400.0
+	
 	if OS.has_feature("editor"): return
 	if is_equal_approx(glood.ratio, 1.0):
 		get_tree().change_scene_to_file("res://Scenes/Gej2Mover.tscn")

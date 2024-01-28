@@ -1,14 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://dp2cgkpej81k2"]
+[gd_scene load_steps=24 format=3 uid="uid://dp2cgkpej81k2"]
 
 [ext_resource type="Script" path="res://Scripts/Gracz.gd" id="1_n5idq"]
-[ext_resource type="Texture2D" uid="uid://dy6x64dlthytg" path="res://Textures/Body/M-body.png" id="2_2cy7l"]
+[ext_resource type="Texture2D" uid="uid://cpnnow4mrsw6j" path="res://Textures/M-body2.png" id="2_4vegi"]
+[ext_resource type="Texture2D" uid="uid://7730o1l84vma" path="res://Textures/teeth.png" id="3_hy4td"]
 [ext_resource type="Texture2D" uid="uid://deyn2yodwd2w5" path="res://Textures/UP-teeth.png" id="4_b8ec2"]
-[ext_resource type="Texture2D" uid="uid://cvqinr1l4xpco" path="res://Textures/Body/R-leg.png" id="5_3qpb2"]
 [ext_resource type="Texture2D" uid="uid://htmuy5cgt8i8" path="res://Textures/DOWN-teeth.png" id="5_8usqf"]
-[ext_resource type="Texture2D" uid="uid://c5q077uxnfgxa" path="res://Textures/Body/L-leg.png" id="6_swtco"]
-[ext_resource type="Texture2D" uid="uid://bt2k04qkrbvgs" path="res://Textures/Body/R-hand.png" id="7_57jry"]
-[ext_resource type="Texture2D" uid="uid://blraghqgve2pc" path="res://Textures/Body/L-hand.png" id="8_f2tnf"]
+[ext_resource type="Texture2D" uid="uid://boymq3rbhn4we" path="res://Textures/L-hand2.png" id="6_1bsmj"]
+[ext_resource type="Texture2D" uid="uid://b4jeun58ss67h" path="res://Textures/L-leg2.png" id="7_85rhn"]
+[ext_resource type="Texture2D" uid="uid://bh2roobjkuh3i" path="res://Textures/R-leg2.png" id="8_l55nd"]
 [ext_resource type="Texture2D" uid="uid://drvg7gicj0j64" path="res://Textures/fart_clouds.png" id="9_ash8m"]
+[ext_resource type="Texture2D" uid="uid://dxoijl2y6piss" path="res://Textures/R-hand2.png" id="9_psvdo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ag6ja"]
 size = Vector2(34, 35)
@@ -54,30 +55,43 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/Zembs/Sprite2D3:rotation")
+tracks/0/path = NodePath("Sprite2D/Zembs2/Sprite2D3:rotation")
 tracks/0/interp = 3
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5),
 "update": 0,
-"values": [0.0, -0.523598, 0.0, -0.523598, 0.0]
+"values": [0.0, -0.261799, 0.0, -0.261799, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/Zembs:visible")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Sprite2D/Prawareka:rotation")
+tracks/1/interp = 3
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -2.05667, -2.05667, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Zembs2/Sprite2D2:rotation")
+tracks/2/interp = 3
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.261799, 0.0, 0.261799, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_ydp7k"]
 resource_name = "Chodzenie"
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -86,10 +100,10 @@ tracks/0/path = NodePath("Sprite2D/Prawanoga:rotation")
 tracks/0/interp = 3
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, -0.523598, 0.0, 0.523598]
+"values": [0.261799, -0.261799, 0.261799]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -98,10 +112,22 @@ tracks/1/path = NodePath("Sprite2D/Lewanoga:rotation")
 tracks/1/interp = 3
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 0.523598, 0.0, -0.523598]
+"values": [-0.261799, 0.261799, -0.261799]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -75), Vector2(0, -80), Vector2(0, -75), Vector2(0, -80), Vector2(0, -75)]
 }
 
 [sub_resource type="Animation" id="Animation_clf6e"]
@@ -109,7 +135,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/Zembs/Sprite2D3:rotation")
+tracks/0/path = NodePath("Sprite2D/Zembs2/Sprite2D3:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -121,19 +147,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/Zembs:visible")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Sprite2D/Prawanoga:rotation")
+tracks/1/interp = 3
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/Prawanoga:rotation")
+tracks/2/path = NodePath("Sprite2D/Lewanoga:rotation")
 tracks/2/interp = 3
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -145,10 +171,34 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/Lewanoga:rotation")
-tracks/3/interp = 3
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -75)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/Prawareka:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D/Zembs2/Sprite2D2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -182,12 +232,52 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_86cfr"]
+resource_name = "Swing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Prawanoga:rotation")
+tracks/0/interp = 3
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.202458, -0.0680678, -0.202458, -0.0680678, 0.202458, 0.0, 0.202458, -0.0680678, -0.202458, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Lewanoga:rotation")
+tracks/1/interp = 3
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.202458, -0.0680678, 0.202458, 0.0, 0.202458, -0.0680678, -0.202458, -0.0680678, 0.202458, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Prawareka:rotation")
+tracks/2/interp = 3
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.202458, -0.0680678, -0.202458, -0.0680678, 0.202458, 0.0, 0.202458, -0.0680678, -0.202458, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4rq38"]
 _data = {
 "Chaparka": SubResource("Animation_6e5r2"),
 "Chodzenie": SubResource("Animation_ydp7k"),
 "RESET": SubResource("Animation_clf6e"),
-"Stanie": SubResource("Animation_rmf2v")
+"Stanie": SubResource("Animation_rmf2v"),
+"Swing": SubResource("Animation_86cfr")
 }
 
 [node name="Gracz" type="CharacterBody2D"]
@@ -201,36 +291,43 @@ shape = SubResource("RectangleShape2D_ag6ja")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -75)
-texture = ExtResource("2_2cy7l")
+texture = ExtResource("2_4vegi")
 
-[node name="Zembs" type="Node2D" parent="Sprite2D"]
-visible = false
-position = Vector2(-2, -57)
-scale = Vector2(0.203, 0.203)
+[node name="Zembs2" type="Sprite2D" parent="Sprite2D"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(5, -52.0415)
+scale = Vector2(0.253, 0.263)
+texture = ExtResource("3_hy4td")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D/Zembs"]
-position = Vector2(0, -7.62939e-06)
+[node name="Zembs" type="Sprite2D" parent="Sprite2D/Zembs2"]
+clip_children = 1
+position = Vector2(0, -0.204426)
+texture = ExtResource("3_hy4td")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D/Zembs2"]
+position = Vector2(-45.2611, -25.8916)
 texture = ExtResource("4_b8ec2")
 offset = Vector2(46, 26)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D/Zembs"]
-position = Vector2(0, -7.62939e-06)
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D/Zembs2"]
+position = Vector2(-45.2611, -25.8916)
 texture = ExtResource("5_8usqf")
 offset = Vector2(46, 26)
 
 [node name="Lewareka" type="Sprite2D" parent="Sprite2D"]
 show_behind_parent = true
-texture = ExtResource("8_f2tnf")
-
-[node name="Prawanoga" type="Sprite2D" parent="Sprite2D"]
-texture = ExtResource("5_3qpb2")
+texture = ExtResource("6_1bsmj")
 
 [node name="Lewanoga" type="Sprite2D" parent="Sprite2D"]
-show_behind_parent = true
-texture = ExtResource("6_swtco")
+texture = ExtResource("7_85rhn")
+
+[node name="Prawanoga" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("8_l55nd")
 
 [node name="Prawareka" type="Sprite2D" parent="Sprite2D"]
-texture = ExtResource("7_57jry")
+position = Vector2(0, -29.0415)
+texture = ExtResource("9_psvdo")
+offset = Vector2(1.61, 31.59)
 
 [node name="FartHole" type="GPUParticles2D" parent="Sprite2D"]
 unique_name_in_owner = true
@@ -260,6 +357,11 @@ theme_override_constants/outline_size = 2
 text = "[Backspace]"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4rq38")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_4rq38")
 }

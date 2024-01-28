@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmw2aixk22wai"]
 
-[ext_resource type="PackedScene" uid="uid://ctcfgw6w4dt2m" path="res://Nodes/Jadalne.tscn" id="1_utye1"]
+[ext_resource type="PackedScene" uid="uid://quyjjvbaegum" path="res://Nodes/Jadalne.tscn" id="1_utye1"]
 [ext_resource type="Texture2D" uid="uid://d4mj4koyd4i1y" path="res://Textures/dog0.png" id="2_tsuv7"]
 
 [sub_resource type="GDScript" id="GDScript_ol22s"]
@@ -14,25 +14,26 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		set_physics_process(false)
 		return
-	
+	super()
 	direction = Vector2.from_angle(randf() * TAU)
 
 func _physics_process(delta: float) -> void:
 	czaser += delta
-	$Sprite2D.position.y = sin(czaser * 8) ** 2 * 4
+	$Sprite2D.position.y = -abs(sin(czaser * 8) ** 2 * 4)
 	
 	direction = direction.rotated(randf_range(-0.3, 0.3))
 	position += direction * 100 * delta
 	
-	var texize: Vector2 = $Sprite2D.texture.get_size() * 0.5
-	position = Vector2(clampf(position.x, texize.x, 554 - texize.x), clampf(position.y, texize.y, 628 - texize.y))
+	#var texize: Vector2 = $Sprite2D.texture.get_size() * 0.5
+	#texize= Vector2.ZERO
+	#position = Vector2(clampf(position.x, texize.x, 554 - texize.x), clampf(position.y, texize.y, 628 - texize.y))
 "
 
 [node name="Meat" instance=ExtResource("1_utye1")]
 script = SubResource("GDScript_ol22s")
 hunger_requirement = 40.0
 color = Color(0.825856, 0.157659, 0.658807, 1)
+extra_offset = null
 
 [node name="Sprite2D" parent="." index="1"]
-position = Vector2(0, 2.37704)
 texture = ExtResource("2_tsuv7")
