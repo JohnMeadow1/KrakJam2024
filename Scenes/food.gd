@@ -33,7 +33,7 @@ func initialize(in_tex:Texture2D, in_efficiency:float, in_nutrition:float, in_co
 	
 func digest(acid:Color):
 	#print(acid)
-	var distance = abs(composition.r - acid.r) + abs(composition.g - acid.g)+abs(composition.b - acid.b)
+	var distance = max(max(abs(composition.r - acid.r), abs(composition.g - acid.g)),abs(composition.b - acid.b))
 	var nutrition = max(1.0-distance, 0.0) * digestion_efficiency
 	current_nutrition -= nutrition
 	digested = current_nutrition/total_nutrition
