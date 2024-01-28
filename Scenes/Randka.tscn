@@ -23,6 +23,8 @@
 script/source = "extends \"res://Scripts/Scena.gd\"
 
 @onready var rozmownik: Label = %Label
+@onready var graczka = $Graczka
+@onready var gracz = $Gracz
 
 var dialogi = [
 	\"Ładna dzisiaj pogoda.\",
@@ -33,6 +35,24 @@ var dialogi = [
 	
 	\"Dobre jedzenie tu mają co nie?\",
 	\"Może być.\",
+	
+	\"Ale, że Dudka na Mundial nie wzięli?\",
+	\"Kogo?\",
+	
+	\"A nic. Tak sobie głośno myślę\",
+	\"...\",
+	
+	#\"CLIP_CHILDREN_ONLY\",
+	#\"get\",
+	
+	\"NOTIFICATION_LOCAL_TRANSFORM_CHANGED\",
+	\"DUPLICATE_SIGNALS\",
+	
+	\"NOTIFICATION_EXIT_CANVAS?\",
+	\"AcceptDialog\",
+	
+	\"Zapraszam do mnie\",
+	\"Z przyjemnością ❤️\",
 ]
 
 var dialogownik: Tween
@@ -92,12 +112,12 @@ func next_dialog():
 	dialogownik = create_tween()
 	dialogownik.tween_callback(next_dialog_lambda)
 	dialogownik.tween_callback(rozmownik.reset_size)
-	dialogownik.tween_property(rozmownik, \"position:x\", 150.0, 0.0)
+	dialogownik.tween_property(rozmownik, \"global_position\", gracz.global_position+Vector2(0,-360), 0.0)
 	dialogownik.tween_property(rozmownik, \"visible_ratio\", 1.0, 2.0)
 	dialogownik.tween_interval(1.0)
 	dialogownik.tween_callback(next_dialog_lambda)
 	dialogownik.tween_callback(rozmownik.reset_size)
-	dialogownik.tween_property(rozmownik, \"position:x\", 300.0, 0.0)
+	dialogownik.tween_property(rozmownik, \"global_position\", graczka.global_position+Vector2(0,-360), 0.0)
 	dialogownik.tween_property(rozmownik, \"visible_ratio\", 1.0, 2.0)
 	dialogownik.tween_interval(1.0)
 	dialogownik.tween_callback(func():
@@ -396,7 +416,27 @@ offset_bottom = 590.0
 text = "<WC
 2/2"
 
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 306.0
+offset_top = 245.5
+offset_right = 452.0
+offset_bottom = 284.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_14jk3")
+text = "Dymek rozmowy"
+horizontal_alignment = 1
+
 [node name="CenterContainer" type="Control" parent="."]
+visible = false
 z_index = 99
 layout_mode = 3
 anchors_preset = 0
@@ -404,24 +444,6 @@ offset_left = 6.0
 offset_top = 245.0
 offset_right = 545.0
 offset_bottom = 285.0
-
-[node name="Label" type="Label" parent="CenterContainer"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 30.5
-offset_top = -19.5
-offset_right = 176.5
-offset_bottom = 19.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_14jk3")
-text = "Dymek rozmowy"
 
 [node name="DjOgg" parent="." instance=ExtResource("16_jvxkv")]
 stream = ExtResource("17_bde4n")
