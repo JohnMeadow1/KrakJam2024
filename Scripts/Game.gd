@@ -159,6 +159,8 @@ class Pierd:
 		return "volume %f stink %f length %f gruz? %s" % [volume, stink, length, with_gruz]
 
 func _physics_process(delta: float) -> void:
+	change_stat("shame", -1 * delta)
+	
 	if insides.is_hungry:
 		glood.value += 2 * delta
 	else:
