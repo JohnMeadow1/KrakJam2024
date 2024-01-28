@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://xnb144yip5bj"]
+[gd_scene load_steps=27 format=3 uid="uid://xnb144yip5bj"]
 
 [ext_resource type="Texture2D" uid="uid://b3f0opgjr5b74" path="res://Textures/TheOffice.png" id="1_4l7v1"]
 [ext_resource type="Texture2D" uid="uid://cbhl780q582uu" path="res://Textures/OfficeTable.png" id="2_tftd6"]
@@ -22,11 +22,43 @@
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
 
+@onready var gracz: CharacterBody2D = $Gracz
+@onready var jakbardzonudno: ProgressBar = %ProgressBar
+
+var spotyka_sie: bool
+
 func _ready() -> void:
 	game.set_wybory(\"\")
 
 func backfromkibelmoveplayer():
 	$Gracz.position.x += 50
+
+func pierd():
+	if not is_inside_tree():
+		return
+	
+	var dist := INF
+	
+	for ludzikk: Node2D in get_tree().get_nodes_in_group(&\"inneludzikki\"):
+		dist = minf(dist, gracz.global_position.distance_to(ludzikk.global_position))
+	
+	game.change_stat(\"shame\", maxi(100 - dist, 0))
+
+func _physics_process(delta: float) -> void:
+	if gracz.position.y < 500:
+		if not spotyka_sie:
+			spotyka_sie = true
+			%Co.text = \"Stań przy stole, żeby ruszyć spotkanie\"
+		
+		jakbardzonudno.value += 5 * delta
+		if is_equal_approx(jakbardzonudno.ratio, 1.0):
+			game.zrobione_sceny.append(\"TheBiuro\")
+			game.load_scena(\"DasRaum\")
+			return
+	else:
+		if spotyka_sie:
+			spotyka_sie = false
+			%Co.text = \"Postęp spotkania\"
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka7wv"]
@@ -43,6 +75,20 @@ b = Vector2(0, 628)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7bdc"]
 size = Vector2(4, 138)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcfp5"]
+bg_color = Color(0, 0, 0, 0.501961)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8i7u"]
+bg_color = Color(1, 0.706624, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Biuroffice" type="Node2D"]
 y_sort_enabled = true
@@ -78,7 +124,7 @@ position = Vector2(436, 577)
 [node name="Meat2" parent="." instance=ExtResource("7_b1g5p")]
 position = Vector2(55, 502)
 
-[node name="Graczka" type="Area2D" parent="."]
+[node name="Graczka" type="Area2D" parent="." groups=["inneludzikki"]]
 position = Vector2(47, 445)
 script = ExtResource("8_bm47l")
 hunger_requirement = 95.0
@@ -116,7 +162,7 @@ texture = ExtResource("11_0it1k")
 [node name="Prawareka" type="Sprite2D" parent="Graczka/Sprite2D2"]
 texture = ExtResource("13_10djq")
 
-[node name="Graczka4" type="Area2D" parent="."]
+[node name="Graczka4" type="Area2D" parent="." groups=["inneludzikki"]]
 position = Vector2(523, 468)
 scale = Vector2(-1, 1)
 script = ExtResource("8_bm47l")
@@ -155,7 +201,7 @@ texture = ExtResource("12_hauuw")
 [node name="Prawareka" type="Sprite2D" parent="Graczka4/Sprite2D2"]
 texture = ExtResource("16_7qvcv")
 
-[node name="Graczka2" type="Area2D" parent="."]
+[node name="Graczka2" type="Area2D" parent="." groups=["inneludzikki"]]
 position = Vector2(105, 392)
 scale = Vector2(0.855, 0.855)
 script = ExtResource("8_bm47l")
@@ -194,7 +240,7 @@ texture = ExtResource("12_hauuw")
 [node name="Prawareka" type="Sprite2D" parent="Graczka2/Sprite2D2"]
 texture = ExtResource("13_10djq")
 
-[node name="Graczka3" type="Area2D" parent="."]
+[node name="Graczka3" type="Area2D" parent="." groups=["inneludzikki"]]
 position = Vector2(421, 392)
 scale = Vector2(-0.855, 0.855)
 script = ExtResource("8_bm47l")
@@ -284,12 +330,33 @@ position = Vector2(-8, 539)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_a7bdc")
 
-[node name="Label" type="Label" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+z_index = 99
+
+[node name="Label" type="Label" parent="Node2D"]
 offset_left = 15.0
 offset_top = 567.0
 offset_right = 55.0
 offset_bottom = 590.0
 text = "<WC"
+
+[node name="Co" type="Label" parent="Node2D"]
+unique_name_in_owner = true
+offset_left = 11.0
+offset_top = 116.0
+offset_right = 505.0
+offset_bottom = 139.0
+text = "Stań przy stole, żeby ruszyć spotkanie"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Node2D"]
+unique_name_in_owner = true
+offset_left = 96.0
+offset_top = 139.0
+offset_right = 462.0
+offset_bottom = 166.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lcfp5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q8i7u")
 
 [connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
 [connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]

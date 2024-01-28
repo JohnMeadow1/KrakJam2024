@@ -175,7 +175,7 @@ func _physics_process(delta: float) -> void:
 func gotokibel():
 	true_scena.remove_child(scena)
 	
-	KIBEL = load("res://Scenes/Kibel.tscn").instantiate()
+	KIBEL = load("res://Scenes/KIBEL.tscn").instantiate()
 	KIBEL.game = self
 	true_scena.add_child(KIBEL)
 	AudioServer.set_bus_effect_enabled(0, 0, true)
