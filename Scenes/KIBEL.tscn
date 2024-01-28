@@ -130,6 +130,7 @@ texture = ExtResource("9_jk5d1")
 [node name="Piano" parent="." instance=ExtResource("4_jaiko")]
 position = Vector2(481, 436)
 sprite = ExtResource("11_w7dom")
+hunger_requirement = 60.0
 color = Color(0.360784, 0.282353, 0.180392, 1)
 nutrition = 20.0
 is_colliding = true
@@ -149,6 +150,15 @@ offset = Vector2(0, -59)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Piano/StaticBody2D" index="1"]
 position = Vector2(0, -60)
 polygon = PackedVector2Array(-57, 11, -18, 11, 71, 111, 23, 111)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_left = 128.0
+offset_top = 15.0
+offset_right = 441.0
+offset_bottom = 91.0
+color = Color(0, 0, 0, 0.615686)
 
 [connection signal="body_entered" from="Area2D" to="." method="return_from_kibel"]
 

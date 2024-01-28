@@ -485,6 +485,15 @@ scena = "Randka"
 [node name="Gadinx" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_bdm80")
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_left = 99.0
+offset_top = 15.0
+offset_right = 456.0
+offset_bottom = 91.0
+color = Color(0, 0, 0, 0.615686)
+
 [connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
 [connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="goto_kibel"]

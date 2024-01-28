@@ -323,6 +323,15 @@ texture = ExtResource("17_k7cxl")
 [node name="Prawareka" type="Sprite2D" parent="Graczka/Sprite2D2"]
 texture = ExtResource("18_wpm0u")
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_left = 128.0
+offset_top = 15.0
+offset_right = 443.0
+offset_bottom = 91.0
+color = Color(0, 0, 0, 0.615686)
+
 [connection signal="tree_exited" from="Biurwa" to="." method="_on_biurwa_tree_exited"]
 [connection signal="tree_exited" from="28Styczeń" to="." method="_on_styczeń_tree_exited"]
 [connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
