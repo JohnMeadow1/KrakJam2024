@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://p05o88xsmaah"]
+[gd_scene load_steps=15 format=3 uid="uid://p05o88xsmaah"]
 
 [ext_resource type="Script" path="res://Scripts/Gracz1.gd" id="1_4jxwk"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_h8bl0"]
@@ -10,7 +10,7 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_mf8l0"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.350649, 0.350649, 0.350649, 0.501961)
+colors = PackedColorArray(0.55, 0.55, 0.55, 0.502)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qk08e"]
 gradient = SubResource("Gradient_mf8l0")
@@ -35,14 +35,10 @@ gradient = SubResource("Gradient_d0xag")
 width = 256
 height = 16
 
-[sub_resource type="Gradient" id="Gradient_nidud"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.377804, 0.377804, 0.377804, 0.501961)
-
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_afqmm"]
-gradient = SubResource("Gradient_nidud")
-width = 192
-height = 8
+gradient = SubResource("Gradient_mf8l0")
+width = 256
+height = 16
 
 [sub_resource type="Gradient" id="Gradient_xn0on"]
 offsets = PackedFloat32Array(0)
@@ -50,8 +46,8 @@ colors = PackedColorArray(1, 0.445902, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jgi3l"]
 gradient = SubResource("Gradient_xn0on")
-width = 192
-height = 8
+width = 256
+height = 16
 
 [node name="Game" type="PanelContainer"]
 anchors_preset = 15
@@ -62,6 +58,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_knxka")
 script = ExtResource("1_h8bl0")
 metadata/_edit_lock_ = true
+metadata/_edit_vertical_guides_ = [340.0]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -150,19 +147,20 @@ texture_progress = SubResource("GradientTexture2D_kper6")
 
 [node name="Label3" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
 layout_mode = 0
-offset_left = 234.0
-offset_top = 1020.0
-offset_right = 324.0
-offset_bottom = 1043.0
+offset_left = 241.0
+offset_top = 78.0
+offset_right = 331.0
+offset_bottom = 101.0
 text = "Wstyd"
+horizontal_alignment = 2
 
 [node name="Shame" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 405.0
-offset_top = 1014.0
-offset_right = 661.0
-offset_bottom = 1030.0
+offset_left = 342.0
+offset_top = 81.0
+offset_right = 598.0
+offset_bottom = 97.0
 max_value = 1000.0
 step = 0.01
 texture_under = SubResource("GradientTexture2D_qk08e")
@@ -178,19 +176,20 @@ offset_bottom = 752.0
 
 [node name="Label5" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
 layout_mode = 0
-offset_left = 249.0
-offset_top = 948.0
-offset_right = 289.0
-offset_bottom = 971.0
+offset_left = 291.0
+offset_top = 49.0
+offset_right = 331.0
+offset_bottom = 72.0
 text = "Głód"
+horizontal_alignment = 2
 
 [node name="Glood" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 420.0
-offset_top = 950.0
-offset_right = 676.0
-offset_bottom = 966.0
+offset_left = 342.0
+offset_top = 53.0
+offset_right = 598.0
+offset_bottom = 69.0
 step = 0.01
 value = 50.0
 texture_under = SubResource("GradientTexture2D_qk08e")
@@ -222,19 +221,20 @@ offset_bottom = 1031.0
 
 [node name="Label4" type="Label" parent="HBoxContainer/MarginContainer/Scena/Status"]
 layout_mode = 0
-offset_left = 288.0
-offset_top = 877.0
-offset_right = 472.0
-offset_bottom = 900.0
-text = "[Enter] Wstrzymuj pierd"
+offset_left = 147.0
+offset_top = 104.0
+offset_right = 331.0
+offset_bottom = 127.0
+text = "[Enter] Zwieracze"
+horizontal_alignment = 2
 
 [node name="Pierdlicznik" type="TextureProgressBar" parent="HBoxContainer/MarginContainer/Scena/Status"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 288.0
-offset_top = 900.0
-offset_right = 480.0
-offset_bottom = 908.0
+offset_left = 342.0
+offset_top = 110.0
+offset_right = 598.0
+offset_bottom = 126.0
 min_value = 0.01
 step = 0.0
 value = 0.01
