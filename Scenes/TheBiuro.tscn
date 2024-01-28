@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://xnb144yip5bj"]
+[gd_scene load_steps=30 format=3 uid="uid://xnb144yip5bj"]
 
 [ext_resource type="Texture2D" uid="uid://b3f0opgjr5b74" path="res://Textures/TheOffice.png" id="1_4l7v1"]
 [ext_resource type="Texture2D" uid="uid://cbhl780q582uu" path="res://Textures/OfficeTable.png" id="2_tftd6"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dt36vt4ux7kd4" path="res://Textures/kwiotek.png" id="18_x7hb4"]
 [ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="19_6rsqd"]
 [ext_resource type="AudioStream" uid="uid://pje6q4dwdf02" path="res://Audio/mus_biuro.ogg" id="20_lcc4y"]
+[ext_resource type="Script" path="res://Scripts/Wygrywacz.gd" id="21_0nn55"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
@@ -362,6 +363,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_q8i7u")
 
 [node name="DjOgg" parent="." instance=ExtResource("19_6rsqd")]
 stream = ExtResource("20_lcc4y")
+
+[node name="Wygrywacz" type="Node" parent="."]
+script = ExtResource("21_0nn55")
+scena = "TheBiuro"
 
 [connection signal="body_entered" from="Dude" to="Dude" method="_on_body_entered"]
 [connection signal="body_exited" from="Dude" to="Dude" method="_on_body_exited"]

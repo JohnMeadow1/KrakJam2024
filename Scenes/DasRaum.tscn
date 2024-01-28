@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6pxpmoupqrnd"]
+[gd_scene load_steps=30 format=3 uid="uid://b6pxpmoupqrnd"]
 
 [ext_resource type="Texture2D" uid="uid://c0cic5ggccc5k" path="res://Textures/roomBG.png" id="1_goqea"]
 [ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="2_ga3it"]
@@ -12,6 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://cljtlsloenwat" path="res://Textures/images.jpg" id="7_65gvp"]
 [ext_resource type="Texture2D" uid="uid://dt36vt4ux7kd4" path="res://Textures/kwiotek.png" id="8_f43i4"]
 [ext_resource type="Texture2D" uid="uid://bk5m35did0wtq" path="res://Textures/chair.png" id="9_r8wfn"]
+[ext_resource type="Script" path="res://Scripts/Jadalne.gd" id="13_dmdga"]
+[ext_resource type="Texture2D" uid="uid://disilaltmapl1" path="res://Textures/F-body.png" id="14_tglpq"]
+[ext_resource type="Texture2D" uid="uid://blraghqgve2pc" path="res://Textures/Body/L-hand.png" id="15_faxkb"]
+[ext_resource type="Texture2D" uid="uid://dlb7t6r7h1o2c" path="res://Textures/L-legF.png" id="16_tm3c4"]
+[ext_resource type="Texture2D" uid="uid://cv8v256nqnxm7" path="res://Textures/R-legF.png" id="17_k7cxl"]
+[ext_resource type="Texture2D" uid="uid://bt2k04qkrbvgs" path="res://Textures/Body/R-hand.png" id="18_wpm0u"]
 
 [sub_resource type="GDScript" id="GDScript_0ulgk"]
 script/source = "extends \"res://Scripts/Scena.gd\"
@@ -22,9 +28,10 @@ func _ready() -> void:
 	game.set_wybory(\"\")
 	
 	if game.zrobione_sceny.size() >= 2:
-		finisheded = true
-		get_tree().change_scene_to_file.call_deferred(\"res://Scenes/Wygrana.tscn\")
-		return
+		var tween := get_tree().create_tween()
+		tween.tween_interval(3.0)
+		tween.tween_property(self, \"modulate:a\", 0.0, 3.0)
+		tween.tween_callback(get_tree().change_scene_to_file.bind(\"res://Scenes/Wygrana.tscn\"))
 	
 	if \"TheBiuro\" in game.zrobione_sceny:
 		finisheded = true
@@ -37,6 +44,8 @@ func _ready() -> void:
 		$\"28Styczeń\".queue_free()
 		await get_tree().process_frame
 		finisheded = false
+	else:
+		$Graczka.queue_free()
 
 func _on_biurwa_tree_exited() -> void:
 	if finisheded:
@@ -87,6 +96,9 @@ font_size = 24
 font_color = Color(0, 0, 0, 1)
 outline_size = 14
 outline_color = Color(0.793584, 0.728239, 0.755607, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqgl"]
+size = Vector2(34, 31)
 
 [node name="DasRaum" type="Node2D"]
 y_sort_enabled = true
@@ -274,8 +286,49 @@ color = Color(0.182532, 0.630975, 0.866588, 1)
 burn_efficiency = 0.01
 is_colliding = true
 
+[node name="Graczka" type="Area2D" parent="."]
+position = Vector2(466, 447)
+script = ExtResource("13_dmdga")
+hunger_requirement = 95.0
+color = Color(1, 0, 0, 1)
+nutrition = 100.0
+is_colliding = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graczka"]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_ysqgl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Graczka"]
+visible = false
+position = Vector2(0, -80.9999)
+scale = Vector2(-1, 1)
+offset = Vector2(0, -0.5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Graczka"]
+position = Vector2(0, -80.9999)
+scale = Vector2(-1, 1)
+texture = ExtResource("14_tglpq")
+
+[node name="Lewareka" type="Sprite2D" parent="Graczka/Sprite2D2"]
+show_behind_parent = true
+texture = ExtResource("15_faxkb")
+
+[node name="Lewanoga" type="Sprite2D" parent="Graczka/Sprite2D2"]
+show_behind_parent = true
+texture = ExtResource("16_tm3c4")
+
+[node name="Prawanoga" type="Sprite2D" parent="Graczka/Sprite2D2"]
+show_behind_parent = true
+texture = ExtResource("17_k7cxl")
+
+[node name="Prawareka" type="Sprite2D" parent="Graczka/Sprite2D2"]
+texture = ExtResource("18_wpm0u")
+
 [connection signal="tree_exited" from="Biurwa" to="." method="_on_biurwa_tree_exited"]
 [connection signal="tree_exited" from="28Styczeń" to="." method="_on_styczeń_tree_exited"]
+[connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
+[connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]
 
 [editable path="Biurwa"]
 [editable path="28Styczeń"]

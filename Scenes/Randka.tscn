@@ -1,8 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://d1thio0e3qwea"]
+[gd_scene load_steps=28 format=3 uid="uid://d1thio0e3qwea"]
 
-[ext_resource type="Texture2D" uid="uid://sdnf7w4t74gj" path="res://Textures/randkaBG.png" id="1_8dxca"]
+[ext_resource type="Texture2D" uid="uid://vo15adax6o0a" path="res://Textures/randkaBG.png" id="1_8dxca"]
 [ext_resource type="PackedScene" uid="uid://quyjjvbaegum" path="res://Nodes/Jadalne.tscn" id="2_vghul"]
-[ext_resource type="Texture2D" uid="uid://rrc463ydr1of" path="res://Textures/stolik.png" id="3_71ajr"]
+[ext_resource type="Texture2D" uid="uid://dahynqkrnbbm4" path="res://Textures/stolik.png" id="3_71ajr"]
 [ext_resource type="Texture2D" uid="uid://bk5m35did0wtq" path="res://Textures/chair.png" id="4_03ufa"]
 [ext_resource type="PackedScene" uid="uid://dp2cgkpej81k2" path="res://Nodes/Gracz.tscn" id="4_y7kfw"]
 [ext_resource type="Texture2D" uid="uid://npyo7qkikgpv" path="res://Textures/apple.png" id="5_2wc5h"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bi04cne406hwl" path="res://Nodes/DJ_OGG.tscn" id="16_jvxkv"]
 [ext_resource type="Texture2D" uid="uid://bt2k04qkrbvgs" path="res://Textures/Body/R-hand.png" id="16_str4e"]
 [ext_resource type="AudioStream" uid="uid://crrgr2m4mnfs8" path="res://Audio/mus_randka.ogg" id="17_bde4n"]
+[ext_resource type="Script" path="res://Scripts/Wygrywacz.gd" id="18_p5036"]
 
 [sub_resource type="GDScript" id="GDScript_umvcr"]
 script/source = "extends \"res://Scripts/Scena.gd\"
@@ -424,6 +425,10 @@ text = "Dymek rozmowy"
 
 [node name="DjOgg" parent="." instance=ExtResource("16_jvxkv")]
 stream = ExtResource("17_bde4n")
+
+[node name="Wygrywacz" type="Node" parent="."]
+script = ExtResource("18_p5036")
+scena = "Randka"
 
 [connection signal="body_entered" from="Graczka" to="Graczka" method="_on_body_entered"]
 [connection signal="body_exited" from="Graczka" to="Graczka" method="_on_body_exited"]
