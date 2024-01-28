@@ -89,6 +89,7 @@ grow_vertical = 2
 scale = Vector2(1.72, 1.72)
 
 [node name="Placeholder" type="ColorRect" parent="HBoxContainer/MarginContainer/Scena/TrueScena"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

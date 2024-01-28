@@ -7,6 +7,8 @@
 [sub_resource type="GDScript" id="GDScript_0ulgk"]
 script/source = "extends \"res://Scripts/Scena.gd\"
 
+var finisheded: bool
+
 func _ready() -> void:
 	game.set_wybory(\"\")
 	
@@ -15,10 +17,30 @@ func _ready() -> void:
 		return
 	
 	if \"TheBiuro\" in game.zrobione_sceny:
+		finisheded = true
 		$Biurwa.queue_free()
+		await get_tree().process_frame
+		finisheded = false
 	
 	if \"Randka\" in game.zrobione_sceny:
+		finisheded = true
 		$\"28Styczeń\".queue_free()
+		await get_tree().process_frame
+		finisheded = false
+
+func _on_biurwa_tree_exited() -> void:
+	if finisheded:
+		return
+	finisheded = true
+	await get_tree().create_timer(1).timeout
+	game.load_scena(\"TheBiuro\")
+
+func _on_styczeń_tree_exited() -> void:
+	if finisheded:
+		return
+	finisheded = true
+	await get_tree().create_timer(1).timeout
+	game.load_scena(\"Randka\")
 "
 
 [sub_resource type="Gradient" id="Gradient_cl144"]
@@ -141,9 +163,13 @@ size_flags_horizontal = 4
 text = "Cele:
 - pójść do pracy
 - pójść na randkę
+- nie umrzeć z głodu
 - nie umrzeć ze wstydu pierdząc"
 
 [node name="DjOgg" parent="." instance=ExtResource("3_ahek2")]
+
+[connection signal="tree_exited" from="Biurwa" to="." method="_on_biurwa_tree_exited"]
+[connection signal="tree_exited" from="28Styczeń" to="." method="_on_styczeń_tree_exited"]
 
 [editable path="Biurwa"]
 [editable path="28Styczeń"]

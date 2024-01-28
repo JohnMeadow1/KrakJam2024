@@ -75,7 +75,6 @@ func _physics_process(delta: float) -> void:
 		if yada.can_eat() and (not yadalne or yada.global_position.distance_squared_to(global_position) < yadalne.global_position.distance_squared_to(global_position)):
 			yadalne = yada
 	
-	print(yadalne)
 	if yadalne:
 		how_to_devour.show()
 	else:
